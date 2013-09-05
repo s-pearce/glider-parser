@@ -1,0 +1,2416 @@
+sensor: x_thrvalve_num_of_identical_readings_in_a_row(nodim)   0
+sensor: f_max_working_depth(m)   30.0  #! visible = True; min = 2.0; max = 1000.0
+sensor: f_nominal_dive_rate(m/s) 0.19       # clips 0-1
+sensor: f_nominal_pitch(rad)     0.4363     # 25 degs, clips 0-90 degs
+sensor: f_device_reinit_timeout(min) 2.0 # The amount of time to elapse before the glider 
+sensor: f_enable_picozoom(bool) 1.0  #  0=> never enable picozomm
+sensor: f_auto_picozoom_heap_reqd(bytes) 100000 # heap required to autoenable picozoom
+sensor: x_hardware_ver(nodim) -3.0 # hardware rev
+sensor: x_software_ver(nodim) 0.0 # current software version
+sensor: x_in_gliderdos(bool)  0.0 # true->in glider as opposed to a mission
+sensor: x_are_in_lab(bool)    0.0 # true->started with -lab command line switch
+sensor: x_are_running_onetime_sequence(bool) 0.0 # true -> onetime.seq active
+sensor: u_max_time_in_gliderdos(sec) 600.0           #! visible = True
+sensor: u_max_sequence_repetitions(nodim)       100   # in, upper limit on # repetitions allowed
+sensor: u_max_total_sequenced_missions(nodim)   100   # in, upper limit on total missions sequenced
+sensor: u_max_allowed_lastgasp_aborts(nodim)      1   # in, how many lastgasp.mi aborts to allow
+sensor: u_sequence_max_time_in_gliderdos(s)     900   # in, how long to stay in Gliderdos after
+sensor: u_stale_gps_msg_time(s)                 600
+sensor: u_stale_gps_msg_period(s)               300   # in, In gliderdos msg delivered every u_stale_gps_msg_period
+sensor: m_1meg_persistor(bool)                    0   # out, 1 if M_FREE_HEAP > U_HEAP_REQUIRED_FOR_1MEG_PERSISTOR
+sensor: u_heap_required_for_1meg_persistor(bytes) 500000 # in, heap required for 1 MB persistor
+sensor: m_why_started(enum)                       255   # out, how GliderDos started
+sensor: c_heap_measurement_period(mins)            -1   # how often to measure the heap, <= 0 disables
+sensor: m_min_spare_heap(bytes)                    -1   # out, minimum spare heap seen
+sensor: sci_m_min_spare_heap(bytes)                -1   # and for science
+sensor: m_min_free_heap(bytes)                     -1   # out, minimum free heap seen
+sensor: sci_m_min_free_heap(bytes)                 -1   # and for science
+sensor: u_cycle_time(sec) 4.0              # in, num of secs/cycle on glider processor
+sensor: u_low_power_cycle_time(sec) -1.0   # in, num of secs/cycle on glider processor
+sensor: u_sci_cycle_time(sec) 1.0          # in, num of secs/cycle on science processor
+sensor: x_cycle_time(sec) 4.0  # either u_cycle_time or u_low_power_cycle_time
+sensor: x_low_power_status(nodim) 4.0  # why not low power?
+sensor: u_max_sensor_logs_per_cycle(nodim) 4  # in, max high density sensor records
+sensor: m_present_time(timestamp) 0    # out, secs since 1970 @ start of cycle
+sensor: m_mission_start_time(timestamp) 0  # out, secs since 1970 @ start of mission
+sensor: m_present_secs_into_mission(sec) 0 # out, secs since mission started
+sensor: m_cycle_number(nodim) 0            # out, cycles since mission started
+sensor: x_cycle_overrun_in_ms(msec) 0 # out, set every cycle
+sensor: u_allowable_cycle_overrun(msec) 1000  # how large x_cycle_overrun_in_ms can
+sensor: x_lc_time(msec)   0  # layered control
+sensor: x_dc_time(msec)   0  # dynamic control
+sensor: x_ds_time(msec)   0  # device scheduler
+sensor: x_sp_time(msec)   0  # sensor processing
+sensor: x_log_time(msec)  0  # log_data()
+sensor: x_dead_time(msec) 0  # idle at end of loop
+sensor: x_avg_msecs_of_post_ds_processing_reqd(msec)   1000 # start here to speed up stabilization
+sensor: u_avg_msecs_of_post_ds_processing_alpha(nodim) 0.75 # 0 - 1 (more weight to recent values)
+sensor: c_strobe_ctrl(bool)           0 # boolean controller for the strobe light.
+sensor: m_strobe_ctrl(bool)           0 # boolean measurement for the strobe light.
+sensor: x_mission_num(nodim)          0 # out, YYDDxx the current or last mission number
+sensor: x_mission_status(enum)  -3 # out, current (or last) mission status
+sensor: x_old_mission_status_1(enum)   -3 # out, old,    status from prior missions
+sensor: x_old_mission_status_2(enum)   -3 # out, older,  status from prior missions
+sensor: x_old_mission_status_3(enum)   -3 # out, oldest, status from prior missions
+sensor: x_dbd_mission_number(nodim)   0.0  # out, mmmm of mmmmssss.dbd
+sensor: x_dbd_segment_number(nodim)   0.0  #      ssss of mmmmssss.dbd
+sensor: cc_heading_mode(enum) -1 # out, cmd->heading_mode
+sensor: cc_heading_value(X)    0 #      argument for heading_mode
+sensor: cc_pitch_mode(enum)   -1 # out, cmd->pitch_mode
+sensor: cc_pitch_value(X)      0 #      argument for pitch_mode
+sensor: cc_bpump_mode(enum)   -1 # out, cmd->bump_mode
+sensor: cc_bpump_value(X)      0 #      argument for bpump_mode
+sensor: cc_thruster_mode(enum)   -1 # out, cmd->thruster_mode
+sensor: cc_thruster_value(X)      0 #      argument for thruster_mode
+sensor: cc_threng_mode(enum) -1 # out, cmd->threng_mode
+sensor: cc_inflection_mode(enum) -1 # out, cmd->inflection_mode
+sensor: cc_depth_state_mode(enum) -1    # out, cmd->depth_state_mode
+sensor: cc_mission_status_mode(enum) -3 # out, cmd->mission_status_mode
+sensor: cc_is_comatose(bool)          0 # out, cmd->is_comatose
+sensor: cc_time_til_inflect(s)       -1 # out, <0 ==> invalid
+sensor: cc_final_heading_mode(enum) -1 # out, cmd->heading_mode
+sensor: cc_final_heading_value(X)    0 #      argument for heading_mode
+sensor: cc_final_pitch_mode(enum)   -1 # out, cmd->pitch_mode
+sensor: cc_final_pitch_value(X)      0 #      argument for pitch_mode
+sensor: cc_final_thruster_mode(enum)   -1 # out, cmd->thruster_mode 
+sensor: cc_final_thruster_value(X)      0 #      argument for thruster_mode
+sensor: cc_final_bpump_mode(enum)   -1 # out, cmd->bump_mode
+sensor: cc_final_bpump_value(X)      0 #      argument for bpump_mode
+sensor: cc_final_threng_mode(enum) -1 # out, cmd->threng_mode
+sensor: cc_final_inflection_mode(enum) -1 # out, cmd->inflection_mode
+sensor: cc_final_depth_state_mode(enum) -1    # out, cmd->depth_state_mode
+sensor: cc_final_mission_status_mode(enum) -3 # out, cmd->mission_status_mode
+sensor: cc_final_is_comatose(bool)          0 # out, cmd->is_comatose
+sensor: cc_final_time_til_inflect(s)       -1 # out, <0 ==> invalid
+sensor: u_max_num_files_to_xmit_at_once(nodim) 30    #! visible = True; min = 1.0; max = 60.0
+sensor: m_free_heap(bytes)                     -1    # out, the amount of free heap space
+sensor: sci_m_free_heap(bytes)                 -1    # and for science
+sensor: m_spare_heap(bytes)                    -1    # out, projected amt of heap if every
+sensor: sci_m_spare_heap(bytes)                -1    # and for science
+sensor: x_in_surface_dialog(nodim)            0    # out, non-zero means surface behavior
+sensor: x_num_bang_cmds_done(nodim)           0      # incremented every time a !cmd execute in
+sensor: x_sent_data_files(nodim)              0      # set to the number of glider log files sent via last zmodem batch
+sensor: sci_x_sent_data_files(nodim)          0      # set to the number of science log files sent via last zmodem batch
+sensor: x_surface_active(nodim)               0      # (>0 means active) set to the surface behavior id that is active.
+sensor: m_surface_depth_reached(bool)			0    #  True if we've reached u_reqd_depth_at_surface.
+sensor: u_pitch_surface(rad)			0.087 # In, expected pitch if we are at the surface/air bag is inflated. 5 deg
+sensor: u_secs_surface_depth_reached(sec)  60 # In, if it has been this many seconds since m_surface_depth_re
+sensor: x_why_lens_completed(nodim) 0 # Out, Why the 'c_stop_when_air_pump' surface behavior is complete
+sensor: m_vacuum_change_since_air_pump_on(inHg) 0 # Change in vacuum (m_vacuum - m_vacuum_air_pump_on)
+sensor: m_vacuum_air_bag_inflated(inHg) 0 # If m_vacuum_change_since_air_pump_on > u_vacuum_air_bag_inflated.  Indicates that air bag is likely inflated
+sensor: m_vacuum_air_pump_on(inHg) -1.0 # Initial value of m_vacuum when air pump is turned on AND depth < u_max_depth_for_air_pump_est
+sensor: u_vacuum_air_bag_inflated(inHg) 1.5 # For m_vacuum_change_since_air_pump_on greater than this value, it is very likely that the air bag has inflated
+sensor: u_vacuum_air_bag_inflating(inHg) 0.3 # For m_vacuum_change_since_air_pump_on greater than this value, it is very likely that the air bag has started to inflate
+sensor: u_max_depth_for_air_pump_est(m) 8.0 # The maximum depth that we assume the air pump will inflate.  Used only for determining m_vacuum_air_pump_on.
+sensor: dhs_valid(bool)          0   #non-zero means remaining sensors are valid
+sensor: dhs_start_time(abstime)  0   #secs since 1970 GMT
+sensor: dhs_duration(s)          0
+sensor: dhs_gain(dB)             0
+sensor: dhs_channel(nodim)       0
+sensor: dhs_xmit_files(nodim)    0
+sensor: dhs_silence_lvl(nodim)   0
+sensor: dhs_sampling(bool)       0  # is set true when data collection in process
+sensor: c_reread_mafiles(bool)        0  # 1 -> reread mafile during a mission
+sensor: c_climb_target_depth(m) -1.0 # in, value of b_arg for climb target depth
+sensor: c_dive_target_depth(m) -1.0 # in, value of b_arg for dive target depth
+sensor: x_target_hover_depth(m) 0.0 # deduced from b_args: target_depth and target_altitude
+sensor: x_avg_hover_depth(m)    0.0 # exponential mean of m_depth while hovering
+sensor: x_hover_ballast(cc) 0.0 # adjusted hover_bpump_value for maintaining
+sensor: m_avg_thruster_depth(m) 0.0 # out, if thruster is commanded, the average thruster depth for this segment.
+sensor: m_avg_thruster_power_drift(watt) 0.0 # out, if thruster is commanded, the average thruster power for this segment.
+sensor: x_avg_hover_ballast(cc) 0.0           # exponential mean of calculated
+sensor: u_avg_hover_ballast_alpha(nodim) 0.05 # more weight for longterm mean
+sensor: x_hover_ballast_shallow(cc) 0.0  # the shallowest neutral buoyancy pumped
+sensor: x_hover_ballast_deep(cc)    0.0  # the deepest neutral buoyancy pumped
+sensor: x_hover_depth_shallow(m)    0.0  # the shallowest target drift depth
+sensor: x_hover_depth_deep(m)       0.0  # the deepest target drift depth
+sensor: x_hover_active(bool)     0  # drift_at_depth is in BS_HOVER substate
+sensor: x_deactivate_hover(bool) 0  # a way to stop drift_at_depth
+sensor: x_enable_steering_during_hover(bool) 0 # If true, allow steering when commanded to hover.
+sensor: m_depth_error(m/s) 0.0 # Out, m_depth - commanded depth
+sensor: m_depth_ierror(m) 0.0 # Out, integrated error
+sensor: m_depth_derror(m/s^2) 0.0 # Out, time derivate of error
+sensor: u_hover_bpump_ap_gain_shallow(cc/m) 1.0 #proportional gain, shallow bpump
+sensor: u_hover_bpump_ap_dgain_shallow(cc-s/m) 1.0 #derivative gain, shallow bpump
+sensor: u_hover_bpump_ap_gain_deep(cc/m) 1.0 #proportional gain, deep bpump
+sensor: u_hover_bpump_ap_dgain_deep(cc-s/m) 1.0 #derivative gain, deep bpump
+sensor: x_hover_depth_p_gain(X) -0.15   # proportional gain Kp: should always be < 0.  Set based upon DEPTH_GAIN_SCALE:
+sensor: u_hover_depth_gain_scale_m(X) 0.429
+sensor: u_hover_depth_gain_scale_b(X) -0.430
+sensor: u_hover_depth_p_gain_min(X) -0.01 # In, limits the minimum value of X_HOVER_DEPTH_P_GAIN if scale is used
+sensor: x_hover_depth_i_gain(X) 0 # Out, set by b_arg DEPTH_I_GAIN		
+sensor: x_hover_depth_d_gain(X) 0 # Out, set by b_arg DEPTH_D_GAIN
+sensor: x_hover_depth_pitch_limit(rad) 0.174 # Out, x_hover_depth_pitch_limit = b_arg DEPTH_PITCH_LIMIT - X_PITCH_AP_DEADBAND
+sensor: u_hover_depth_run_time(sec) -1 # How often to "run" the loop
+sensor: u_hover_depth_pitch_deadband(X) -1
+sensor: u_hover_depth_pitch_rate_deadband(X) -1 
+sensor: u_hover_depth_inflection_holdoff(sec) -1.0 # do not set.  Required for PID controller structure,
+sensor: u_hover_depth_hardover_holdoff(sec)  120.0   # in, how long to keep zeroing the integrated
+sensor: u_hover_depth_scale_by_max(bool) 0 # Whether or not we scale the command by x_hover_depth_pitch_limit
+sensor: u_hover_depth_deadband_reset(bool)  0  # in, If true, then reset the integrator if we are not changing pitch due to being in the deadband
+sensor: u_hover_depth_limit_gain_x_error(rad) 1000.0 # Limits the gain*error term, (flattens gain curve)
+sensor: u_hover_depth_limit_absolute(rad) 1000 # limits final C_PITCH value to beween +/- this value.
+sensor: u_hover_depth_abort_after_y_misses(nodim) -1 # in, how many missed depth measurements
+sensor: x_hover_depth_ap_ran(bool)      -10 # Updated on a cycle where pitching depth control executed
+sensor: x_hover_depth_pitch_is_maxed(bool) 0 # true implies pitch is maxed
+sensor: x_avg_depth_pitch_battpos_offset(in)        0.0  # exponential mean of calculated trim offset
+sensor: u_avg_depth_pitch_battpos_alpha(nodim) 		0.05  # more weight for longterm mean
+sensor: u_avg_depth_pitch_battpos_deadband(m)   0.1  # depth error deadband
+sensor: u_abort_min_burn_time(sec)  600  # Never drop the weight before this time
+sensor: u_abort_max_burn_time(sec) 14400 # Always drop the weight after this time
+sensor: u_abort_turn_time(sec)     300  # Max time it takes glider to "turn around vertically"
+sensor: x_inflecting(bool) 0           # out, true implies in an inflection
+sensor: m_tot_num_inflections(nodim) 0 # out, running count of number of inflections
+sensor: m_last_yo_time(sec) 0.0        # out, twice the time between last inflections
+sensor: m_avg_yo_time(sec) 60.0        # out, twice the average time between inflections
+sensor: m_num_half_yos_in_segment(nodim) # out, number of dive/climbs since last surface
+sensor: u_fly_deep_in_shallow(bool) 0    #! visible = True
+sensor: u_autoballast_end_on_converge(bool) 0 #in.  If true, end autoballast adjustments to c_[climb/dive] once converged.  If false, keep running autoballast.
+sensor: u_autoballast_abort(bool) 0 #in, if autoballast fails to converge, then abort if true.  if false, c_autoballast_state will change to 3 and continue with the last ballast amounts
+sensor: c_autoballast_state(enum) 0 # in/out, describes the current state of autoballast.  The user may also change its value to force autoballast to change state
+sensor: c_dive_bpump(X) -1000.0 # in/out, amt of ballast used in a dive in autoballast control.  
+sensor: c_climb_bpump(X) 1000.0 # in/out, amt of ballast used in a climb in autoballast control. 
+sensor: f_scale_pitch(X) 3.0 # in, value to scale pitch deadband in the wait_for_pitch routine
+sensor: f_speed_min(m/s) 0.05	#in, minimum allowable speed input.  Protects against excessively low c_speed_min b_args that could cause stall
+sensor: f_min_ballast(X) 250.0 # in, the minimum amt of total ballast, limits c_autoballast_volume.  Provided as a safety against unreasonably low b_arg
+sensor: f_max_ballast(X) 400.0 # in, the maximum amt of total ballast, limits c_autoballast_volume.  Provided as a safety against unreasonably high b_arg
+sensor: f_min_pump(X) 10.0 #in, the minimum amt of delta ballast for use in a climb or dive .	  
+sensor: m_dive_tot_time(s) -1.0 # out, amount of time to complete dive
+sensor: m_climb_tot_time(s) -1.0 # out, amount of time to complete climb
+sensor: m_dive_depth(m) -1.0 # out, depth that dive actually achieves (to determine if veh has inflected early.)
+sensor: c_speed_ctrl(bool) 0 # out, Gets set to true by software if speed control (SM_SPEED, dynamic_control) was used in this dive or climb.  
+sensor: c_autoballast_volume(X) 1000.0 #in/out, stores the user specified total amt of ballast.  Read in as b_arg_bpump_value and recorded to this sensor
+sensor: c_wait_for_pitch(bool) 1 #in, if true, wait for pitch/batt pos dynamics to settle before enabling speed control.  Set by yo b_arg, and stored in this sensor.
+sensor: c_wait_for_ballast(sec) 100.0 #in, wait this many seconds after ballast pump has stopped moving (after inflection only)
+sensor: f_depth_rate_method(enum) 3 # in, method of filtered depth rate to use for speed control. Set by yo b_arg, and stored in this sensor.
+sensor: c_delta_bpump_speed(X)		50.0 #in/out, amount of ballast to add to bpump in order to reach desired speed.  Should always be positive.  SM_SPEED takes care of the sign
+sensor: c_delta_bpump_ballast(X) -1.0  #in/out, amount of ballast to add to bpump in order to converge on ballast.  
+sensor: c_time_ratio(X)	 1.1		# in, ratio of climb/dive times that must be maintained for speed control. Set by yo b_arg, and stored in this sensor.
+sensor: c_use_sc_model(bool)	0	#out, if using model of veh for SM_SPEED.   Always set to 0 for now until the model is designed. Read in as b_arg_bpump_value and recorded to this sensor
+sensor: c_speed_max(m/s) -100.0		# in/out, fastest depth rate allowed for SM_SPEED control.  Gets set separately by user b_arg for dive and climb
+sensor: c_speed_min(m/s) -100.0		# in/out, slowest depth rate allowed for SM_SPEED control.  Gets set separately by user b_arg for dive and climb
+sensor: c_speed(m/s) -1		      # out, horizontal speed, <0 means no speed specified
+sensor: dc_c_ballast_pumped(cc) 0 # out, what dynamic control wants ballast to be
+  sensor: f_neutral_ballast(cc) 0 # in, amt of ballast for neutral (~0)
+sensor: c_pitch(rad) 0 # out, commanded pitch, <0 to dive
+sensor: dc_c_battpos(in) 0          # out, what dynamic control wants fore/aft battery to be
+sensor: dc_c_fluid_pumped(cc) 0     # out, what dynamic control wants fore/aft fluid to be
+sensor: dc_c_thermal_updown(enum)  # out, what dynamic_control wants thermal engine to do
+sensor: dc_c_oil_volume(cc) 0 # out, what dynamic control wants oil volume to be
+  sensor: f_neutral_oil_volume(cc) 0 # in, amt of oil volume for neutral (~0)
+sensor: x_lmc_utm_zone_digit(byte)         0  # The utm zone of lmc (0,0)
+sensor: x_lmc_utm_zone_char(byte)          0  #  ditto, 0->A 1->B etc
+sensor: x_utm_to_lmc_00(nodim)       0  # matrix such that: lmc = [] * utm + off
+sensor: x_utm_to_lmc_01(nodim)       0  #   |x|   |00 01|   ( |e|   |x0| )
+sensor: x_utm_to_lmc_10(nodim)       0  #   | | = |     | * ( | | + |  | )
+sensor: x_utm_to_lmc_11(nodim)       0  #   |y|   |10 11|   ( |n|   |y0| )
+sensor: x_utm_to_lmc_x0(nodim)       0
+sensor: x_utm_to_lmc_y0(nodim)       0
+sensor: x_lmc_utm_veh_zone_digit(byte) 0  # The utm zone of the vehicle
+sensor: x_lmc_utm_veh_zone_char(byte)  0  #  ditto, 0->A 1->B etc
+sensor: x_lmc_utm_veh_easting_correction(m)  0  # needed for crossing lon UTM zones
+sensor: x_lmc_utm_veh_northing_correction(m) 0  # needed for crossing equator
+sensor: c_heading(rad) 0   # out, commanded heading
+sensor: c_roll(rad) 0      # out, commanded roll
+sensor: dc_c_battroll(rad) 0 # out, what dynamic control wants roll battery to be
+sensor: f_battroll_offset(rad) 0.0 # in, added to c_roll to handle off center batteries
+sensor: m_hdg_error(rad)      0 # out, m_heading - c_heading
+sensor: m_hdg_ierror(rad-sec) 0 # out, integrated m_hdg_error
+sensor: m_hdg_derror(rad/sec) 0 # out, rate of change of m_hdg_error 
+sensor: u_use_current_correction(nodim) 1   #! visible = True
+sensor: c_wpt_x_lmc(m)   0 # in, command waypoint in lmc units
+sensor: c_wpt_y_lmc(m)   0 #
+sensor: x_hit_a_waypoint(bool) 0 # set by behavior when reach a waypoint
+sensor: x_last_wpt_x_lmc(m)    0 # set by behavior when reach a waypoint
+sensor: x_last_wpt_y_lmc(m)    0
+sensor: u_hd_fin_ap_gain(1/rad)      1.50 # The "gain" of controller: 57 deg proportional band
+sensor: u_hd_fin_ap_igain(1/rad-sec) 0.02
+sensor: u_hd_fin_ap_dgain(sec/rad) -4.00 
+sensor: u_low_power_hd_fin_ap_gain(1/rad)      0.5  # 
+sensor: u_low_power_hd_fin_ap_igain(1/rad-sec) 0.0001 #
+sensor: u_low_power_hd_fin_ap_dgain(sec/rad) 0.0 # 
+sensor: u_thruster_hd_fin_ap_gain(1/rad)      0.5   # 
+sensor: u_thruster_hd_fin_ap_igain(1/rad-sec) 0.004 #
+sensor: u_thruster_hd_fin_ap_dgain(sec/rad) -4.0 # 
+sensor: x_hd_fin_ap_gain(1/rad)       1.50
+sensor: x_hd_fin_ap_igain(1/rad-sec)  0.03
+sensor: x_hd_fin_ap_dgain(sec/rad) -4.00 
+sensor: u_hd_fin_ap_run_time(secs)  -1  # How often to "run" the loop
+sensor: u_hd_fin_ap_scale_by_max(bool) 1 # Whether or not we scale the command by X_FIN_MAX
+sensor: u_hd_fin_ap_inflection_holdoff(sec)   -1.0 # in, controls steering around inflections
+sensor: u_heading_deadband(rad) 0.087 #in, deadband for heading error M_HDG_ERROR
+sensor: u_heading_rate_deadband(rad/s) 0.0087 #in, deadband for heading rate error M_HDG_DERROR
+sensor: u_hd_fin_ap_deadband_reset(bool)  0  # in, If true, then reset the integrator if we are not moving the fin due to being in the deadband
+sensor: u_hd_fin_ap_hardover_holdoff(sec)  120.0   # in, how long to keep zeroing the integrated
+sensor: u_hd_fin_ap_limit_gain_x_error(rad) 1000.0 # Limits the gain*error term, (flattens gain curve)
+sensor: u_hd_fin_ap_limit_absolute(rad) 1000 # limits final C_FIN value to beween +/- this value.
+sensor: u_hd_fin_abort_after_y_misses(nodim) 5.0 # in, how many missed attitude measurements
+sensor: x_hd_fin_ap_ran(bool)      -10 # Updated on a cycle where heading autopilot executed
+sensor: x_hd_fin_ap_is_hardover(bool) 0 # true implies fin is "hardover"
+sensor: x_heading_reversal(rad) 2.96 # in, if x_heading_reversal <= heading error <= (2*pi-x_heading_reversal), then
+sensor: u_hd_broll_ap_gain(1/rad)                   1.00
+sensor: u_hd_broll_ap_igain(1/rad-sec)              0.03
+sensor: u_hd_broll_ap_dgain(1/rad-sec)              0.00 #Never tested
+sensor: u_hd_broll_ap_run_time(secs)               -1.0
+sensor: u_hd_broll_ap_inflection_holdoff(sec)      -1.0
+sensor: u_hd_broll_ap_hardover_holdoff(sec)       400.0
+sensor: u_hd_broll_ap_deadband_reset(bool)       0
+sensor: u_hd_broll_ap_limit_gain_x_error(rad)    1000
+sensor: u_hd_broll_ap_limit_absolute(rad)        1000
+sensor: u_hd_broll_abort_after_y_misses(nodim)      3.0
+sensor: u_hd_broll_ap_scale_by_max(bool) 1 # Whether or not we scale the command by X_BATTROLL_MAX
+sensor: x_hd_broll_ap_ran(bool)                   -10
+sensor: x_hd_broll_ap_is_hardover(bool)             0
+sensor: f_pitch_battpos_cal_m(rad/in)  -1.2565 # input
+sensor: f_pitch_battpos_cal_b(in)       0.055  # input
+sensor: f_pitch_fluid_pumped_cal_m(rad/cc)  -0.0043  # input
+sensor: f_pitch_fluid_pumped_cal_b(cc)       0.0  # input
+sensor: u_max_pitch_ap_period(sec) 60 # 16 AutoPilot "runs" at least this often
+sensor: u_min_pitch_ap_period(sec)  2 # AutoPilot "runs" no more than this often
+sensor: x_pitch_ap_period(sec)      0 # Actual computed time  until next running of autopilot
+sensor: x_pitch_ap_ran(bool)        0 # Updated on a cycle where pitch autopilot executed
+sensor: x_pitch_ap_gain(1/rad) -3.0   # Set based upon operating conditions:
+sensor: u_pitch_ap_gain(1/rad)  -3.0  # Proportional gain of controller for no thruster                             
+sensor: u_pitch_ap_gain_thruster(1/rad)  -2.0  # The "gain" of controller if thruster is commanded
+sensor: x_pitch_ap_dgain(s/rad) 1.0   # Set based upon operating conditions:
+sensor: u_pitch_ap_dgain(s/rad)  1.0  # X_PITCH_AP_DGAIN = U_PITCH_AP_DGAIN if thruster is not commanded 
+sensor: u_pitch_ap_dgain_thruster(s/rad)  1.0  # X_PITCH_AP_GAIN = U_PITCH_AP_DGAIN_THRUSTER if thruster is commanded
+sensor: x_pitch_ap_deadband(rad) 0.0524 # set to u_pitch_ap_deadband_thruster if thruster is commanded, 
+sensor: u_pitch_ap_deadband(rad) 0.0524 # 3 deg.  Deadband for thruster not commanded                                                            
+sensor: u_pitch_ap_deadband_thruster(rad) 0.0524 # 3 deg.  Deadband for thruster commanded                                         
+sensor: u_pitch_max_delta_battpos(in)    0.20  # 40% of deadband
+sensor: u_pitch_max_delta_fluid_pumped(cc) 4.0  # 40% of deadband
+sensor: u_pitch_correction_time_mult(nodim) 0.50 # What fraction assumed correction time we wait before
+sensor: u_pitch_deadband_time_mult(nodim)   2.0  # How much we increase the time til next attempt if
+sensor: m_pitch_error(rad) 0 # out, difference between m_pitch - c_pitch
+sensor: m_pitch_derror(rad/s) 0 # out, time derivative of m_pitch_error
+sensor: x_battpos_achieved(enum) 0 #out, Describes the state of the initial battpos searching for pitch servo mode.
+sensor: u_use_pitch_servo_memory(bool) 1 #in, if true, enable pitch servo memory 
+sensor: m_tot_horz_dist(km) 0.0         # out, How far we have moved underwater
+sensor: x_current_target_altitude(m) -1.0  # default is none, height above
+sensor: u_print_engine_status(sec)   -1.0  # controls printing of thermal/deep electric status
+sensor: f_depth_subsampling_rate(sec)                -1   # in, time rate of subsampled depth (will be APPROX!)
+sensor: f_depth_subsampling_rate_default_deep(sec)    23  # auto value for deep
+sensor: f_depth_subsampling_rate_default_shallow(sec)  0  # auto value for shallow
+sensor: m_depth_subsampled(m)          0    # out, subsampled depth measurement
+sensor: m_depth_rate(m/s)              0    # out, rate of change of depth, >0 is down
+sensor: m_depth_rate_subsampled(m/s)   0    # out, subsampled depth rate measurement
+sensor: m_avg_depth_rate(m/s)          0    # out, avg rate of change of depth, >0 is down
+sensor: m_avg_climb_rate(m/s)          0    # out, avg rate of change of depth when climbing
+sensor: m_avg_dive_rate(m/s)           0    # out, avg rate of change of depth when diving
+sensor: u_avg_depth_rate_alpha(nodim)  0.25 # in, time constant for exponential averaging of
+sensor: m_depth_rate_avg_final(m/s) 0.0 # Final value of the calculation.  Use this!                                     								
+sensor: m_depth_rate_running_avg(m/s) 0.0 # out, a running average calculation, used in diveclimb.c and sensor_processing.c
+sensor: m_depth_rate_running_avg_n(enum) 0 # out, identifies the data sample # "n" of m_depth_rate_running_avg
+sensor: c_depth_rate_running_avg_num(enum) 10 # the number of data samples to collect for the m_depth_rate_running_avg calculation.  
+sensor: u_reqd_depth_at_surface(m) 2 #! visible = True; min = 1.0; max = 10.0
+sensor: u_hovering_frac_nom_dive_rate(nodim) 0.25 # in, fraction of f_nominal_dive_rate
+sensor: m_depth_state(enum) 0  # based on m_depth_rate and u_surface_depth
+sensor: m_surface_est_cmd(nodim)  0     # commanded to surface
+sensor: m_surface_est_ctd(nodim)   0    # ctd pressure => depth
+sensor: m_surface_est_gps(nodim)   0    # gps talking to satellite
+sensor: m_surface_est_fw(nodim)    0    # freewave has carrier
+sensor: m_surface_est_irid(nodim)  0    # iridium has carrier
+sensor: u_surface_est_time_constant(secs) 30 # m_surface_est_XXX expontially decayed
+sensor: m_surface_est_total(nodim)       0 # sum of above m_surface_est_XXX ....
+sensor: u_surface_est_threshold(nodim) 1.5 # and are compared to this
+sensor: m_appear_to_be_at_surface(bool)  0 # The final result
+sensor: m_certainly_at_surface(bool)     0 # true if got a gps fix, or freewave/iridium carrier
+sensor: u_alt_reduced_usage_mode(bool) 1 #! visible = True
+sensor: x_alt_time(sec) 0       # out, calculated c_alt_time value
+sensor: m_altitude(m)        0 # out, height above the bottom
+sensor: m_altitude_rate(m/s) 0   # out, rate of change of altitude, <0 is down
+sensor: m_altimeter_status(enum)   0  # out, 0 is good reading
+sensor: u_min_altimeter(m)   2.0   # in, altimeter reading must be between these(inclusive)
+sensor: u_max_altimeter(m) 100.0   # the maximum range of the altimeter
+sensor: m_aground_water_depth(m) -1 # out, set by behavior dive_to when it crashes
+sensor: m_water_depth(m)  -1.0  # out, m_depth + m_altitude.
+sensor: u_max_water_depth_lifetime(yos) 1.0 #! visible = True
+sensor: u_max_bottom_slope(m/m) 3.0  # in, max slope of bottom.  <0 disables all filters
+sensor: u_min_water_depth(m)    0  # in, altimeter reading + M_DEPTH must be between these
+sensor: u_max_water_depth(m) 2000  #              inclusive
+sensor: u_alt_measure_secs_prior_inflection(sec) 15.0 # seconds prior to
+sensor: u_alt_measure_fraction(nodim) 0.5  # must be > 0 and < 1, fraction
+sensor: m_hdg_rate(rad/sec) 0  # rate of change of heading
+sensor: m_speed(m/s)  0           # out, vehicle horizontal speed THRU WATER
+sensor: m_is_speed_estimated(bool) 0 # out, Tells if m_speed is computed from
+sensor: m_avg_speed(m/s)  0  # out, avg vehicle horizontal speed THRU WATER
+sensor: u_avg_speed_alpha(nodim) 0.001  # in, time constant for exponential averaging of
+sensor: u_calc_angle_of_attack(bool) 1 #! visible = True
+sensor: u_angle_of_attack(rad) 0  # The angle of attack is used in the speed calculation
+sensor: m_mission_avg_speed_diving(m/s)   0    # out, running average of computed m_speed
+sensor: m_mission_avg_speed_climbing(m/s) 0    # since start of mission.  Used to estimate
+sensor: u_coast_time(s)                7.5     # in, how long it takes the gliders
+sensor: m_vx_lmc(m/s) 0  # out, vehicle horizontal velocity OVER GROUND
+sensor: m_vy_lmc(m/s) 0
+sensor: m_thruster_est_speed(m/s) 0.0 #Out, estimated forward speed (in body-frame) due to thruster
+sensor: u_max_thruster_speed(m/s) 1.5 # Max estimated thruster speed.  Limits M_THRUSTER_EST_SPEED and scales U_PITCH_AP_GAIN_THRUSTER
+sensor: u_avg_thruster_speed_num(enum) 10 # In, number of samples to use for m_avg_thruster_speed
+sensor: m_avg_thruster_speed(m/s) 0.0 #Out, average horizontal speed due to thruster
+sensor: f_thruster_v1(m/s-volts) 0.0631 # In, 1st-order coefficient
+sensor: f_thruster_v0(m/s) 0.0288 # In, 0th-order coefficient
+sensor: f_thruster_i0(m-s) 0.1473
+sensor: f_thruster_i1(m/s-amp) 0.9018
+sensor: f_thruster_i2(m/s-amp-amp) -0.2083
+sensor: m_water_vx(m/s)  0 # in/out How fast the water is going. LMC coord. sys.
+sensor: m_water_vy(m/s)  0 #    used as input here (if u_use_current_correction is true)
+sensor: m_initial_water_vx(m/s) 0 # out, initial computation of m_water_vx/y
+sensor: m_initial_water_vy(m/s) 0 #
+sensor: m_final_water_vx(m/s) 0 # out, initial computation of m_water_vx/y
+sensor: m_final_water_vy(m/s) 0 #
+sensor: m_water_delta_vx(m/s) 0 # out, change in water_vx/vy this segment
+sensor: m_water_delta_vy(m/s) 0 #
+sensor: x_prior_seg_water_vx(m/s) 0  # in/out water speed used for navigation on prior segment
+sensor: x_prior_seg_water_vy(m/s) 0
+sensor: u_max_water_speed(m/s) 2.8   # in, 5 knots
+sensor: x_dr_state(enum)    0.0 # out, mission_start=0, underwater=1,awaiting_fix=2,
+sensor: m_dr_time(sec)      -1.0    # out, how long underwater, subject to currents
+sensor: m_dr_surf_x_lmc(m)   0      #      Dead Reckoned location when surface
+sensor: m_dr_surf_y_lmc(m)   0
+sensor: m_dr_fix_time(sec)  -1.0    # out, surface drift time til first gps fix
+sensor: m_gps_fix_x_lmc(m)   0      #      location of first gps fix
+sensor: m_gps_fix_y_lmc(m)   0
+sensor: m_dr_x_ini_err(m) 0         # out, m_gps_fix_x/y_lmc - m_dr_surf_x/y_lmc
+sensor: m_dr_y_ini_err(m) 0
+sensor: m_dr_postfix_time(sec) -1.0 # out, surface drift time til later gps fix that is
+sensor: m_gps_postfix_x_lmc(m) 0
+sensor: m_gps_postfix_y_lmc(m) 0    #      Location used to measure surface drift
+sensor: m_dr_x_postfix_drift(m) 0     # out, m_gps_postfix_x/y_lmc - x_gps_fix_x/y_lmc
+sensor: m_dr_y_postfix_drift(m) 0
+sensor: m_dr_x_ta_postfix_drift(m) 0     # out, m_dr_x/y_postfix_drift * time adjusted value
+sensor: m_dr_y_ta_postfix_drift(m) 0
+sensor: m_dr_x_actual_err(m) 0      # out, m_dr_x/y_ini_err - timeadj(m_dr_x/y_postfix_drift)
+sensor: m_dr_y_actual_err(m) 0
+sensor: m_x_lmc(m)  0     # vehicle position in Local Mission Coordinates
+sensor: m_y_lmc(m)  0     # (0,0) at mission start Y axis is magnetic north
+sensor: x_lmc_xy_source(enum) 0 # out, how m_x/y_lmc was computed this cycle
+sensor: m_dist_to_wpt(m)  # out, How far to (c_wpt_x_lmc,c_wpt_y_lmc)
+sensor: m_vmg_to_wpt(m/s) # out, Velocity Made good to (c_wpt_x_lmc,c_wpt_y_lmc)
+sensor: m_time_til_wpt(s) # out, m_dist_to_wpt / m_vmg_to_wpt
+sensor: m_lat(lat)   69696969  # vehicle position in latitude
+sensor: m_lon(lon)   69696969  # vehicle position in longitude
+sensor: c_wpt_lat(lat) 0 # current waypoint in latitude
+sensor: c_wpt_lon(lon) 0 # current waypoint in longitude
+sensor: x_last_wpt_lat(lat) # last achieved waypoint
+sensor: x_last_wpt_lon(lon)
+sensor: u_stable_comms_reqd_secs(sec)  60.0 # in, continous seconds of carrier detect
+sensor: m_stable_comms(bool) 0.0            # out, true-> comms are stable, i.e. we have
+sensor: u_zmodem_verbosity(nodim)      29.0 # in, controls output to config\zmodem.log
+sensor: m_est_time_to_surface(sec)     0.0  # An estimate of the time to climb to
+sensor: m_avg_upward_inflection_time(sec)   12.0 # exponential average of inflections
+sensor: m_avg_downward_inflection_time(sec) 12.0 # start with reasonable guess 
+sensor: m_device_drivers_called_abnormally(nodim) 0 # non-zero means time base is suspect because
+sensor: m_device_oddity(nodim)  -1.0  # These set to the device number of offending device
+sensor: m_device_warning(nodim) -1.0  # whenever it generates error/warning/oddity
+sensor: m_device_error(nodim)   -1.0
+sensor: f_max_time_per_device_ctrl(msec) 500 # In, default max allowable time for
+sensor: f_noise_floor(volts) 0.050 # Electrical noise in system
+sensor: f_crush_depth(m)        225.0 # When the glider gets crushed
+sensor: f_time_to_burn_wire(sec) 20.0 # How long it takes burn wire to drop weight
+sensor: m_at_risk_depth(m)      221.0 # When have to start burning the wire to drop the
+sensor: u_motor_debug(nodim)             0   # bitmask:
+sensor: u_comatose_enabled(bool)       0.0   #! visible = True
+sensor: u_comatose_deadband_mult(nodim) 10.0 # in, how much to increase motor deadbands
+sensor: u_motor_fs_travel_mult(nodim)  2.0 # in, used to compute worst case motor travel time
+sensor: f_motor_analyze_deadband(nodim) 1800.0 # enables computation and printing of
+sensor: c_ballast_pumped(cc) 0  #in >0 pumps ballast overboard, goes up
+sensor: m_ballast_pumped(cc)        #out,
+sensor: f_ballast_pumped_stall_retry(sec) 10.0 # in, how long to wait for retry if
+sensor: x_ballast_pumped_max(cc) 226 # out, Maximum OPERATIONAL limit
+sensor: x_ballast_pumped_deadband(cc)  0.0 # out, how close is good enuf
+sensor: x_ballast_pumped_passive_retraction_depth(m) 200.0 # Maintains shallowest depth
+sensor: x_ballast_passive_retraction_count(int) 0     # How many times we hit the brakes
+sensor: f_ballast_passive_retraction_delay(ms) 10         # How long for
+sensor: m_is_ballast_pump_moving(bool) 0   # out, t-> motor is moving
+sensor: m_ballast_pumped_vel(cc/sec)     0   # out, measured motor speed
+sensor: m_ballast_pumped_energy(joules)  0     #out,  How much energy to pump water on last command
+sensor: m_tot_ballast_pumped_energy(kjoules) 0 #out,  totalized m_ballast_pumped_energy
+sensor: u_ballast_pumped_microposition(bool)    0   # T==> microposition the motor
+sensor:   u_ballast_pumped_micropos_rt(msec)   250  # "run time"  >0 max allowable microposition time
+sensor:   u_ballast_pumped_micropos_wp(nodim)  0.01 #"when pulse" 0-1  when start pulsing the motor
+sensor:   u_ballast_pumped_micropos_dc(nodim)  10   # "duty cycle" 1-N  once pulsing,
+  sensor: f_ballast_pumped_safety_max(cc) 268.0  # in, damage to glider
+  sensor: f_ballast_pumped_deadz_width(cc)  42.0  # in, sets x_ limit
+  sensor: f_ballast_pumped_db_frac_dz(nodim) 1.0   # deadband as fraction of dead zone
+  sensor: f_ballast_pumped_nominal_vel(cc/sec) 132.0 # in, nominal speed
+  sensor: f_ballast_pumped_reqd_vel_frac(nodim) 0.25 # in, fraction of nominal
+  sensor:   u_ballast_pumped_stop_distance(cc)  0    # how long it takes pump to stop
+sensor: f_ballast_pumped_battery_spike_trigger(volts) 3.0
+  sensor: f_ballast_pumped_cal_m(cc/Volt) 366.93 # in, slope
+  sensor: f_ballast_pumped_cal_b(cc) 	 -412.19 # in, y-intercept
+sensor: c_battpos(in) 0   # in, >0 vehicle dives (nose down)
+sensor: c_dive_battpos(in) 0   # out, battpos to immediately move to at start of dive.  Set by either DM_PITCH_SERVO or in diveclimb.c         
+sensor: c_climb_battpos(in) 0   # out, battpos to immediately move to at start of climb.  Set by either DM_PITCH_SERVO or in diveclimb.c      
+sensor: c_hover_battpos(in) 0   # out, battpos to immediately move to at start of hover/drift_at_depth.  Set by DM_PITCH_SERVO   
+sensor: u_battpos_avg_num_min(enum) 5 #in, pitch servo keeps track of a running avg of battpos that result in
+sensor: m_battpos(in)     # out
+sensor: x_battpos_max(in) # out, Maximum OPERATIONAL limit
+sensor: x_battpos_deadband(in) 0.0 # out, how close is good enuf
+sensor: m_is_battpos_moving(bool) 0   # out, t-> motor is moving
+sensor: m_battpos_vel(in/sec)  0  # out, measured motor velocity
+sensor: u_battpos_microposition(bool)   1  # T==> microposition the motor
+sensor:   u_battpos_micropos_rt(msec)   1000  # "run time"  >0 max allowable microposition time
+sensor:   u_battpos_micropos_wp(nodim)  0.01 #"when pulse" 0-1  when start pulsing the motor
+sensor:   u_battpos_micropos_dc(nodim)  10   # "duty cycle" 1-N  once pulsing,
+sensor:   u_battpos_stop_distance(in) 0      # stop distance
+  sensor: f_battpos_safety_max(inches) 0.45  # in, damage to glider
+  sensor: f_battpos_deadzone_width(inches) 0.068 # Sets x_ limit
+  sensor: f_battpos_db_frac_dz(nodim)      1.0   # deadband as fraction of dead zone
+  sensor: f_battpos_nominal_vel(inches/sec)  0.16 # nominal speed
+  sensor: f_battpos_reqd_vel_frac(nodim) 0.25 # in, fraction of nominal
+  sensor: u_battpos_ap_deadband(inches) 0.068 # deadband of battpos driver, used to immediately
+  sensor: f_battpos_cal_m(inches/Volt)  0.571 # slope
+  sensor: f_battpos_cal_b(inches)      -0.506 # y-intercept
+  sensor: u_pitch_energy_cal_m(nodim)    1.0
+  sensor: u_pitch_energy_cal_b(volts)    0.0
+  sensor: m_pitch_energy(joules)         0.0
+sensor: c_fluid_pumped(cc)            0 # in, >0 vehicle dives (nose down)
+sensor: m_fluid_pumped(cc)              # out
+sensor: x_fluid_pumped_max(cc)          # out, Maximum OPERATIONAL limit
+sensor: x_fluid_pumped_deadband(cc) 0.0 # out, how close is good enuf
+sensor: m_is_fpitch_pump_moving(bool) 0 # out, t-> pump is moving
+sensor: m_fluid_pumped_vel(cc/sec)    0 # out, measured fluid pumped velocity
+sensor: m_fluid_pumped_fwd_hall_voltage(volts) # out, voltage from forward hall sensor
+sensor: m_fluid_pumped_aft_hall_voltage(volts) # out, voltage from aft hall sensor
+sensor: f_fluid_pumped_voltage_offset(volts) -1.27 # fully retracted (fwd_volts-aft_volts)
+sensor: f_fluid_pumped_safety_max(cc)     160.0  # in, damage to glider
+sensor: f_fluid_pumped_deadzone_width(cc)  20.0  # Sets x_ limit
+sensor: f_fluid_pumped_db_frac_dz(nodim)    0.5  # deadband as fraction of dead zone
+sensor: f_fluid_pumped_nominal_vel(cc/sec) 20.0  # nominal speed
+sensor: f_fluid_pumped_reqd_vel_frac(nodim) 0.2  # in, fraction of nominal
+sensor: f_fluid_pumped_cal_m(cc/Volt)  134.4  # slope
+sensor: f_fluid_pumped_cal_b(cc)      -168.0  # y-intercept
+sensor: c_battroll(rad) 0 # in, >0 puts stbd wing down
+sensor: m_battroll(rad)     # out
+sensor: x_battroll_max(rad) # out, Maximum OPERATIONAL limit
+sensor: x_battroll_deadband(rad)  0.0  # out, how close is good enuf
+sensor: m_is_battroll_moving(bool) 0   # out, t-> motor is moving
+sensor: m_battroll_vel(rad/sec)    0  # out, measured motor velocity
+sensor: u_battroll_microposition(bool) 0  # T==> microposition the motor
+sensor:   u_battroll_micropos_rt(msec)   250  # "run time"  >0 max allowable microposition time
+sensor:   u_battroll_micropos_wp(nodim)  0.01 #"when pulse" 0-1  when start pulsing the motor
+sensor:   u_battroll_micropos_dc(nodim)  10   # "duty cycle" 1-N  once pulsing,
+  sensor: f_battroll_safety_max(rad) 0.52  # in, damage to glider
+  sensor: f_battroll_deadzone_width(rad) 0.088 # in, Sets x_ limit
+  sensor: f_battroll_db_frac_dz(nodim)      1.0   # deadband as fraction of dead zone
+  sensor: f_battroll_nominal_vel(rad/sec) 0.09 # in, nominal speed
+  sensor: f_battroll_reqd_vel_frac(nodim)0.25 # in, fraction of nominal
+  sensor: f_battroll_cal_m(rad/Volt)  0.950 # slope
+  sensor: f_battroll_cal_b(rad)       -1.22 # y-intercept
+sensor: f_fin_offset(rad) 0.0 # in, added to c_fin to trim (after autopilot)
+sensor: x_fin_max(rad) # out, Maximum OPERATIONAL limit
+sensor: x_fin_deadband(rad)  0.0  # out, how close is good enuf
+sensor: m_is_fin_moving(bool) 0   # out, t-> motor is moving
+sensor: m_fin_vel(rad/sec)    0  # out, measured motor velocity
+sensor: u_fin_microposition(bool) 1  # T==> microposition the motor
+sensor:   u_fin_micropos_rt(msec)   750  # "run time"  >0 max allowable microposition time
+sensor:   u_fin_micropos_wp(nodim)  0.01 #"when pulse" 0-1  when start pulsing the motor
+sensor:   u_fin_micropos_dc(nodim)  5    # "duty cycle" 1-N  once pulsing,
+sensor: u_lithium_battery_debug(nodim) 0    # Bit-mapped debug control register - add desired elements together
+sensor: c_lithium_battery_on(sec)        0    # required by gb_devdrvr paradigm
+sensor: m_lithium_battery_relative_charge(%)             0 # Relative cumulative charge
+sensor: m_lithium_battery_time_to_discharge(mins)        0 # cumulative time to discharge
+sensor: m_lithium_battery_time_to_charge(mins)           0 # cumulative time to charge
+sensor: m_lithium_battery_status(nodim)                  0 # cumulative LIPD status
+  sensor: m_digifin_status(nodim)                   0 # bit mapped status
+  sensor: m_digifin_motorstep_counter(nodim)        0 # total count of steps moved
+  sensor: m_digifin_leakdetect_reading(nodim)       0 # leak detect reading in A/D counts
+  sensor: f_digifin_movement_retry_max(nodim)         3 # Number of times digifin will attempt to
+  sensor: c_digifin_write_reg(nodim)    0  # in; digifin register to write to
+  sensor: c_digifin_read_reg(nodim)     0  # in, digifin register to read from
+  sensor: c_digifin_cmd_data(nodim)     0  # in; data for digifin command
+  sensor: m_digifin_resp_data(nodim)    0  # out; data from digifin response
+  sensor: m_digifin_cmd_done(nodim)     0  # in/out; flag for command completed; T ==> completed
+  sensor: m_digifin_cmd_error(nodim)    0  # out; T ==> error running special command
+  sensor: u_digifin_debug(nodim) 0  # Bit-mapped debug control register - add desired elements together
+  sensor: f_fin_deadzone_width(rad) 0.020 # in, Sets x_ limit (motor_fin and digifin_v2)
+  sensor: f_fin_db_frac_dz(nodim)      1.0   # deadband as fraction of dead zone (motor_fin and digifin_v2)
+  sensor: f_fin_nominal_vel(rad/sec) 0.0981 # in, nominal speed
+  sensor: f_fin_reqd_vel_frac(nodim) 0.25   # in, fraction of nominal
+  sensor: f_fin_cal_m(rad/Volt)  0.6461 # slope
+  sensor: f_fin_cal_b(rad)       -.7904 # y-intercept
+sensor: c_de_oil_vol(cc)                         260.0  # >0, goes up
+sensor: u_min_de_oil_flux(cc/sec)                  0.10 # if below, error
+sensor: u_de_oil_vol_check_time(sec)               0.0  # monitoring rate while stable
+sensor: u_secs_for_oil_vol_stabilization(secs)    30.0  # <=0 disables, wait time for any gas in system
+sensor: u_de_avg_oil_vol_err_alpha(nodim)          0.0  # 0 - 0.05 (0.05 = more weight to long term average)
+sensor: f_de_oil_vol_pot_voltage_min(volts)      -20.0  # raw AD voltage of fully retracted pot
+sensor: f_de_oil_vol_pot_voltage_max(volts)      -20.0  # raw AD voltage of fully extended pot
+sensor: f_de_oil_vol_in_system(cc)               650.0  # volume of internal oil reservoir
+sensor: f_de_oil_vol_safety_max(cc)              290.0  # shouldn't go beyond this
+sensor: f_de_oil_vol_deadz_width(cc)              30.0  # sets x_ limit
+sensor: f_de_oil_vol_db_frac_dz(nodim)             0.667 # deadband as fraction of dead zone
+sensor: f_de_max_secs_for_updown_to_finish(secs) 540.0  # 9 minutes (~ how
+sensor: x_de_pump_disable(bool)              0   # t-> disable the de_pump driver,
+sensor: m_de_oil_vol(cc)                     0.0 # calibrated from m_de_oil_vol_pot_voltage
+sensor: m_de_oil_vol_pot_voltage(volts)      0.0 # raw voltage from AD
+sensor: m_is_de_pump_moving(bool)            0   # t-> motor is moving
+sensor: m_de_pump_fault_count(nodim)         0   # incremented when bit_BPUMP_FAULT 
+sensor: x_de_oil_vol_deadband(cc)            0.0 # how close is good enough
+sensor: x_de_oil_vol_max(cc)                 0.0 # Maximum OPERATIONAL limit
+sensor: x_de_oil_vol_ierr_on_ascent(cc)      0.0 # sum(measured - commanded)
+sensor: x_de_oil_vol_ierr_on_descent(cc)     0.0 # sum(measured - commanded)
+sensor: x_de_avg_oil_vol_ierr_on_ascent(cc)  0.0 # avg(sum(measured - commanded))
+sensor: x_de_avg_oil_vol_ierr_on_descent(cc) 0.0 # avg(sum(measured - commanded))
+sensor: x_de_oil_flux(cc/sec)	             0.0 # positive = pumping, negative = retracting
+sensor: x_de_ignore_tvalve_oddity(bool)      0   # t-> don't log tvalve oddity after
+sensor: c_thermal_updown(enum) 0.0 # in
+sensor: m_thermal_updown(enum) 3.0  # out
+sensor: u_thermal_valve_time_in_up_pos(s) 60.0    # in, how long thermal valve says in up position
+sensor: u_thermal_valve_time_in_down_pos(s) 300   # in, 5 minutes in seconds
+sensor: f_thermal_valve_time_over_slot(msec) 150 # millisecs the thermal valve hole is over the sensor
+sensor: c_thermal_valve(enum)    # in, THRVALVE_UP(1),THRVALVE_CHARGE(2), THRVALVE_DOWN(3)
+sensor: m_thermal_valve(enum)    # out, THRVALVE_UNKNOWN(0), THRVALVE_UP(1), THRVALVE_MOVING_TO_UP(-1)
+sensor: m_is_thermal_valve_moving(bool) # out, true if valve is moving
+sensor: x_thermal_valve_move_backwards(bool) 0 # In, non-zero means move valve backwards
+sensor: u_thermal_valve_check_time(sec) 180 # how often check valve position
+sensor: f_tcm3_cal_points(nodim)   50  # Default number of sample points in calibration
+sensor: m_tcm3_stddeverr(uT)       -1  # The compass samples magnetic field
+sensor: m_tcm3_xcoverage(%)        -1  # Percentage of how much of the X magnetometer
+sensor: m_tcm3_ycoverage(%)        -1  # Percentage of how much of the Y magnetometer
+sensor: m_tcm3_zcoverage(%)        -1  # Percentage of how much of the Z magnetometer
+sensor: m_tcm3_magbearth(uT)       -1  # The calculated Earth's magnetic field
+sensor: m_tcm3_is_calibrated(bool)  0  # The compass calibration status flag.
+sensor: m_tcm3_poll_time(ms)        0  # Time after open_uart() call we poll for data
+sensor: m_tcm3_recv_start_time(ms)  0  # Time after open_uart() call we start receiving data
+sensor: m_tcm3_recv_stop_time(ms)   0  # Time after open_uart() call we stop receiving data
+sensor: c_att_time(sec) 0 # in, time spacing for attitude checks
+sensor: c_att_recall(msec) -1.0 # in, <=0 no subcycle measurements
+sensor: u_att_rev_ignore_warnings(bool) 1 # Only on the Revolution, ignore warnings by default.
+sensor: m_roll(rad) 0          # out, >0 is port wing up
+sensor: m_pitch(rad) 0         # out, >0 is nose up
+sensor: m_heading(rad) 0       # out
+sensor: m_vehicle_temp(degC) 0 # out
+sensor: c_pressure_time(sec) 1 # in, <0 is off, =0 as fast as possible
+sensor: c_pressure_recall(msec) -1 # in, <=0 no subcycle measurements
+sensor: m_pressure_voltage(volts) # out, measured, averaged or median filtered from 20 raw samples of AD
+sensor: m_pressure(bar)           # out, measured NOT clipped:
+sensor: m_depth(m) 0		      # out, calculated clips at 0
+sensor: u_use_ctd_depth_for_flying(bool) 0  #! visible = True
+sensor: m_depth_rejected(bool) 0  # out, true if depth measurement is filtered
+sensor: u_depth_rate_filter_sub_sur_dep(m) 0.05    # used for M_DEPTH when m_pressure rejected at
+sensor: u_depth_rate_filter_factor(nodim) 4.0 # <=0 disables bad depth filter,
+sensor: x_measured_depth(m)    0.0  # The last published M_DEPTH where M_DEPTH_REJECTED is 0
+sensor: u_pressure_autocal_min_time_between(secs) 180     # minimum interval time
+sensor: u_pressure_autocal_enabled(bool)            1     # 0=turned off, 1=turned on
+sensor: u_pressure_autocal_deadband(bar)            0.025 # re-calibrate when drift is
+sensor: u_pressure_autocal_max_allowed(bar)         0.2   # print oddity when drift is
+sensor: u_pressure_autocal_performed(bool)          0     # becomes  1 when auto   re-calibration is done
+sensor: x_pressure_manual_cal_now(bool)             0     # non-zero causes manual (non-auto) re-calibration
+  sensor: u_bar_per_meter(bar/m) 0.1 # Converts m_pressure to m_depth
+  sensor: f_ocean_pressure_full_scale(bar) 13.8 # pressure @ FS volts
+  sensor: f_ocean_pressure_min(volts) 0.20 # voltage for 0 pressure
+  sensor: f_ocean_pressure_max(volts) 2.40 # voltage for FS pressure
+  sensor: u_pressure_median(bool)        0 # T ==> perform median filtering (new behavor),
+  sensor: u_pressure_median_k(nodim)     1 # standard deviation mutiplier for median filtering
+  sensor: u_pressure_median_iter(nodim)  1 # number of iterations for median filtering
+  sensor: u_pressure_median_median(bool) 0 # T ==> after median filtering, use median of remaining samples for pressure measurement
+  sensor: u_pressure_median_debug(enum) 0  # bit-mapped debug control (values are additive):
+  sensor: m_pressure_raw_voltage_sample0(volts)  # first raw AD sample
+  sensor: m_pressure_raw_voltage_sample19(volts) # twentieth raw AD sample
+sensor: c_thermal_acc_pres_time(sec) 1 # in, <0 is off, =0 as fast as possible
+sensor: c_thermal_acc_pres_recall(msec) -1.0 # in, <=0 no subcycle measurements
+sensor: m_thermal_acc_pres_voltage(volts) 0 # out, raw voltage from AD
+sensor: m_thermal_acc_pres(bar)           0 # out, calibrated from m_thermal_acc_pres_voltage
+  sensor: f_thermal_acc_pres_full_scale(bar) 220.0 # pressure @ FS volts
+  sensor: f_thermal_acc_pres_min(volts) 0.160 # voltage for 0 pressure
+  sensor: f_thermal_acc_pres_max(volts) 1.767 # voltage for FS pressure
+sensor: m_thermal_acc_vol(cc)        # out, computed oil volume from m_thermal_acc_pres
+  sensor: f_thermal_acc_vol_cal_v0(cc)  1340.0 # in, invariant volume with piston full out
+  sensor: f_thermal_acc_vol_cal_p0(bar) 137.8948 # in, initial pressure with piston full out
+sensor: m_thermal_enuf_acc_vol(bool)  0  # out, reflects state of switch that measure
+sensor: f_thermal_reqd_acc_pres(bar) 200.0 # in, threshold pressure for thermal charge
+sensor: x_thermal_reqd_acc_vol(cc)   416.1048 # out, the volume of oil in accumulator when
+sensor: c_thermal_pump(enum)  0   # in, commanded state of thermal pump:
+sensor: m_thermal_pump(enum)  0   # out, actual state of thermal pump:
+sensor: u_thermal_pump_reqd_pitch(rad) -0.1745  # in,   how far down glider must be pointing in
+sensor: x_thermal_pump_start_in(sec)   -1.0     # in/out, advisory time until thermal pump is engaged
+sensor: c_alt_time(sec) 0 # in, time spacing for altimeter pings
+sensor: c_alt_recall(msecs) -1.0 # in, <=0 no subcycle sampling
+sensor: f_altimeter_model(enum)  0  # in, which altimeter is installed:
+sensor: u_exp_alt_pwr_stb_time(s) 0 # in, only looked at if f_altimeter_model == -1
+sensor: u_exp_alt_correction(m) 0 # in, only looked at if f_altimeter_model == -1 (experimental)
+sensor: u_sound_speed(m/s) 1500.0  # User may tune this nominal value for sound speed in seawater.
+sensor: u_alt_min_post_inflection_time(sec)  10.0  # num secs after inflection before we take data
+sensor: u_alt_min_depth(m)     2.0  #! visible = True
+sensor: u_alt_reqd_good_in_a_row(nodim)  3 # how many in a row we require before accepting reading
+sensor: u_alt_filter_enabled(bool)       1 #! visible = True
+sensor: m_raw_altitude(m) # out, height above bottom, unfiltered
+sensor: m_raw_altitude_rejected(bool) # out, true if altimeter did not supply reading
+sensor: m_altimeter_voltage(volts)     # out, voltage read from the A/D
+sensor: c_weight_drop(bool)          0 # in, non-zero->drop the weight
+sensor: u_tickle_on_gps(bool)        1 # in, non-zero reset watchdog on every gps fix
+sensor: u_tickle_on_console_cd(bool) 1 # in, non-zero reset watchdog if have freewave
+sensor: x_hardware_cop_timeout(hours) -1 # out, reflects state of jumper
+sensor: m_cop_tickle(bool)           1 # out, set to 1 whenever COP is tickled
+sensor: m_tot_on_time(days)          0 # out, How long we have been powered on
+sensor: m_bpump_fault_bit(bool)      0 # out, reflects state of bit_BPUMP_FAULT 
+sensor: c_air_pump(enum) 0   # in, <0 turns it off regardless
+sensor: u_thermal_min_time_in_esc_pos(s) 1800.0 # in, for thermal only
+sensor: m_air_pump(bool) 0   # out, whether it is on or not
+sensor: m_air_fill(bool) 0   # out, T->air pump solenoid in fill position
+sensor: u_battery_time(sec) 0 # in, Time between battery measurements
+sensor: u_battery_recall(msecs) -1.0 # <=0 no subcycle measurements
+sensor: m_battery_inst(volts) 12   # out, Instantaneous battery voltage
+sensor: m_battery(volts)      12   # out, Average Battery voltage
+sensor: u_battery_alpha(nodim) 0.1 # in, The weighting factor to produce the average.
+sensor: u_vacuum_time(sec) 0 # in, Time between vacuum measurements
+sensor: x_increase_vacuum_time(bool) 0 # Whether or not to temporarily increase the vacuum sampling frequency to u_increase_vacuum_time                           
+sensor: u_increase_vacuum_time(sec) 0 # If we want to temporarily increase the vacuum sampling frequency, then set it to this value
+sensor: u_vacuum_recall(msec) -1 # in, <=0 no subcycle measurements
+sensor: m_vacuum(inHg) # out, Internal glider pressure
+sensor:    u_vacuum_cal_m(inHg/Volt) -14.4059  # Factory Calibration data
+sensor:    u_vacuum_cal_b(inHg)      31.64615  #      inHg = m V + b
+sensor: c_leakdetect_time(s) 0.0 # in, Time between leakdetect measurements
+sensor: c_leakdetect_recall(msec) -1.0 # in, <=0, no subcycle measurements
+sensor: f_leakdetect_threshold(volts)  2.0 # in, Any M_LEAKDETECT_VOLTAGE below this is considered
+sensor: m_leakdetect_voltage(volts) 0.0     # out Voltage that was read out of the aft leak detect
+sensor: m_leak(bool) 0.0                    # non-zero ==> m_leakdetect_voltage_aft < f_leakdetect_threshold
+sensor: m_leakdetect_voltage_forward(volts) 0.0 # out Voltage that was read out of the forward leak detect
+sensor: m_leak_forward(bool) 0.0                # non-zero ==> m_leakdetect_voltage_forward < f_leakdetect_threshold
+sensor: c_veh_temp_time(s) 0.0   # in, Time between vehicle temperature measurements
+sensor: c_veh_temp_recall(msec) 0.0    # in, <=0, no subcycle measurements
+sensor: f_veh_temp_threshold(c)  38.0  # in, Any M_VEH_TEMP at or above this is considered
+sensor: m_veh_temp(c) -1.0               # out temperature that was read out from the board
+sensor: m_veh_overheat(bool) -1.0        # non-zero ==> m_veh_temp >= f_veh_temp_threshold
+sensor: u_pinger_rep_rate(sec) 0    #in, secs between primary depth pings
+sensor: u_pinger_max_depth(m)  0    #in, Secondary ping at 1 second when m_depth
+sensor: u_ping_n_enabled(bool) 0    # if non-zero enable "ping N times"
+sensor: c_pinger_on(bool)      0    # in, non-zero means ping N times once
+sensor: c_gps_on(enum) 0 # in, <0-> off always 0->off, but surface autoon, 1->gps take fixes
+sensor: u_gps_reqd_valid_fixes(nodim) 6  # in, reqd number of valid fixes since power on
+sensor: m_gps_on(bool) 0         # out, >0 means gps is actually turned on
+sensor: m_gps_lat(lat) 69696969  # out  DDMM.MMMM   >0 ==> North   <0 ==> South
+sensor: m_gps_lon(lon) 69696969  # out  DDMM.MMMM   >0 ==> East    <0 ==> West
+sensor: m_gps_x_lmc(m) 0         # out  position in local mission coordinates
+sensor: m_gps_y_lmc(m) 0         # out
+sensor: m_gps_status(enum)      69 # out, updated with status of gps after received a line
+sensor: m_gps_full_status(enum) 69 # out, updated with status of gps after every attempt to
+sensor: m_gps_ignored_lat(lat) 69696969 # out, first few ignored gps fixes here
+sensor: m_gps_ignored_lon(lon) 69696969 # published when m_gps_status == GPS_STATUS_FIRST_IGNORED_VALID(1)
+sensor: m_gps_invalid_lat(lat) 69696969 # out, published on A lines
+sensor: m_gps_invalid_lon(lon) 69696969
+sensor: m_gps_toofar_lat(lat)  69696969 # out, published if too far from DR point
+sensor: m_gps_toofar_lon(lat)  69696969 #      M_GPS_STATUS == GPS_STATUS_TOOFAR_FIX(3)
+sensor: m_gps_dist_from_dr(m)      69696969 # out, how far fix is from dead reckoned position
+sensor: x_gps_reasonable_radius(m) 69696969 # out, how far fix CAN BE from dead reckoned position
+sensor: u_gps_reasonable_factor(nodim) 1.0 # in, see equation above
+sensor: u_gps_uncertainity(m)         30.0 # in, see equation above
+sensor: m_gps_utc_day(byte)     0 # 1-31           Date/Time of position
+sensor: m_gps_utc_month(byte)   0 # 1-12
+sensor: m_gps_utc_year(byte)    0 # 00, 01, ... until Y3K
+sensor: m_gps_utc_hour(byte)   0 # 0-23
+sensor: m_gps_utc_minute(byte) 0 # 0-59
+sensor: m_gps_utc_second(nodim) 0 # 0-59.xxxxxx
+sensor: m_gps_speed(m/s)        0 # speed over ground
+sensor: m_gps_heading(rad)      0 #  magnetic heading
+sensor: m_gps_mag_var(rad)      0 # mag_heading = true_heading + mag_var
+sensor: m_gps_uncertainty(nodim)    69696969 # out, Horizontal dilution of precision 0.5 to 99.9
+sensor: m_gps_num_satellites(nodim) 69696969 # out, Number of satellites in use, 00 to 12
+sensor: m_system_clock_lags_gps(sec)            0 # lagtime between persistor and gps clock
+sensor: m_avg_system_clock_lags_gps(sec)        0 # exponential mean of above lagtime
+sensor: u_alpha_system_clock_lags_gps(nodim) 0.05 # weight in exponential mean
+sensor: u_max_lag_before_syncing_time(sec)     12 # sync_time when avg lag exceeds 12 secs
+sensor: x_system_clock_adjusted(sec)            0 # records the last sync_time offset
+sensor: c_argos_on(enum) 0   # <0 PTT is always turned off, even at surface
+sensor: m_argos_on(bool) 0 # out, >0 means argos is actually turned on
+sensor: m_argos_sent_data(bool)   0 # out, > 0 means data was sent to PTT
+sensor: m_argos_is_xmitting(bool) 0 # out, > 0 means PTT is radiating
+sensor: x_argos_type(enum) 0   # 0  SmartCAT (legacy)
+sensor: f_argos_format(enum) 0 # 0  rev0 legacy (32 byte)
+sensor: m_argos_timestamp(timestamp) 0 # last time argos was powered off
+sensor: c_profile_on(sec) 0         # in, <0 is off, =0 as fast as possible
+sensor: c_profile_recall(msec) 2000 # in, <=0 no subcycle measurements
+sensor: m_water_cond(S/m) 3       # out, conductivity
+sensor: m_water_temp(degC) 10     # out
+sensor: m_water_pressure(bar) 0   # out
+sensor: c_iridium_on(enum) 1 # in
+sensor: c_iridium_reread_config_files(button)    0.0   # Set to force reread of:
+sensor: c_iridium_lead_zeros(nodim)           2 # number of leading zeros in phone number
+sensor: c_iridium_phone_num(digits) 15085482446 #  WRC phone number !no spaces!
+sensor: c_iridium_lead_zeros_alt(nodim)           2 # number of leading zeros in phone number
+sensor: c_iridium_phone_num_alt(digits) 15085482446 # WRC phone number !no spaces!
+sensor: u_iridium_failover_retries(nodim) 5 #! visible = True
+sensor: m_iridium_attempt_num(nodim) 0 # keeps track of the number of retries for the
+sensor: c_iridium_current_num(enum) 0 # 0 - IRIDIUM_PHONE_NUM_PRIMARY
+sensor: c_iridium_atok_timeout(sec)    30  # how long to wait for OK after AT
+sensor: c_iridium_register(sec) 30 # minimum time for iridium to register after
+sensor: c_iridium_await_connect_max(mins) 5 # how long we will wait for a response
+sensor: c_iridium_no_char_timeout(mins) 10  # How long to wait for a character at all other times
+sensor: c_iridium_power_on_delay(sec) 3 # min time between power on and sending AT
+sensor: c_iridium_redial_delay(sec) 1 # delay time between redials. Values less than
+sensor: c_iridium_time_til_callback(sec) 0.0 # Set this non-zero to have iridium
+sensor: u_iridium_max_time_til_callback(sec) 1800.0 # Maximum legal value for
+sensor: c_iridium_redials_per_on_off(nodim) 1 # how often we cycle the iridium
+sensor: c_iridium_cmd_echo(enum) 1 # 0 = do not echo modem commands; 1 = do echo
+sensor: m_iridium_on(bool)       0.0  # out  0 it's off, 1 it's on
+sensor: m_iridium_connected(bool) 0      # out  1==> modem is connected
+sensor: m_iridium_console_on(enum) 0. # out. 0 = iridium console off, 1 = on
+sensor: m_iridium_status(enum)  99.0  # out  MODEM_NO_CARRIER   = 0
+sensor: m_iridium_waiting_registration(bool)  # out, 1 ==> waiting for phone to register
+sensor: m_iridium_waiting_redial_delay(bool)  # out, 1 ==> waiting to redial
+sensor: m_iridium_signal_strength(nodim)  -1.0 # iridium received signal
+sensor: m_iridium_redials(nodim)  0.0 # out, number of redials since phone was on
+sensor: m_iridium_dialed_num(nodim) 0.0 # out, number of times phone was dialed
+sensor: m_iridium_call_num(nodim) 0.0 # out, is incremented on every connection,
+sensor: u_iridium_force_port(bool) 0  # in, iridium always uses J26 if true
+sensor: c_recovery_on(bool) 0  # In, nonzero deploys recovery system
+sensor: c_thruster_on(%) 0     # In, zero = off, 100 = all it's got
+sensor: m_thruster_raw(int) 0  # out, pwm setting
+sensor: x_thruster_has_current_sense(bool) 1 #Out.  If thruster motor controller has current sensing.  Set by thruster.c or thruster_g1.c
+sensor: m_thruster_current(amp) 0 # Out, measured current.
+sensor: c_thruster_current_cal(nodim) 0.038 # A / count cal for thruster current 
+sensor: u_thruster_cmd_change_min(%) 1 # In, minimum change between thruster commands to be considered  a new set of cmds
+sensor: u_thruster_delta_max(%) 2.5 #In, limit the change in command to be less than this for use_thruster = TM_PERCENT/TM_PERCENT_MAX to avoid spikes
+sensor: u_avg_thruster_power_num(nodim) 10 # Number of samples to use for m_avg_thruster_power
+sensor: m_avg_thruster_power(watt) 0 # Out, average measured power
+sensor: f_thruster_power_max(watt) 14.5 # In, maximum allowable average thruster power
+sensor: f_thruster_power_min(watt) 0.5 # In, minimum allowable average thruster power, for use_thruster=4
+sensor: m_thruster_power_spike(enum) 0 # Running tally of power spikes above f_thruster_power_max
+sensor: m_thruster_voltage(volts) 0 #Out, estimated input voltage to thruster. = C_THRUSTER_ON*M_BATTERY_INST/100
+sensor: m_thruster_power(watt) 0 #Out m_thruster_voltage * m_thruster_current
+sensor: m_thruster_amphr(amp-hrs) 0 #Out, integrated current
+sensor: m_thruster_watthr(watt-hrs) 0 #Out, integrated power
+sensor: x_use_thruster_for_abort_ascent(bool) 0 # Set by abend b_arg use_thruster_for_ascent.  Whether or not to use the thruster in case of an abort to avoid hovering
+sensor: u_min_thruster_abort_ascent_rate(m/s) -0.05 # In, minimum ascent rate before thruster kicks in.  Must be < 0
+sensor: u_thruster_burst_volts(volts) 6 # In, command voltage for thruster
+sensor: u_thruster_burst_secs(sec) 15 # In, turn on thruster for this long
+sensor: dc_c_thruster_on(%) 0     # In/out, What dynamic control wants c_thruster_on to be
+sensor: u_thruster_inflection_holdoff(sec)  60.0 #In, how long to wait after inflection/commanded depth state change.
+sensor: u_thruster_abort_inflection_holdoff(sec)  200.0 #In, how long to wait after the abort occured before using thruster (if x_use_thruster_for_abort_ascent is true).
+sensor: x_thruster_state(enum) -1 # Out, why dc_c_thruster_on was commanded. Describes the state of the thruster controller
+sensor: f_thruster_min_v(volts) 3.0 # In, minimum voltage to run the thruster
+sensor: f_thruster_max_v(volts) 9.7 # In, maximum voltage to run the thruster
+sensor: u_ap_thruster_delta_cmd(%) 10       # how much to increment thruster command to maintain depth rate/power
+sensor: u_ap_thruster_power_deadband(watt) 0.5 # In, allow power between +/- this amount
+sensor: m_thruster_power_error(watt) 0 # Out, cmd - meas
+sensor: u_ap_thruster_power_p_gain(nodim) 2.5 # In, if > 0, then delta_thruster command = u_ap_thruster_power_p_gain * m_thruster_power_error
+sensor: u_thruster_power_limit_cmd(%) 80 #In, 
+sensor: u_thruster_power_delta_max(%) 3 #In, 
+sensor: u_ap_thruster_depth_rate_deadband(m/s) 0.02 # Allow depth rate between +/- this amount
+sensor: u_thruster_ap_period(s) 30 # How often to run immediately after each command
+sensor: x_thruster_ap_period(s) -1 # How often to check depth rate:
+sensor: u_depth_rate_thr_avg_num(enum) 3 # the number of data samples to collect for the m_depth_rate_thr_avg calculation. 
+sensor: m_depth_rate_thr_avg_final(m/s) 0.0 # Final value of the calculation
+sensor: c_thruster_surface_secs(s) 0 # out, How long the thruster has been on in depth rate mode for this surfacing
+sensor: c_thruster_depth_rate_secs(s) 0 # out, How long the thruster has been on in depth rate mode for the entire segment
+sensor: c_thruster_surface_depth(m) 0 # out, What depth the thruster first turned on (in depth rate mode) for this surfacing
+sensor: c_thruster_depth_rate_depth(m) 0 # out, What depth the thruster first turned on (in depth rate mode) for the entire segment
+sensor: c_science_on(bool) 1  # In, nonzero turns on science uart
+sensor: c_science_send_all(bool) 0  #! visible = True
+sensor: m_science_on(bool) 0  # Out, actual power state of science uart
+sensor: sci_m_science_on(bool) 0           # In, set by science when powered on
+sensor: c_science_all_on(secs)          2  # in, if enabled this value is set into the
+sensor: c_science_all_on_enabled(bool)  1  # in, non-zero enables c_science_all_on
+sensor: sci_software_ver(nodim)  0         # In, software version running on science
+sensor: sci_reqd_heartbeat(secs) -1.0        # In.  How often each side must communicate
+sensor: m_science_sent_some_data(nodim) 0    # Out, incremented when the glider pulls a character
+sensor: u_science_max_power_off_time(s) 120  # In, how long to wait for sci_m_science_on
+sensor: u_science_power_off_delay(s)   0.5 # In, how long to wait AFTER sci_m_science_on
+sensor: u_max_clothesline_lag_for_consci(s) 20.0 # don't attempt to consci until
+sensor: m_science_unreadiness_for_consci(enum) 1   # 0 -> Ready
+sensor: m_science_ready_for_consci(bool) 0 # out, true -> clothesline ready for consci
+sensor: x_clothesline_state(enum)   0      # out, state of the clothesline
+sensor: x_sci_cmd_mode_state(enum)  0      # out, state of science console state machine
+sensor: u_sci_cmd_max_ack_wait_time(s) 60.0 # in, how long to wait for science to acknowdge request
+sensor: u_sci_cmd_max_consci_time(s)                        3600. #! visible = True
+sensor: u_science_send_time_limit_adjustment_factor(nodim)  0.5   # in, fudge factor to used with u_sci_cmd_max_consci_time
+sensor: f_sci_max_input_process_time(msec) 200. # In, how long science driver can spend
+sensor: c_science_printout(nodim) 0  # How much science printout is seen
+sensor: c_science_stress_on(sensors/sec) 0 # causes proglet to send SCI_GENERIC_A-Z
+sensor: sci_m_present_time(timestamp) 0 # In, written by science on every cycle
+sensor: sci_m_present_secs_into_mission(sec) 0 # out, secs since mission started
+sensor: m_science_clothesline_lag(s) 0  # out, How far behind science is
+sensor: m_science_sync_time(timestamp) 0 # Out, Glider timestamp (secs since 1970) at the
+sensor: sci_wants_surface(enum) 0 # In, requests from science computer
+sensor: sci_wants_comms(bool)   0 # In, t-> science computer wants direct comms
+sensor: sci_wants_quiet(bool)   0 # In, t-> science computer wants glider in comatose behavior
+sensor: c_obsolete_on(bool)             -1
+sensor: sci_obsolete_is_installed(bool)  0
+sensor: sci_obsolete_var(nodim)          0
+sensor: sci_ctd_is_installed(bool) 0 # in, t--> ctd installed on science
+  sensor: sci_ctd41_is_installed(bool)   0 # in, t--> ctd installed on science
+  sensor: sci_ctd41cp_is_installed(bool) 0 # in, t--> ctd installed on science
+  sensor: sci_nbctd_is_installed(bool)   0 # in, t--> ctd installed on science
+  sensor: sci_ctd41cp_sim_is_installed(bool) 0 # in, t--> ctd being simulated on science computer
+sensor: c_ctd41cp_num_fields_to_send(nodim)   4 # in, number of columns to send on each
+sensor: c_nbctd_num_fields_to_send(nodim)   3 # in, number of columns to send on each
+sensor: sci_water_cond(S/m) 3              # out, conductivity    f#=1
+sensor: sci_water_temp(degC) 10            # out                  f#=2
+sensor: sci_water_pressure(bar) 0          # out                  f#=3
+sensor: sci_ctd41cp_timestamp(timestamp) 0 # out, secs since 1970 f#=4
+sensor: sci_nbctd_timestamp(timestamp) 0   # out, secs since 1970 f#=4
+sensor: sci_generic_a(nodim)    0 # unspecified variables for science to use
+sensor: sci_generic_b(nodim)    0
+sensor: sci_generic_c(nodim)    0
+sensor: sci_generic_d(nodim)    0
+sensor: sci_generic_e(nodim)    0
+sensor: sci_generic_f(nodim)    0
+sensor: sci_generic_g(nodim)    0
+sensor: sci_generic_h(nodim)    0
+sensor: sci_generic_i(nodim)    0
+sensor: sci_generic_j(nodim)    0
+sensor: sci_generic_k(nodim)    0
+sensor: sci_generic_l(nodim)    0
+sensor: sci_generic_m(nodim)    0
+sensor: sci_generic_n(nodim)    0
+sensor: sci_generic_o(nodim)    0
+sensor: sci_generic_p(nodim)    0
+sensor: sci_generic_q(nodim)    0
+sensor: sci_generic_r(nodim)    0
+sensor: sci_generic_s(nodim)    0
+sensor: sci_generic_t(nodim)    0
+sensor: sci_generic_u(nodim)    0
+sensor: sci_generic_v(nodim)    0
+sensor: sci_generic_w(nodim)    0
+sensor: sci_generic_x(nodim)    0
+sensor: sci_generic_y(nodim)    0
+sensor: sci_generic_z(nodim)    0
+sensor: x_ping_glider_to_sci(nodim) 0   # Out, science driver increments this each cycle
+sensor: sci_ping_sci_to_glider(nodim) 0 # In, science can send this to us if its copy
+sensor: c_acoustic_modem_target_id(enum) 0 # Out, the address of the remote modem
+sensor: c_bam_on(sec)                0 # >0 secs between run cycles, <0 off,
+sensor: c_bam_mode(enum)             0 # 0: command mode
+sensor: c_bam_target_id(enum) 1 # The address of the remote host modem being
+sensor: c_bam_update_secs(sec)     120 # how often to transmit location and depth,
+sensor: c_bam_inactivity_secs(sec)  60 # how long the modem must be quiet before
+sensor: c_bam_cmd_parse_secs(sec)    5 # How often to check command input buffer
+sensor: c_bam_number_of_echos(nodim) 3 # Number of times to echo commands
+sensor: c_bam_chars_to_get_before_surfacing(nodim) 1000 # how many chars to collect
+sensor: c_bam_datacol_report_secs(sec) 10 # How often to send bam_datacol
+sensor: sci_bam_is_installed(bool)    # true -> proglet is installed
+sensor: sci_bam_science_on(bool)      # false -> exit supersci app
+sensor: sci_bam_rcvd_chars_since_last_report(nodim)   # num of chars heard in last 10 seconds
+sensor: sci_bam_rcvd_chars_since_last_surfacing(nodim) # num of chars heard since last surfacing
+sensor: c_bb2f_on(sec)       0 # in, sets secs between measurements
+sensor: sci_bb2f_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2f_num_fields_to_send(nodim)   7   # in, number of columns to send on each
+sensor: sci_bb2f_b470(nodim)          0 # col 3, blue scatter
+sensor: sci_bb2f_b700(nodim)          0 # col 5, red scatter
+sensor: sci_bb2f_fluor(nodim)         0 # col 6, fluorescence
+sensor: sci_bb2f_therm(nodim)         0 # col 7, thermistor
+sensor: sci_bb2f_b470_ref(nodim)      0 # col 2, blue ref
+sensor: sci_bb2f_b700_ref(nodim)      0 # col 4, red ref
+sensor: sci_bb2f_counter(nodim)       0 # col 1, counter (resets to zero at each power-up)
+sensor: sci_bb2f_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2c_on(sec)  2 # in, sets secs between measurements
+sensor: sci_bb2c_is_installed(bool) 0 # in, t--> installed on science
+sensor: u_bb2c_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2c_beta532_factor(Mnodim) 7.494  # really 0.000007494 (see Mnodim doco above)
+sensor: u_bb2c_beta660_factor(Mnodim) 1.8    # really 0.0000018     "    "     "     "
+sensor: u_bb2c_beta532_offset(nodim)  55.37  # offset for eng unit conversion
+sensor: u_bb2c_beta660_offset(nodim)  55.0   #  "    "           "        "
+sensor: c_bb2c_num_fields_to_send(nodim)  9 # in, number of columns to send on each
+sensor: sci_bb2c_beta532_eng_units(nodim) 0 # derived from col 4
+sensor: sci_bb2c_beta660_eng_units(nodim) 0 # derived from col 6
+sensor: sci_bb2c_beta532(nodim)           0 # col 4
+sensor: sci_bb2c_beta660(nodim)           0 # col 6
+sensor: sci_bb2c_cdom(nodim)              0 # col 8
+sensor: sci_bb2c_ref1(nodim)              0 # col 3
+sensor: sci_bb2c_ref2(nodim)              0 # col 5
+sensor: sci_bb2c_ref3(nodim)              0 # col 7
+sensor: sci_bb2c_temp(nodim)              0 # col 9
+sensor: sci_bb2c_timestamp(timestamp)     0 # secs since 1970
+sensor: c_bb2lss_on(sec)  2 # in, sets secs between measurements
+sensor: sci_bb2lss_is_installed(bool) 0 # in, t--> installed on science
+sensor: u_bb2lss_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2lss_beta880_factor(Mnodim) 2.664  # really 0.000002664 (see Mnodim doco above)
+sensor: u_bb2lss_beta880_offset(nodim)  52.97  # offset for eng unit conversion
+sensor: c_bb2lss_num_fields_to_send(nodim)  6 # in, number of columns to send on each
+sensor: sci_bb2lss_beta880_eng_units(nodim) 0 # derived from col4
+sensor: sci_bb2lss_beta880(nodim)           0 # col4
+sensor: sci_bb2lss_lss(nodim)               0 # col6
+sensor: sci_bb2lss_ref1(nodim)              0 # col3
+sensor: sci_bb2lss_ref2(nodim)              0 # col5
+sensor: sci_bb2lss_temp(nodim)              0 # col7
+sensor: sci_bb2lss_timestamp(timestamp)     0 # secs since 1970
+sensor: c_sam_on(sec)  2 # in, sets secs between measurements
+sensor: sci_sam_is_installed(bool) 0 # in, t--> installed on science
+sensor: u_sam_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_sam_do1(nodim)            68.0   #  for deriving engineering units
+sensor: u_sam_do2(nodim)            85.0   #  "    "           "        "
+sensor: u_sam_exp1coeff(nodim)       0.055 #  "    "           "        "
+sensor: u_sam_exp2coeff(nodim)       4.448 #  "    "           "        "
+sensor: u_sam_offset(nodim)          7.0   #  "    "           "        "
+sensor: u_sam_eff_pathlength(nodim)  0.104 #  "    "           "        "
+sensor: u_sam_a(nodim)              10.0   #  "    "           "        "
+sensor: u_sam_transition_val(nodim)  1.8   #  "    "           "        "
+sensor: u_sam_median_window(nodim)  10     # valid range 1-15 (for eng units)
+sensor: c_sam_num_fields_to_send(nodim)  9 # in, number of columns to send on each
+sensor: sci_sam_c_mix(nodim)           0 # engineering unit1, derived from cols 2 and 3
+sensor: sci_sam_vis(nodim)             0 # engineering unit2, derived from cols 2 and 3
+sensor: sci_sam_filter_age(sec)        0 # age of oldest sample in median window
+sensor: sci_sam_s1_filtered(nodim)     0 # median filtered version of sci_sam_s1
+sensor: sci_sam_s2_filtered(nodim)     0 # median filtered version of sci_sam_s2
+sensor: sci_sam_s1(nodim)              0 # col 2
+sensor: sci_sam_s2(nodim)              0 # col 3
+sensor: sci_sam_ref(nodim)             0 # col 1
+sensor: sci_sam_temp(nodim)            0 # col 4
+sensor: c_whfctd_on(sec)  10.0 # in, sets secs between measurements
+sensor: c_whfctd_num_fields_to_send(nodim) 8
+sensor: sci_whfctd_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_whfctd_ref_hi(nodim)     0 # col 1, AAAAAAAA
+sensor: sci_whfctd_ref_mid(nodim)    0 # col 2, BBBBBBB
+sensor: sci_whfctd_ref_lo(nodim)     0 # col 3, CCCCCC
+sensor: sci_whfctd_raw_temp(nodim)   0 # col 4, DDDDDDD
+sensor: sci_whfctd_raw_con1(nodim)   0 # col 5, EEEEEE
+sensor: sci_whfctd_raw_con2(nodim)   0 # col 6, FFFFFFF
+sensor: sci_whfctd_raw_pres(nodim)   0 # col 7, GGGGGG
+sensor: sci_whfctd_elap_time(nodim)  0 # col 8, HHHHH
+sensor: c_moteopd_on(sec)                -1 #  >=0 turns it on, <0 stops it
+sensor: c_moteopd_debug(bool)			  0 # 1 for verbose logging
+sensor: c_moteopd_data_overtime(sec)    600 # Max. time to allow before OPD data flagged as overdue
+sensor: sci_moteopd_is_installed(bool)    0 #  installed on science
+sensor: sci_moteopd_sn(nodim)        	  0 #  OPD unit serial number
+sensor: sci_moteopd_status(nodim)         0 #  OPD's binary cumulative error code
+sensor: sci_moteopd_volt(nodim)           0 #  its measured supply voltage, VDC
+sensor: sci_moteopd_press(nodim)          0 #  filter backpressure, psi
+sensor: sci_moteopd_cdomref(nodim)        0 #  remaining cdom reference fluid supply, mL
+sensor: sci_moteopd_int_time(nodim)       0 #  spectrometer integration time, msec
+sensor: sci_moteopd_start_time(timestamp) 0 #  timestamp, unix
+sensor: sci_moteopd_stop_time(timestamp)  0 #  timestamp, unix
+sensor: sci_moteopd_absorb_a(nodim)       0 #  slope of best-fit line of CDOM absorbance
+sensor: sci_moteopd_absorb_b(nodim)       0 #  intercept of best-fit line of CDOM absorbance
+sensor: sci_moteopd_corr0(nodim)          0 #  similarity index for the 0th species file
+sensor: sci_moteopd_corr1(nodim)          0 #  similarity index for the 1st species file
+sensor: sci_moteopd_corr2(nodim)          0 #  similarity index for the 2nd species file
+sensor: sci_moteopd_corr3(nodim)          0 #  etc. these vary with OPD setup, may be all or just 0th
+sensor: sci_moteopd_corr4(nodim)          0 #
+sensor: sci_moteopd_corr5(nodim)          0 #
+sensor: sci_moteopd_corr6(nodim)          0 #
+sensor: sci_moteopd_corr7(nodim)          0 #
+sensor: sci_moteopd_corr8(nodim)          0 #
+sensor: sci_moteopd_corr9(nodim)          0 #
+sensor: sci_moteopd_corr10(nodim)         0 #
+sensor: sci_moteopd_corr11(nodim)         0 #
+sensor: sci_moteopd_logout(nodim)         0 #  0=no logout, 1=successfully logged out before power down.
+sensor: c_hydrophone_on(sec)            -1.0 # positive or zero turns it on and starts sampling sequence
+sensor: c_hydrophone_pre_delay(sec)     15.0 # delay between proglet start and sample start
+sensor: c_hydrophone_post_delay(sec)    30.0 # delay between sample done and starting over
+sensor: c_hydrophone_duration(sec)      30.0 # how long a measurement
+sensor: c_hydrophone_gain(nodim)         3.0 # 0-7
+sensor: c_hydrophone_num_channels(nodim) 1.0 # 1-4
+sensor: c_hydrophone_sample_rate(Hz)  5000.0 # 1000-5000, how fast to AD
+sensor: c_hydrophone_drive_num(nodim)    3.0 # 2->C:, 3:->D: etc
+sensor: c_hydrophone_pre_pings(nodim)    1.0 # number of pings before sample
+sensor: c_hydrophone_post_pings(nodim)   2.0 # number of pings after sample
+sensor: sci_hydrophone_is_installed(bool) 0.0 # T-> if proglet installed
+sensor: sci_hydrophone_collecting(nodim)  0.0 # set during collection to sample#, DDHHMM
+sensor: sci_hard_disk_is_installed(bool)  0.0  # true means installed
+sensor: c_bbfl2s_on(sec)        2 # in, sets secs between measurements
+sensor: sci_bbfl2s_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bbfl2s_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bbfl2s_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bbfl2s_bb_cwo(nodim)       55  # clean water offset, nodim == counts
+sensor: u_bbfl2s_chlor_cwo(nodim)    56  # clean water offset, nodim == counts
+sensor: u_bbfl2s_cdom_cwo(nodim)     54  # clean water offset, nodim == counts
+sensor: u_bbfl2s_bb_sf(Mnodim)        2.47   # scale factor (0.00000247)
+sensor: u_bbfl2s_chlor_sf(ug/l/nodim) 0.0125 # scale factor to get units
+sensor: u_bbfl2s_cdom_sf(ppb/nodim)   0.0979 # scale factor to get units
+sensor: sci_bbfl2s_bb_scaled(nodim)     0   # derived from col 4
+sensor: sci_bbfl2s_chlor_scaled(ug/l)   0   # derived from col 6
+sensor: sci_bbfl2s_cdom_scaled(ppb)     0   # derived from col 8
+sensor: sci_bbfl2s_bb_sig(nodim)        0   # col 4
+sensor: sci_bbfl2s_chlor_sig(nodim)     0   # col 6
+sensor: sci_bbfl2s_cdom_sig(nodim)      0   # col 8
+sensor: sci_bbfl2s_bb_ref(nodim)        0   # col 3
+sensor: sci_bbfl2s_chlor_ref(nodim)     0   # col 5
+sensor: sci_bbfl2s_cdom_ref(nodim)      0   # col 7
+sensor: sci_bbfl2s_temp(nodim)          0   # col 9
+sensor: sci_bbfl2s_timestamp(timestamp) 0   # secs since 1970
+sensor: c_bbfl2sV2_on(sec)        2 # in, sets secs between measurements
+sensor: sci_bbfl2sV2_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bbfl2sV2_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bbfl2sV2_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bbfl2sV2_bb_cwo(nodim)       42 # 532 nm, clean water offset, nodim == counts
+sensor: u_bbfl2sV2_fl1_cwo(nodim)      43 # Phycoerythrin, clean water offset, nodim == counts
+sensor: u_bbfl2sV2_fl2_cwo(nodim)      52 # CDOM, clean water offset, nodim == counts
+sensor: u_bbfl2sV2_bb_sf(Mnodim)   8.328  # 532 nm, scale factor (0.000008328)
+sensor: u_bbfl2sV2_fl1_sf(nodim)   0.0434 # Phycoerythrin, scale factor to get units
+sensor: u_bbfl2sV2_fl2_sf(nodim)   0.0930 # CDOM, scale factor to get units
+sensor: sci_bbfl2sV2_bb_scaled(nodim)     0   # derived from col 4
+sensor: sci_bbfl2sV2_fl1_scaled(nodim)    0   # derived from col 6
+sensor: sci_bbfl2sV2_fl2_scaled(nodim)    0   # derived from col 8
+sensor: sci_bbfl2sV2_bb_sig(nodim)        0   # col 4
+sensor: sci_bbfl2sV2_fl1_sig(nodim)       0   # col 6
+sensor: sci_bbfl2sV2_fl2_sig(nodim)       0   # col 8
+sensor: sci_bbfl2sV2_bb_ref(nodim)        0   # col 3
+sensor: sci_bbfl2sV2_fl1_ref(nodim)       0   # col 5
+sensor: sci_bbfl2sV2_fl2_ref(nodim)       0   # col 7
+sensor: sci_bbfl2sV2_therm(nodim)         0   # col 9
+sensor: sci_bbfl2sV2_timestamp(timestamp) 0   # secs since 1970
+sensor: c_fl3slo_on(sec)       2 # in, sets secs between measurements
+sensor: sci_fl3slo_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_fl3slo_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_fl3slo_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_fl3slo_chlor_cwo(nodim)      55 # clean water offset, nodim == counts
+sensor: u_fl3slo_phyco_cwo(nodim)      55 # clean water offset, nodim == counts
+sensor: u_fl3slo_cdom_cwo(nodim)       55 # clean water offset, nodim == counts
+sensor: u_fl3slo_chlor_sf(ug/l/nodim)  0.0126 # scale factor to get units
+sensor: u_fl3slo_phyco_sf(ppb/l/nodim) 0.0459 # scale factor to get units
+sensor: u_fl3slo_cdom_sf(ppb/l/nodim)  0.0984 # scale factor to get units
+sensor: sci_fl3slo_chlor_units(ug/l)    0 # derived from col 4
+sensor: sci_fl3slo_phyco_units(ppb)     0 # derived from col 6
+sensor: sci_fl3slo_cdom_units(QSDE)     0 # derived from col 8
+sensor: sci_fl3slo_chlor_sig(nodim)     0 # col 4
+sensor: sci_fl3slo_phyco_sig(nodim)     0 # col 6
+sensor: sci_fl3slo_cdom_sig(nodim)      0 # col 8
+sensor: sci_fl3slo_chlor_ref(nodim)     0 # col 3
+sensor: sci_fl3slo_phyco_ref(nodim)     0 # col 5
+sensor: sci_fl3slo_cdom_ref(nodim)      0 # col 7
+sensor: sci_fl3slo_temp(nodim)          0 # col 9
+sensor: sci_fl3slo_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb3slo_on(sec)       2 # in, sets secs between measurements
+sensor: sci_bb3slo_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb3slo_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_bb3slo_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb3slo_b470_do(nodim)   51     # dark offset, nodim == counts
+sensor: u_bb3slo_b532_do(nodim)   51     # dark offset, nodim == counts
+sensor: u_bb3slo_b660_do(nodim)  114     # dark offset, nodim == counts
+sensor: u_bb3slo_b470_sf(Mnodim)   0.117 # scale factor (0.000000117)
+sensor: u_bb3slo_b532_sf(Mnodim)   8.17  # scale factor (0.00000817)
+sensor: u_bb3slo_b660_sf(Mnodim)   3.85  # scale factor (0.00000385)
+sensor: sci_bb3slo_b470_scaled(nodim)   0 # from col 4, blue
+sensor: sci_bb3slo_b532_scaled(nodim)   0 # from col 6, green
+sensor: sci_bb3slo_b660_scaled(nodim)   0 # from col 8, red
+sensor: sci_bb3slo_b470_sig(nodim)      0 # col 4, blue
+sensor: sci_bb3slo_b532_sig(nodim)      0 # col 6, green
+sensor: sci_bb3slo_b660_sig(nodim)      0 # col 8, red
+sensor: sci_bb3slo_b470_ref(nodim)      0 # col 3, blue
+sensor: sci_bb3slo_b532_ref(nodim)      0 # col 5, green
+sensor: sci_bb3slo_b660_ref(nodim)      0 # col 7, red
+sensor: sci_bb3slo_temp(nodim)          0 # col 9
+sensor: sci_bb3slo_timestamp(timestamp) 0 # secs since 1970
+sensor: c_oxy3835_on(sec)       2 # in, sets secs between measurements
+sensor: sci_oxy3835_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_oxy3835_num_fields_to_send(nodim)   3   # in, number of columns to send on each
+sensor: sci_oxy3835_oxygen(nodim)        0 # col 3, oxygen
+sensor: sci_oxy3835_saturation(nodim)    0 # col 4, saturation
+sensor: sci_oxy3835_temp(nodim)          0 # col 5, temperature
+sensor: sci_oxy3835_timestamp(timestamp) 0 # secs since 1970
+sensor: c_oxy3835_wphase_on(sec)       2 # in, sets secs between measurements
+sensor: sci_oxy3835_wphase_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_oxy3835_wphase_num_fields_to_send(nodim)   10   # in, number of columns to send on each
+sensor: sci_oxy3835_wphase_oxygen(nodim)        0 # col 3, oxygen
+sensor: sci_oxy3835_wphase_saturation(nodim)    0 # col 4, saturation
+sensor: sci_oxy3835_wphase_temp(nodim)          0 # col 5, temperature
+sensor: sci_oxy3835_wphase_dphase(nodim)        0 # col 6, d-phase
+sensor: sci_oxy3835_wphase_bphase(nodim)        0 # col 7, b-phase
+sensor: sci_oxy3835_wphase_rphase(nodim)        0 # col 8, r-phase
+sensor: sci_oxy3835_wphase_bamp(nodim)          0 # col 9, b-amp
+sensor: sci_oxy3835_wphase_bpot(nodim)          0 # col 10, b-pot
+sensor: sci_oxy3835_wphase_ramp(nodim)          0 # col 11, r-amp
+sensor: sci_oxy3835_wphase_rawtemp(nodim)       0 # col 12, RawTemp
+sensor: sci_oxy3835_wphase_timestamp(timestamp) 0 # secs since 1970
+sensor: c_viper_on(sec)                      -1.0 # positive or zero turns it on and starts sampling sequence
+sensor: c_viper_turn_on_timeout(sec)        120.0 # max wait time for viper to power on
+sensor: c_viper_collect_timeout(sec)        200.0 # max wait time for viper to collect/analyse acoustic data
+sensor: c_viper_reset_timeout(sec)           60.0 # max wait time for viper to respond to reset gain command
+sensor: c_viper_start_sampling_timeout(sec)  60.0 # max wait time for viper to respond to start sampling command
+sensor: c_viper_detection_done_timeout(sec)  60.0 # max wait time for viper to respond to detection done command
+sensor: c_viper_turn_off_timeout(sec)       120.0 # max wait time for viper to power off
+sensor: c_viper_gain(nodim)                   3.0 # 0-7 gain sent to viper
+sensor: c_viper_max_sample_starts(nodim)      3.0 # max allowable attempts to obtain a definitive detection
+sensor: c_viper_max_errors(nodim)             3.0 # max number of viper errors before mission abort
+sensor: sci_viper_power_on(bool)     0 # power state of the Viper, true -> on
+sensor: sci_viper_error(nodim)       0 # unique number for each error sequence
+sensor: sci_viper_target(enum)       0 # target priority returned by Viper
+sensor: sci_viper_collect_time(sec)  0 # data collection time returned by Viper
+sensor: sci_viper_is_installed(bool) 0.0 # T-> if proglet installed
+sensor: sci_viper_finished(bool)     0.0 # T-> viper is ready to be powered down
+sensor: sci_viper_collecting(bool)   0.0 # T-> viper is doing it's thing, comatose time
+sensor: c_ocr504R_on(sec)  0    # sets secs between how often data is sent
+sensor: u_ocr504R_is_calibrated(bool)  0 # needs to be set in autoexec.mi
+sensor: u_ocr504R_dark_counts_c1(nodim) 2147326431.3 # dark offset for channel 1
+sensor: u_ocr504R_cal_coeff_c1(Tnodim) 29310.139102  # calibration factor for channel 1
+sensor: u_ocr504R_immersion_coeff_c1(nodim) 1.758    # immersion factor for channel 1
+sensor: u_ocr504R_dark_counts_c2(nodim) 2147357165.1 # dark offset for channel 2
+sensor: u_ocr504R_cal_coeff_c2(Tnodim)  33825.794480 # calibration factor for channel 2
+sensor: u_ocr504R_immersion_coeff_c2(nodim) 1.752    # immersion factor for channel 2
+sensor: u_ocr504R_dark_counts_c3(nodim) 2147621476.7 # dark offset for channel 3
+sensor: u_ocr504R_cal_coeff_c3(Tnodim)  29314.178969 # calibration factor for channel 3
+sensor: u_ocr504R_immersion_coeff_c3(nodim) 1.746    # immersion factor for channel 3
+sensor: u_ocr504R_dark_counts_c4(nodim) 2147499550.4 # dark offset for channel 4
+sensor: u_ocr504R_cal_coeff_c4(Tnodim)  18677.199017 # calibration factor for channel 4
+sensor: u_ocr504R_immersion_coeff_c4(nodim) 1.739    # immersion factor for channel 4
+sensor: u_ocr504R_Vin_a0(nodim) 0.0  # polynomial coefficient to scale Vin
+sensor: u_ocr504R_Vin_a1(nodim) 0.03 # polynomial coefficient to scale Vin
+sensor: u_ocr504R_itemp_a0(nodim) -50.0 # polynomial coefficient to scale itemp
+sensor: u_ocr504R_itemp_a1(nodim)   0.5 # polynomial coefficient to scale itemp
+sensor: c_ocr504R_num_fields_to_send(nodim) 16
+sensor: sci_ocr504R_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_ocr504R_rad1(uW/cm^2/nm) # from channel1
+sensor: sci_ocr504R_rad2(uW/cm^2/nm) # from channel2
+sensor: sci_ocr504R_rad3(uW/cm^2/nm) # from channel3
+sensor: sci_ocr504R_rad4(uW/cm^2/nm) # from channel4
+sensor: sci_ocr504R_itemp(Celsius)   # internal temperature of instrument
+sensor: sci_ocr504R_Vin(volts)       # regulated input voltage
+sensor: sci_ocr504R_fcount(nodim)    # 0-255, count of frame transmitted
+sensor: sci_ocr504R_channel1(nodim)  # raw counts from discrete optical waveband 1
+sensor: sci_ocr504R_channel2(nodim)  # raw counts from discrete optical waveband 2
+sensor: sci_ocr504R_channel3(nodim)  # raw counts from discrete optical waveband 3
+sensor: sci_ocr504R_channel4(nodim)  # raw counts from discrete optical waveband 4
+sensor: sci_ocr504R_itemp_raw(nodim) # raw pre-scaled temperature
+sensor: sci_ocr504R_Vin_raw(nodim)   # raw pre-scaled regulated input voltage
+sensor: sci_ocr504R_timer(sec)       # seconds since initialization (power-on)
+sensor: sci_ocr504R_delay(msec)      # milliseconds offset to timer for
+sensor: sci_ocr504R_cksum(nodim)     # data integrity sensor, checksum on frame
+sensor: c_ocr504I_on(sec)   0   # sets secs between how often data is sent
+sensor: u_ocr504I_is_calibrated(bool)  0 # needs to be set in autoexec.mi
+sensor: u_ocr504I_dark_counts_c1(nodim) 2147679780.3 # dark offset for channel 1
+sensor: u_ocr504I_cal_coeff_c1(Tnodim) 1636922.3650  # calibration factor for channel 1
+sensor: u_ocr504I_immersion_coeff_c1(nodim) 1.368    # immersion factor for channel 1
+sensor: u_ocr504I_dark_counts_c2(nodim) 2147446582.0 # dark offset for channel 2
+sensor: u_ocr504I_cal_coeff_c2(Tnodim) 1940758.5765  # calibration factor for channel 2
+sensor: u_ocr504I_immersion_coeff_c2(nodim) 1.410    # immersion factor for channel 2
+sensor: u_ocr504I_dark_counts_c3(nodim) 2147390884.4 # dark offset for channel 3
+sensor: u_ocr504I_cal_coeff_c3(Tnodim) 2286152.2061  # calibration factor for channel 3
+sensor: u_ocr504I_immersion_coeff_c3(nodim) 1.365    # immersion factor for channel 3
+sensor: u_ocr504I_dark_counts_c4(nodim) 2147443303.2 # dark offset for channel 4
+sensor: u_ocr504I_cal_coeff_c4(Tnodim) 1804514.9462  # calibration factor for channel 4
+sensor: u_ocr504I_immersion_coeff_c4(nodim) 1.372    # immersion factor for channel 4
+sensor: u_ocr504I_Vin_a0(nodim) 0.0  # polynomial coefficient to scale Vin
+sensor: u_ocr504I_Vin_a1(nodim) 0.03 # polynomial coefficient to scale Vin
+sensor: u_ocr504I_itemp_a0(nodim) -50.0 # polynomial coefficient to scale itemp
+sensor: u_ocr504I_itemp_a1(nodim)   0.5 # polynomial coefficient to scale itemp
+sensor: c_ocr504I_num_fields_to_send(nodim) 16
+sensor: sci_ocr504I_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_ocr504I_irrad1(uW/cm^2/nm) # from channel1
+sensor: sci_ocr504I_irrad2(uW/cm^2/nm) # from channel2
+sensor: sci_ocr504I_irrad3(uW/cm^2/nm) # from channel3
+sensor: sci_ocr504I_irrad4(uW/cm^2/nm) # from channel4
+sensor: sci_ocr504I_itemp(Celsius)     # internal temperature of instrument
+sensor: sci_ocr504I_Vin(volts)         # regulated input voltage
+sensor: sci_ocr504I_fcount(nodim)      # 0-255, count of frame transmitted
+sensor: sci_ocr504I_channel1(nodim)    # raw counts from discrete optical waveband 1
+sensor: sci_ocr504I_channel2(nodim)    # raw counts from discrete optical waveband 2
+sensor: sci_ocr504I_channel3(nodim)    # raw counts from discrete optical waveband 3
+sensor: sci_ocr504I_channel4(nodim)    # raw counts from discrete optical waveband 4
+sensor: sci_ocr504I_itemp_raw(nodim)   # raw pre-scaled temperature
+sensor: sci_ocr504I_Vin_raw(nodim)     # raw pre-scaled regulated input voltage
+sensor: sci_ocr504I_timer(sec)         # seconds since initialization (power-on)
+sensor: sci_ocr504I_delay(msec)        # milliseconds offset to timer for
+sensor: sci_ocr504I_cksum(nodim)       # data integrity sensor, checksum on frame
+sensor: c_ocr507R_on(sec)  0    # sets secs between how often data is sent
+sensor: u_ocr507R_is_calibrated(bool)  0 # needs to be set in autoexec.mi
+sensor: u_ocr507R_dark_counts_c1(nodim) 2148739218.5 # dark offset for channel 1
+sensor: u_ocr507R_cal_coeff_c1(Tnodim)  27096.112147 # calibration factor for channel 1
+sensor: u_ocr507R_immersion_coeff_c1(nodim) 1.758    # immersion factor for channel 1
+sensor: u_ocr507R_dark_counts_c2(nodim) 2147915422.1 # dark offset for channel 2
+sensor: u_ocr507R_cal_coeff_c2(Tnodim)  27065.322575 # calibration factor for channel 2
+sensor: u_ocr507R_immersion_coeff_c2(nodim) 1.754    # immersion factor for channel 2
+sensor: u_ocr507R_dark_counts_c3(nodim) 2148704283.1 # dark offset for channel 3
+sensor: u_ocr507R_cal_coeff_c3(Tnodim)  26930.360588 # calibration factor for channel 3
+sensor: u_ocr507R_immersion_coeff_c3(nodim) 1.745    # immersion factor for channel 3
+sensor: u_ocr507R_dark_counts_c4(nodim) 2148332704.3 # dark offset for channel 4
+sensor: u_ocr507R_cal_coeff_c4(Tnodim)  17037.140659 # calibration factor for channel 4
+sensor: u_ocr507R_immersion_coeff_c4(nodim) 1.741    # immersion factor for channel 4
+sensor: u_ocr507R_dark_counts_c5(nodim) 2147608197.8 # dark offset for channel 5
+sensor: u_ocr507R_cal_coeff_c5(Tnodim)  16287.406269 # calibration factor for channel 5
+sensor: u_ocr507R_immersion_coeff_c5(nodim) 1.739    # immersion factor for channel 5
+sensor: u_ocr507R_dark_counts_c6(nodim) 2146048148.6 # dark offset for channel 6
+sensor: u_ocr507R_cal_coeff_c6(Tnodim)  11802.500350 # calibration factor for channel 6
+sensor: u_ocr507R_immersion_coeff_c6(nodim) 1.730    # immersion factor for channel 6
+sensor: u_ocr507R_dark_counts_c7(nodim) 2145662191.9 # dark offset for channel 7
+sensor: u_ocr507R_cal_coeff_c7(Tnodim)  5511.536788  # calibration factor for channel 7
+sensor: u_ocr507R_immersion_coeff_c7(nodim) 1.729    # immersion factor for channel 7
+sensor: u_ocr507R_Vin_a0(nodim) 0.0  # polynomial coefficient to scale Vin
+sensor: u_ocr507R_Vin_a1(nodim) 0.03 # polynomial coefficient to scale Vin
+sensor: u_ocr507R_Va_a0(nodim) 0.0  # polynomial coefficient to scale Vin
+sensor: u_ocr507R_Va_a1(nodim) 0.03 # polynomial coefficient to scale Vin
+sensor: u_ocr507R_itemp_a0(nodim) -50.0 # polynomial coefficient to scale itemp
+sensor: u_ocr507R_itemp_a1(nodim)   0.5 # polynomial coefficient to scale itemp
+sensor: c_ocr507R_num_fields_to_send(nodim) 24
+sensor: sci_ocr507R_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_ocr507R_rad1(uW/cm^2/nm) # from channel1
+sensor: sci_ocr507R_rad2(uW/cm^2/nm) # from channel2
+sensor: sci_ocr507R_rad3(uW/cm^2/nm) # from channel3
+sensor: sci_ocr507R_rad4(uW/cm^2/nm) # from channel4
+sensor: sci_ocr507R_rad5(uW/cm^2/nm) # from channel5
+sensor: sci_ocr507R_rad6(uW/cm^2/nm) # from channel6
+sensor: sci_ocr507R_rad7(uW/cm^2/nm) # from channel7
+sensor: sci_ocr507R_itemp(Celsius)   # internal temperature of instrument
+sensor: sci_ocr507R_Vin(volts)       # regulated input voltage
+sensor: sci_ocr507R_Va(volts)        # analog voltage
+sensor: sci_ocr507R_fcount(nodim)    # 0-255, count of frame transmitted
+sensor: sci_ocr507R_channel1(nodim)  # raw counts from discrete optical waveband 1
+sensor: sci_ocr507R_channel2(nodim)  # raw counts from discrete optical waveband 2
+sensor: sci_ocr507R_channel3(nodim)  # raw counts from discrete optical waveband 3
+sensor: sci_ocr507R_channel4(nodim)  # raw counts from discrete optical waveband 4
+sensor: sci_ocr507R_channel5(nodim)  # raw counts from discrete optical waveband 5
+sensor: sci_ocr507R_channel6(nodim)  # raw counts from discrete optical waveband 6
+sensor: sci_ocr507R_channel7(nodim)  # raw counts from discrete optical waveband 7
+sensor: sci_ocr507R_itemp_raw(nodim) # raw pre-scaled temperature
+sensor: sci_ocr507R_Vin_raw(nodim)   # raw pre-scaled regulated input voltage
+sensor: sci_ocr507R_Va_raw(nodim)    # raw pre-scaled analog voltage
+sensor: sci_ocr507R_timer(sec)       # seconds since initialization (power-on)
+sensor: sci_ocr507R_delay(msec)      # milliseconds offset to timer for
+sensor: sci_ocr507R_cksum(nodim)     # data integrity sensor, checksum on frame
+sensor: c_ocr507I_on(sec)   0   # sets secs between how often data is sent
+sensor: u_ocr507I_is_calibrated(bool)  0 # needs to be set in autoexec.mi
+sensor: u_ocr507I_dark_counts_c1(nodim) 2149587489.7 # dark offset for channel 1
+sensor: u_ocr507I_cal_coeff_c1(Tnodim)  2139416.2652 # calibration factor for channel 1
+sensor: u_ocr507I_immersion_coeff_c1(nodim) 1.368    # immersion factor for channel 1
+sensor: u_ocr507I_dark_counts_c2(nodim) 2147351752.0 # dark offset for channel 2
+sensor: u_ocr507I_cal_coeff_c2(Tnodim)  1973191.3026 # calibration factor for channel 2
+sensor: u_ocr507I_immersion_coeff_c2(nodim) 1.401    # immersion factor for channel 2
+sensor: u_ocr507I_dark_counts_c3(nodim) 2148356170.6 # dark offset for channel 3
+sensor: u_ocr507I_cal_coeff_c3(Tnodim)  2072416.6110 # calibration factor for channel 3
+sensor: u_ocr507I_immersion_coeff_c3(nodim) 1.365    # immersion factor for channel 3
+sensor: u_ocr507I_dark_counts_c4(nodim) 2147879094.8 # dark offset for channel 4
+sensor: u_ocr507I_cal_coeff_c4(Tnodim)  2070368.1944 # calibration factor for channel 4
+sensor: u_ocr507I_immersion_coeff_c4(nodim) 1.378    # immersion factor for channel 4
+sensor: u_ocr507I_dark_counts_c5(nodim) 2147571956.1 # dark offset for channel 5
+sensor: u_ocr507I_cal_coeff_c5(Tnodim)  2108980.9681 # calibration factor for channel 5
+sensor: u_ocr507I_immersion_coeff_c5(nodim) 1.372    # immersion factor for channel 5
+sensor: u_ocr507I_dark_counts_c6(nodim) 2147977849.9 # dark offset for channel 6
+sensor: u_ocr507I_cal_coeff_c6(Tnodim)  2209709.2232 # calibration factor for channel 6
+sensor: u_ocr507I_immersion_coeff_c6(nodim) 1.354    # immersion factor for channel 6
+sensor: u_ocr507I_dark_counts_c7(nodim) 2147679441.1 # dark offset for channel 7
+sensor: u_ocr507I_cal_coeff_c7(Tnodim)  2090347.2455 # calibration factor for channel 7
+sensor: u_ocr507I_immersion_coeff_c7(nodim) 1.347    # immersion factor for channel 7
+sensor: u_ocr507I_Vin_a0(nodim) 0.0  # polynomial coefficient to scale Vin
+sensor: u_ocr507I_Vin_a1(nodim) 0.03 # polynomial coefficient to scale Vin
+sensor: u_ocr507I_Va_a0(nodim) 0.0  # polynomial coefficient to scale Va
+sensor: u_ocr507I_Va_a1(nodim) 0.03 # polynomial coefficient to scale Va
+sensor: u_ocr507I_itemp_a0(nodim) -50.0 # polynomial coefficient to scale itemp
+sensor: u_ocr507I_itemp_a1(nodim)   0.5 # polynomial coefficient to scale itemp
+sensor: c_ocr507I_num_fields_to_send(nodim) 24
+sensor: sci_ocr507I_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_ocr507I_irrad1(uW/cm^2/nm) # from channel1
+sensor: sci_ocr507I_irrad2(uW/cm^2/nm) # from channel2
+sensor: sci_ocr507I_irrad3(uW/cm^2/nm) # from channel3
+sensor: sci_ocr507I_irrad4(uW/cm^2/nm) # from channel4
+sensor: sci_ocr507I_irrad5(uW/cm^2/nm) # from channel5
+sensor: sci_ocr507I_irrad6(uW/cm^2/nm) # from channel6
+sensor: sci_ocr507I_irrad7(uW/cm^2/nm) # from channel7
+sensor: sci_ocr507I_itemp(Celsius)     # internal temperature of instrument
+sensor: sci_ocr507I_Vin(volts)         # regulated input voltage
+sensor: sci_ocr507I_Va(volts)          # analog voltag
+sensor: sci_ocr507I_fcount(nodim)      # 0-255, count of frame transmitted
+sensor: sci_ocr507I_channel1(nodim)    # raw counts from discrete optical waveband 1
+sensor: sci_ocr507I_channel2(nodim)    # raw counts from discrete optical waveband 2
+sensor: sci_ocr507I_channel3(nodim)    # raw counts from discrete optical waveband 3
+sensor: sci_ocr507I_channel4(nodim)    # raw counts from discrete optical waveband 4
+sensor: sci_ocr507I_channel5(nodim)    # raw counts from discrete optical waveband 5
+sensor: sci_ocr507I_channel6(nodim)    # raw counts from discrete optical waveband 6
+sensor: sci_ocr507I_channel7(nodim)    # raw counts from discrete optical waveband 7
+sensor: sci_ocr507I_itemp_raw(nodim)   # raw pre-scaled temperature
+sensor: sci_ocr507I_Vin_raw(nodim)     # raw pre-scaled regulated input voltage
+sensor: sci_ocr507I_Va_raw(nodim)      # raw pre-scaled analog voltage
+sensor: sci_ocr507I_timer(sec)         # seconds since initialization (power-on)
+sensor: sci_ocr507I_delay(msec)        # milliseconds offset to timer for
+sensor: sci_ocr507I_cksum(nodim)       # data integrity sensor, checksum on frame
+sensor: c_badd_on(sec)                    -1 # secs between run cycles
+sensor: c_badd_mode(enum)                  0 # 0: search mode
+sensor: c_badd_target_id(enum)            -1 # address of remote host modem being called
+sensor: c_badd_range_secs(sec)            60 # how often to request range to remote mode
+sensor: c_badd_input_parse_secs(sec)      30 # How long to check command response
+sensor: c_badd_datacol_status_secs(sec)   30 # How often to check download status
+sensor: c_badd_clear_remote_data(bool)     0 # 0: do NOT clear remote data after successful
+sensor: c_badd_autobaud(bool)              0 # 1: Perform autobaud, 0: Don't perform autobaud
+sensor: c_baud_attempt_min(enum)           3 # minimum badd baud attempt
+sensor: c_baud_attempt_max(enum)           8 # maximum badd baud attempt
+sensor: c_autobaud_max_ber(nodim)          0 # max BER allowed
+sensor: c_badd_transaction_num(nodim)      0 # ID of the transaction to perform at the mooring.(8 digit max)
+sensor: c_badd_channel_probe_test(bool)    0 # Perform Channel Probe Test with Remote Node.  0:NO, 1:YES
+sensor: sci_badd_mmp_is_installed(bool)      0 # true -> MMP version of proglet is installed.
+sensor: sci_badd_is_installed(bool)          0 # true -> proglet is installed
+sensor: sci_badd_power_on(bool)              0 # power state of modem (true -> on)
+sensor: sci_badd_error(nodim)                0 # unique number for each error type
+sensor: sci_badd_remote_stored_bytes(nodim)  0 # number of stored bytes on remote modem
+sensor: sci_badd_retrieved_bytes(nodim)      0 # number of bytes collected from remote modem
+sensor: sci_badd_n_tries_to_connect(nodim)   0 # number of attempts to connect with target modem
+sensor: sci_badd_target_range(m)             0 # response to range command
+sensor: sci_badd_finished(bool)              0 # the proglet has finished
+sensor: c_flntu_on(sec)                    2 # in, sets secs between measurements
+sensor: sci_flntu_is_installed(bool)       0 # in, t--> installed on science
+sensor: c_flntu_num_fields_to_send(nodim)  7 # in, number of columns to send on each
+sensor: u_flntu_is_calibrated(bool)        0 # false, assume not calibrated
+sensor: u_flntu_chlor_do(nodim)      39     # dark water offset, nodim == counts
+sensor: u_flntu_turb_do(nodim)       47     # dark water offset, nodim == counts
+sensor: u_flntu_chlor_sf(ug/l/nodim) 0.0125 # scale factor to get units
+sensor: u_flntu_turb_sf(NTU/nodim)   0.0062 # scale factor to get units
+sensor: sci_flntu_chlor_units(ug/l)    0 # derived from col 4
+sensor: sci_flntu_turb_units(NTU)      0 # derived from col 6
+sensor: sci_flntu_chlor_sig(nodim)     0 # col 4
+sensor: sci_flntu_turb_sig(nodim)      0 # col 6
+sensor: sci_flntu_chlor_ref(nodim)     0 # col 3
+sensor: sci_flntu_turb_ref(nodim)      0 # col 5
+sensor: sci_flntu_temp(nodim)          0 # col 7
+sensor: sci_flntu_timestamp(timestamp) 0 # secs since 1970
+sensor: c_fl3sloV2_on(sec)       2 # in, sets secs between measurements
+sensor: sci_fl3sloV2_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_fl3sloV2_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_fl3sloV2_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_fl3sloV2_chlor_cwo(nodim)      46 # clean water offset, nodim == counts
+sensor: u_fl3sloV2_rhod_cwo(nodim)       49 # clean water offset, nodim == counts
+sensor: u_fl3sloV2_cdom_cwo(nodim)       48 # clean water offset, nodim == counts
+sensor: u_fl3sloV2_chlor_sf(ug/l/nodim)  0.0127 # scale factor to get units
+sensor: u_fl3sloV2_rhod_sf(ppb/nodim)    0.0481 # scale factor to get units
+sensor: u_fl3sloV2_cdom_sf(ppb/nodim)    0.0961 # scale factor to get units
+sensor: sci_fl3sloV2_chlor_units(ug/l)    0 # derived from col 4
+sensor: sci_fl3sloV2_rhod_units(ppb)      0 # derived from col 6
+sensor: sci_fl3sloV2_cdom_units(ppb)      0 # derived from col 8
+sensor: sci_fl3sloV2_chlor_sig(nodim)     0 # col 4
+sensor: sci_fl3sloV2_rhod_sig(nodim)      0 # col 6
+sensor: sci_fl3sloV2_cdom_sig(nodim)      0 # col 8
+sensor: sci_fl3sloV2_chlor_ref(nodim)     0 # col 3
+sensor: sci_fl3sloV2_rhod_ref(nodim)      0 # col 5
+sensor: sci_fl3sloV2_cdom_ref(nodim)      0 # col 7
+sensor: sci_fl3sloV2_temp(nodim)          0 # col 9
+sensor: sci_fl3sloV2_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb3sloV2_on(sec)       2 # in, sets secs between measurements
+sensor: sci_bb3sloV2_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb3sloV2_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_bb3sloV2_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb3sloV2_b532_do(nodim)   44     # dark offset, nodim == counts
+sensor: u_bb3sloV2_b660_do(nodim)   49     # dark offset, nodim == counts
+sensor: u_bb3sloV2_b880_do(nodim)   52     # dark offset, nodim == counts
+sensor: u_bb3sloV2_b532_sf(Mnodim)   8.42  # scale factor (0.00000842)
+sensor: u_bb3sloV2_b660_sf(Mnodim)   4.16  # scale factor (0.00000416)
+sensor: u_bb3sloV2_b880_sf(Mnodim)   3.27  # scale factor (0.00000327)
+sensor: sci_bb3sloV2_b532_scaled(nodim)   0 # from col 4
+sensor: sci_bb3sloV2_b660_scaled(nodim)   0 # from col 6
+sensor: sci_bb3sloV2_b880_scaled(nodim)   0 # from col 8
+sensor: sci_bb3sloV2_b532_sig(nodim)      0 # col 4
+sensor: sci_bb3sloV2_b660_sig(nodim)      0 # col 6
+sensor: sci_bb3sloV2_b880_sig(nodim)      0 # col 8
+sensor: sci_bb3sloV2_b532_ref(nodim)      0 # col 3
+sensor: sci_bb3sloV2_b660_ref(nodim)      0 # col 5
+sensor: sci_bb3sloV2_b880_ref(nodim)      0 # col 7
+sensor: sci_bb3sloV2_temp(nodim)          0 # col 9
+sensor: sci_bb3sloV2_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb3sloV3_on(sec)       2 # in, sets secs between measurements
+sensor: sci_bb3sloV3_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb3sloV3_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_bb3sloV3_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb3sloV3_b532_do(nodim)   20     # dark offset, nodim == counts
+sensor: u_bb3sloV3_b630_do(nodim)   11     # dark offset, nodim == counts
+sensor: u_bb3sloV3_b880_do(nodim)   18     # dark offset, nodim == counts
+sensor: u_bb3sloV3_b532_sf(Mnodim)   7.093 # scale factor (0.000007093)
+sensor: u_bb3sloV3_b630_sf(Mnodim)   3.888 # scale factor (0.000003888)
+sensor: u_bb3sloV3_b880_sf(Mnodim)   2.370 # scale factor (0.000002370)
+sensor: sci_bb3sloV3_b532_scaled(nodim)   0 # from col 4
+sensor: sci_bb3sloV3_b630_scaled(nodim)   0 # from col 6
+sensor: sci_bb3sloV3_b880_scaled(nodim)   0 # from col 8
+sensor: sci_bb3sloV3_b532_sig(nodim)      0 # col 4
+sensor: sci_bb3sloV3_b630_sig(nodim)      0 # col 6
+sensor: sci_bb3sloV3_b880_sig(nodim)      0 # col 8
+sensor: sci_bb3sloV3_b532_ref(nodim)      0 # col 3
+sensor: sci_bb3sloV3_b630_ref(nodim)      0 # col 5
+sensor: sci_bb3sloV3_b880_ref(nodim)      0 # col 7
+sensor: sci_bb3sloV3_temp(nodim)          0 # col 9
+sensor: sci_bb3sloV3_timestamp(timestamp) 0 # secs since 1970
+sensor: sci_wetlabs_sim_is_installed(bool)  0 # in, t--> wetlabs sensor is being simulated on science computer
+sensor: u_wetlabs_sim_num_eng_units(nodim)  3 # currently, either 2 or 3
+sensor: c_bb2fls_on(sec)        2 # in, sets secs between measurements
+sensor: sci_bb2fls_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2fls_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2fls_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2fls_b660_cwo(nodim)     38      # clean water offset, nodim == counts
+sensor: u_bb2fls_b880_cwo(nodim)     48      # clean water offset, nodim == counts
+sensor: u_bb2fls_cdom_cwo(nodim)     45      # clean water offset, nodim == counts
+sensor: u_bb2fls_b660_sf(Mnodim)      3.298  # scale factor (0.000003298)
+sensor: u_bb2fls_b880_sf(Mnodim)      3.079  # scale factor (0.000003079)
+sensor: u_bb2fls_cdom_sf(ppb/nodim)   0.1695 # scale factor to get units
+sensor: sci_bb2fls_b660_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2fls_b880_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2fls_cdom_scaled(ppb)     0 # derived from col 8
+sensor: sci_bb2fls_b660_sig(nodim)      0 # col 4
+sensor: sci_bb2fls_b880_sig(nodim)      0 # col 6
+sensor: sci_bb2fls_cdom_sig(nodim)      0 # col 8
+sensor: sci_bb2fls_b660_ref(nodim)      0 # col 3
+sensor: sci_bb2fls_b880_ref(nodim)      0 # col 5
+sensor: sci_bb2fls_cdom_ref(nodim)      0 # col 7
+sensor: sci_bb2fls_therm(nodim)         0 # col 9
+sensor: sci_bb2fls_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2flsV2_on(sec)   2 # in, sets secs between measurements
+sensor: sci_bb2flsV2_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2flsV2_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2flsV2_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2flsV2_b470_cwo(nodim)     51      # clean water offset, nodim == counts
+sensor: u_bb2flsV2_b532_cwo(nodim)     50      # clean water offset, nodim == counts
+sensor: u_bb2flsV2_chl_cwo(nodim)      51      # clean water offset, nodim == counts
+sensor: u_bb2flsV2_b470_sf(Mnodim)     11.67   # scale factor (0.00001167)
+sensor: u_bb2flsV2_b532_sf(Mnodim)      3.079  # scale factor (0.000003079)
+sensor: u_bb2flsV2_chl_sf(ug/l/nodim)   0.0133 # scale factor to get units
+sensor: sci_bb2flsV2_b470_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2flsV2_b532_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2flsV2_chl_scaled(ug/l)     0 # derived from col 8
+sensor: sci_bb2flsV2_b470_sig(nodim)      0 # col 4
+sensor: sci_bb2flsV2_b532_sig(nodim)      0 # col 6
+sensor: sci_bb2flsV2_chl_sig(nodim)       0 # col 8
+sensor: sci_bb2flsV2_b470_ref(nodim)      0 # col 3
+sensor: sci_bb2flsV2_b532_ref(nodim)      0 # col 5
+sensor: sci_bb2flsV2_chl_ref(nodim)       0 # col 7
+sensor: sci_bb2flsV2_therm(nodim)         0 # col 9
+sensor: sci_bb2flsV2_timestamp(timestamp) 0 # secs since 1970
+sensor: sci_auvb_sim_is_installed(bool)  0 # in, t--> auvb is being simulated on science computer
+sensor: c_auvb_on(sec)   2 # in, sets secs between measurements
+sensor: sci_auvb_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_auvb_num_fields_to_send(nodim)   3 # in, number of columns to send on
+sensor: sci_auvb_ref(nodim)           0 # col 3, refernece counts
+sensor: sci_auvb_sig(nodim)           0 # col 4, signal counts
+sensor: sci_auvb_therm(nodim)	      0 # col 5, internal thermistor
+sensor: sci_auvb_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2fV2_on(sec)        2 # in, sets secs between measurements
+sensor: sci_bb2fV2_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2fV2_num_fields_to_send(nodim)   9 # in, number of columns to send on each
+sensor: u_bb2fV2_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2fV2_b470_cwo(nodim)      54      # clean water offset, nodim == counts
+sensor: u_bb2fV2_b700_cwo(nodim)      58      # clean water offset, nodim == counts
+sensor: u_bb2fV2_chlor_cwo(nodim)     53      # clean water offset, nodim == counts
+sensor: u_bb2fV2_b470_sf(Mnodim)      22.09   # scale factor (0.00002209)
+sensor: u_bb2fV2_b700_sf(Mnodim)       1.45   # scale factor (0.00000145)
+sensor: u_bb2fV2_chlor_sf(ug/l/nodim)  0.0152 # scale factor to get units
+sensor: sci_bb2fV2_b470_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2fV2_b700_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2fV2_chlor_scaled(ug/l)   0 # derived from col 7
+sensor: sci_bb2fV2_b470_sig(nodim)      0 # col 4
+sensor: sci_bb2fV2_b700_sig(nodim)      0 # col 6
+sensor: sci_bb2fV2_chlor(nodim)         0 # col 7
+sensor: sci_bb2fV2_b470_ref(nodim)      0 # col 3
+sensor: sci_bb2fV2_b700_ref(nodim)      0 # col 5
+sensor: sci_bb2fV2_therm(nodim)         0 # col 9
+sensor: sci_bb2fV2_timestamp(timestamp) 0 # secs since 1970
+sensor: c_tarr_on(sec)        0 # in, sets secs between measurements
+sensor: u_tarr_num_errors_before_restart(nodim)  5  # number of errors before cycling
+sensor: u_tarr_dsp_power_on_delay(sec) 75.0 # wait time between tarr and dsp power on
+sensor: sci_tarr_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_tarr_track_count(nodim) 0 # number of data tracks produced since power on
+sensor: sci_tarr_error(nodim)       0 # unique number to indicate error type
+sensor: c_glbps_on(sec)       1 # in, sets secs between measurements
+sensor: sci_glbps_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_glbps_num_fields_to_send(nodim)   3   # in, number of columns to send on each
+sensor: sci_glbps_round_trip_time(nodim)    0   # col 10, round trip time
+sensor: sci_glbps_persistance(nodim)        0   # col 11, persistance
+sensor: sci_glbps_timestamp(timestamp)      0   # secs since 1970
+sensor: sci_glbps_ping_number(nodim)        0   # col 1,  ping number
+sensor: sci_glbps_year(nodim)               0   # col 2,  year
+sensor: sci_glbps_month(nodim)              0   # col 3,  month
+sensor: sci_glbps_day(nodim)                0   # col 4,  day
+sensor: sci_glbps_hour(nodim)               0   # col 5,  hour
+sensor: sci_glbps_minute(nodim)             0   # col 6,  minute
+sensor: sci_glbps_second(nodim)             0   # col 7,  second
+sensor: sci_glbps_hundreds_of_second(nodim) 0   # col 8, hundreds of second
+sensor: sci_glbps_target_count(nodim)       0   # col 9, target count
+sensor: c_sscsd_on(sec)              2.0 #
+sensor: sci_sscsd_is_installed(bool) 0   # in, t--> installed on science
+sensor: sci_sscsd_test(nodim)        0   # this is only a test
+sensor: sci_wants_turn(enum) 0      # 0 no request yet
+sensor: sci_wants_wpt(enum) 0
+sensor: sci_heading(rad)        0   # heading sci wants to turn to
+sensor: sci_wpt_x(m)    -7032.0610  # The waypoint (east or lon)
+sensor: sci_wpt_y(m)    4137.9980   # (north or lat)
+sensor: sci_wpt_units(enum) 2       # 0 LMC, 1 UTM, 2 LAT/LONG
+sensor: sci_wants_depth(enum)  0    # science request to change depth profile
+sensor: sci_depth(m) 0              # depth to change to
+sensor: sci_array_heading1(deg) 0
+sensor: sci_array_pitch1(deg) 0
+sensor: sci_array_roll1(deg) 0
+sensor: sci_array_heading2(deg) 0
+sensor: sci_array_pitch2(deg) 0
+sensor: sci_array_roll2(deg) 0
+sensor: sci_array_heading3(deg) 0
+sensor: sci_array_pitch3(deg) 0
+sensor: sci_array_roll3(deg) 0
+sensor: c_bb2flsV3_on(sec)   2 # in, sets secs between measurements
+sensor: sci_bb2flsV3_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2flsV3_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2flsV3_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2flsV3_b715_cwo(nodim)     55      # clean water offset, nodim == counts
+sensor: u_bb2flsV3_b880_cwo(nodim)     51      # clean water offset, nodim == counts
+sensor: u_bb2flsV3_pe_cwo(nodim)       51      # clean water offset, nodim == counts
+sensor: u_bb2flsV3_b715_sf(Mnodim)     3.62    # scale factor x 1e-6
+sensor: u_bb2flsV3_b880_sf(Mnodim)     2.97    # scale factor x 1e-6
+sensor: u_bb2flsV3_pe_sf(ppb/nodim)    0.0432  # scale factor to get units
+sensor: sci_bb2flsV3_b715_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2flsV3_b880_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2flsV3_pe_scaled(ppb)       0 # derived from col 8
+sensor: sci_bb2flsV3_b715_sig(nodim)      0 # col 4
+sensor: sci_bb2flsV3_b880_sig(nodim)      0 # col 6
+sensor: sci_bb2flsV3_pe_sig(nodim)        0 # col 8
+sensor: sci_bb2flsV3_b715_ref(nodim)      0 # col 3
+sensor: sci_bb2flsV3_b880_ref(nodim)      0 # col 5
+sensor: sci_bb2flsV3_pe_ref(nodim)        0 # col 7
+sensor: sci_bb2flsV3_therm(nodim)         0 # col 9
+sensor: sci_bb2flsV3_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2flsV4_on(sec)   2 # in, sets secs between measurements
+sensor: sci_bb2flsV4_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2flsV4_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2flsV4_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2flsV4_b412_cwo(nodim)     51      # clean water offset, nodim == counts
+sensor: u_bb2flsV4_b470_cwo(nodim)     48      # clean water offset, nodim == counts
+sensor: u_bb2flsV4_chl_cwo(nodim)      54      # clean water offset, nodim == counts
+sensor: u_bb2flsV4_b412_sf(Mnodim)     13.27   # scale factor x 1e-6
+sensor: u_bb2flsV4_b470_sf(Mnodim)     12.08   # scale factor x 1e-6
+sensor: u_bb2flsV4_chl_sf(ug/l/nodim)  0.0118  # scale factor to get units
+sensor: sci_bb2flsV4_b412_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2flsV4_b470_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2flsV4_chl_scaled(ug/l)     0 # derived from col 8
+sensor: sci_bb2flsV4_b412_sig(nodim)      0 # col 4
+sensor: sci_bb2flsV4_b470_sig(nodim)      0 # col 6
+sensor: sci_bb2flsV4_chl_sig(nodim)       0 # col 8
+sensor: sci_bb2flsV4_b412_ref(nodim)      0 # col 3
+sensor: sci_bb2flsV4_b470_ref(nodim)      0 # col 5
+sensor: sci_bb2flsV4_chl_ref(nodim)       0 # col 7
+sensor: sci_bb2flsV4_therm(nodim)         0 # col 9
+sensor: sci_bb2flsV4_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2flsV5_on(sec)   2 # in, sets secs between measurements
+sensor: sci_bb2flsV5_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2flsV5_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2flsV5_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2flsV5_b532_cwo(nodim)     52      # clean water offset, nodim == counts
+sensor: u_bb2flsV5_b660_cwo(nodim)     59      # clean water offset, nodim == counts
+sensor: u_bb2flsV5_cdom_cwo(nodim)     63      # clean water offset, nodim == counts
+sensor: u_bb2flsV5_b532_sf(Mnodim)     7.678   # scale factor x 1e-6
+sensor: u_bb2flsV5_b660_sf(Mnodim)     3.829   # scale factor x 1e-6
+sensor: u_bb2flsV5_cdom_sf(ppb/nodim)  0.0959  # scale factor to get units
+sensor: sci_bb2flsV5_b532_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2flsV5_b660_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2flsV5_cdom_scaled(ppb)     0 # derived from col 8
+sensor: sci_bb2flsV5_b532_sig(nodim)      0 # col 4
+sensor: sci_bb2flsV5_b660_sig(nodim)      0 # col 6
+sensor: sci_bb2flsV5_cdom_sig(nodim)      0 # col 8
+sensor: sci_bb2flsV5_b532_ref(nodim)      0 # col 3
+sensor: sci_bb2flsV5_b660_ref(nodim)      0 # col 5
+sensor: sci_bb2flsV5_cdom_ref(nodim)      0 # col 7
+sensor: sci_bb2flsV5_therm(nodim)         0 # col 9
+sensor: sci_bb2flsV5_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2flsV6_on(sec)   2 # in, sets secs between measurements
+sensor: sci_bb2flsV6_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2flsV6_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2flsV6_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2flsV6_b532_cwo(nodim)     53      # clean water offset, nodim == counts
+sensor: u_bb2flsV6_b880_cwo(nodim)     51      # clean water offset, nodim == counts
+sensor: u_bb2flsV6_cdom_cwo(nodim)      42      # clean water offset, nodim == counts
+sensor: u_bb2flsV6_b532_sf(Mnodim)     7.689   # scale factor (0.00001167)
+sensor: u_bb2flsV6_b880_sf(Mnodim)      2.471  # scale factor (0.000003079)
+sensor: u_bb2flsV6_cdom_sf(ppb/nodim)   0.0905 # scale factor to get units
+sensor: sci_bb2flsV6_b532_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2flsV6_b880_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2flsV6_cdom_scaled(ppb)      0 # derived from col 8
+sensor: sci_bb2flsV6_b532_sig(nodim)      0 # col 4
+sensor: sci_bb2flsV6_b880_sig(nodim)      0 # col 6
+sensor: sci_bb2flsV6_cdom_sig(nodim)       0 # col 8
+sensor: sci_bb2flsV6_b532_ref(nodim)      0 # col 3
+sensor: sci_bb2flsV6_b880_ref(nodim)      0 # col 5
+sensor: sci_bb2flsV6_cdom_ref(nodim)       0 # col 7
+sensor: sci_bb2flsV6_therm(nodim)         0 # col 9
+sensor: sci_bb2flsV6_timestamp(timestamp) 0 # secs since 1970
+sensor: c_FIRe_on(sec)                    0  #in, >=0 turns it on, <0 stops it
+sensor: c_FIRe_num_fields_to_send(nodim)  10 #in, number of columns to send
+sensor: u_FIRe_num_errors_before_restart(nodim) 5 # number of errors before
+sensor: sci_FIRe_is_installed(bool)       0  # in, t--> installed on science
+sensor: sci_FIRe_timestamp(timestamp) 0 # measurement timestamp
+sensor: sci_FIRe_Fo(nodim)            0 # Calculated initial fluorescence
+sensor: sci_FIRe_Fm(nodim)            0 # Calculated maximum fluorescence
+sensor: sci_FIRe_FvFm(nodim)          0 # Calculated maximum quantum yield of
+sensor: sci_FIRe_s(nodim)             0 # Calculated Sigma-PSII
+sensor: sci_FIRe_p(nodim)             0 # Calculated connectivity factor
+sensor: sci_FIRe_par(nodim)           0 # Calculated PAR
+sensor: sci_FIRe_battery(volts)       0 # Battery volts measured by FIRe
+sensor: sci_FIRe_temp(degC)           0 # FIRe PCB temp
+sensor: sci_FIRe_frame_count(nodim)   0 # what it says
+sensor: sci_FIRe_error(nodim)         0 # unique number to indicate error type
+sensor: c_logger_on(sec)                  0 # in, 0 = on, -1 = off
+sensor: sci_logger_is_installed(bool)     0 # in, t--> installed on science
+sensor: sci_logger_status(enum)           0 # out
+sensor: c_logger_ctrl_timeout(sec)       -1 # in, -1  --> disable, i.e. logger ctrl bit is never lowered.
+sensor: sci_bbam_sim_is_installed(bool)  0 # in, t--> bbam is being simulated on science computer
+sensor: c_bbam_on(sec)                   0 # in, 0 = on, -1 = off
+sensor: c_bbam_num_fields_to_send(nodim) 6 # in, number of columns to send on each
+sensor: sci_bbam_is_installed(bool)      0 # in, t--> installed on science
+sensor: sci_bbam_beam_c(1/m)             0 # out, beam C
+sensor: sci_bbam_corr_sig(nodim)         0 # out, corrected signal value
+sensor: sci_bbam_raw_sig(nodim)          0 # out, raw signal value
+sensor: sci_bbam_raw_ref(nodim)          0 # out, raw reference value
+sensor: sci_bbam_therm(nodim)            0 # out, thermistor
+sensor: sci_bbam_timestamp(timestamp)    0 # secs since 1970
+sensor: c_uModem_on(sec)        0 # in, sets secs between measurements
+sensor: u_uModem_hes_secs(sec) 300.0  # how often to transmit HES messages
+sensor: u_uModem_num_errors_before_restart(nodim)  5 # number of errors before cycling
+sensor: u_uModem_SRC(nodim)  1   # SRC: [0-15] address of uModem on glider
+sensor: u_uModem_BND(enum)   1   # BND: Frequency Bank (1, 2, or 3 for band A, B,
+sensor: u_uModem_FML(nodim)  200 # PSK FM probe length, symbols
+sensor: u_uModem_CST(bool)   1   # Cycle statistics message 0 = off, 1 = on
+sensor: u_uModem_DTO(sec)    8   # Data request timeout in seconds
+sensor: sci_uModem_is_installed(bool) 0 # in, t--> installed on science
+sensor: sci_uModem_error(nodim)       0 # unique number to indicate error type
+sensor: sci_rinkoII_is_installed(bool) 0 # t--> installed on science
+sensor: c_rinkoII_on(sec) 2   # in, sets secs between measurements
+sensor: c_rinkoII_num_fields_to_send(nodim) 3
+sensor: sci_rinkoII_temp(degC)           0 # col 3, temperature
+sensor: sci_rinkoII_DO(%)                0 # col 4, disolved oxygen
+sensor: sci_rinkoII_voltage(volts)       0 # col 5, voltage output of oxygen sensor
+sensor: sci_rinkoII_timestamp(timestamp) 0 # secs since 1970 of data arrival
+sensor: c_dvl_on(sec)                0 # how often start ensembles in seconds
+sensor: u_dvl_pd_data_stream_select(enum)  0 # (0 or 6) Supports formats PD0 and PD6
+sensor: u_dvl_es_expected_salinity(ppt)        35 # (0 - 40) Expected salinity
+sensor: u_dvl_bk_water_mass_layer_mode(enum)    2 # 0 = Disables the water-mass layer ping
+sensor: u_dvl_num_errors_before_restart(nodim)  1 # number of errors before cycling power
+sensor: u_dvl_ensemble_timeout(sec)            20 # generate error and retry if no data
+sensor: u_dvl_single_pd0_file(bool)             0 # Select multiple (0) or single (1) pd0 file per segment
+sensor: sci_dvl_is_installed(bool)  0   # in, t--> installed on science
+sensor: sci_dvl_error(nodim)        0   # unique number to indicate error type
+sensor: sci_dvl_sa_pitch(deg)       0   # pitch in degrees
+sensor: sci_dvl_sa_roll(deg)        0   # roll in degrees
+sensor: sci_dvl_sa_heading(deg)     0   # heading in degrees
+sensor: sci_dvl_ts_timestamp(timestamp) 0 # secs since 1970
+sensor: sci_dvl_ts_sal(ppt)         0   # salinity in parts per thousand
+sensor: sci_dvl_ts_temp(degC)       0   # temp in degC
+sensor: sci_dvl_ts_depth(m)         0   # depth of transducer face in meters
+sensor: sci_dvl_ts_sound_speed(m/s) 0   # speed of sound in m/s
+sensor: sci_dvl_ts_bit(nodim)       0   # Built-in Test (BIT) result code
+sensor: sci_dvl_wi_x_vel(mm/s)      0   # X-axis vel. data in mm/s
+sensor: sci_dvl_wi_y_vel(mm/s)      0   # Y-axis vel. data in mm/s
+sensor: sci_dvl_wi_z_vel(mm/s)      0   # Z-axis vel. data in mm/s
+sensor: sci_dvl_wi_err_vel(mm/s)    0   # Error velocity data in mm/s
+sensor: sci_dvl_wi_vel_good(bool)   0   # Velocity data status 0=bad, 1=good
+sensor: sci_dvl_bi_x_vel(mm/s)      0   # X-axis vel. data in mm/s
+sensor: sci_dvl_bi_y_vel(mm/s)      0   # Y-axis vel. data in mm/s
+sensor: sci_dvl_bi_z_vel(mm/s)      0   # Z-axis vel. data in mm/s
+sensor: sci_dvl_bi_err_vel(mm/s)    0   # Error velocity data in mm/s
+sensor: sci_dvl_bi_vel_good(bool)   0   # Velocity data status 0=bad, 1=good
+sensor: sci_dvl_ws_transverse_vel(mm/s)   0 # Transverse vel. data in mm/s
+sensor: sci_dvl_ws_longitudinal_vel(mm/s) 0 # Longitudinal vel. data in mm/s
+sensor: sci_dvl_ws_normal_vel(mm/s)       0 # Normal vel. data in mm/s
+sensor: sci_dvl_ws_vel_good(bool)         0 # Vel. data status 0=bad, 1=good
+sensor: sci_dvl_bs_transverse_vel(mm/s)   0 # Transverse vel. data in mm/s
+sensor: sci_dvl_bs_longitudinal_vel(mm/s) 0 # Longitudinal vel. data in mm/s
+sensor: sci_dvl_bs_normal_vel(mm/s)       0 # Normal vel. data in mm/s
+sensor: sci_dvl_bs_vel_good(bool)         0 # Vel. data status 0=bad, 1=good
+sensor: sci_dvl_we_u_vel(mm/s)    0 # East  (u-axis) vel. data in mm/s
+sensor: sci_dvl_we_v_vel(mm/s)    0 # North (v-axis) vel. data in mm/s
+sensor: sci_dvl_we_w_vel(mm/s)    0 # Upward(w-axis) vel. data in mm/s
+sensor: sci_dvl_we_vel_good(bool) 0 # Vel. data status 0=bad, 1=good
+sensor: sci_dvl_be_u_vel(mm/s)    0 # East  (u-axis) vel. data in mm/s
+sensor: sci_dvl_be_v_vel(mm/s)    0 # North (v-axis) vel. data in mm/s
+sensor: sci_dvl_be_w_vel(mm/s)    0 # Upward(w-axis) vel. data in mm/s
+sensor: sci_dvl_be_vel_good(bool) 0 # Vel. data status 0=bad, 1=good
+sensor: sci_dvl_wd_u_dist(m)                     0 # East (u-axis) distance data in meters
+sensor: sci_dvl_wd_v_dist(m)                     0 # North (v-axis) distance data in meters
+sensor: sci_dvl_wd_w_dist(m)                     0 # Upward (w-axis) distance data in meters
+sensor: sci_dvl_wd_range_to_water_mass_center(m) 0 # Range to water-mass center in meters
+sensor: sci_dvl_wd_time_since_last_good_vel(sec) 0 # Time since last good-velocity estimate in seconds
+sensor: sci_dvl_bd_u_dist(m)                     0 # East (u-axis) distance data in meters
+sensor: sci_dvl_bd_v_dist(m)                     0 # North (v-axis) distance data in meters
+sensor: sci_dvl_bd_w_dist(m)                     0 # Upward (w-axis) distance data in meters
+sensor: sci_dvl_bd_range_to_bottom(m)            0 # Range to bottom in meters
+sensor: sci_dvl_bd_time_since_last_good_vel(sec) 0 # Time since last good-velocity estimate in seconds
+sensor: sci_dvl_ensemble_offset(nodim) 0  # Byte offset for each ensemble in the 
+sensor: c_flbbrh_on(sec)       0 # in, sets secs between measurements
+sensor: sci_flbbrh_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_flbbrh_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_flbbrh_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_flbbrh_chlor_cwo(nodim)     48 # clean water offset, nodim == counts
+sensor: u_flbbrh_bb_cwo(nodim)        48 # clean water offset, nodim == counts
+sensor: u_flbbrh_rhod_cwo(nodim)      58 # clean water offset, nodim == counts
+sensor: u_flbbrh_chlor_sf(ug/l/nodim)  0.0123 # scale factor to get units
+sensor: u_flbbrh_bb_sf(Mnodim)         3.653 # (0.000003653) scale factor to get units
+sensor: u_flbbrh_rhod_sf(ppb/nodim)    0.0430 # scale factor to get units
+sensor: sci_flbbrh_chlor_units(ug/l)    0 # derived from col 4
+sensor: sci_flbbrh_bb_units(nodim)      0 # derived from col 6
+sensor: sci_flbbrh_rhod_units(ppb)      0 # derived from col 8
+sensor: sci_flbbrh_chlor_sig(nodim)     0 # col 4
+sensor: sci_flbbrh_bb_sig(nodim)        0 # col 6
+sensor: sci_flbbrh_rhod_sig(nodim)      0 # col 8
+sensor: sci_flbbrh_chlor_ref(nodim)     0 # col 3
+sensor: sci_flbbrh_bb_ref(nodim)        0 # col 5
+sensor: sci_flbbrh_rhod_ref(nodim)      0 # col 7
+sensor: sci_flbbrh_temp(nodim)          0 # col 9
+sensor: sci_flbbrh_timestamp(timestamp) 0 # secs since 1970
+sensor: c_flur_on(sec)       0 # in, sets secs between measurements
+sensor: sci_flur_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_flur_num_fields_to_send(nodim) 4 # in, number of columns to send on each
+sensor: u_flur_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_flur_cwo(nodim)         50 # clean water offset, nodim == counts
+sensor: u_flur_sf(ppb/nodim)  0.0281 # scale factor to get units
+sensor: sci_flur_units(ppb)     0 # derived from col 4
+sensor: sci_flur_sig(nodim)     0 # col 4
+sensor: sci_flur_ref(nodim)     0 # col 3
+sensor: sci_flur_temp(nodim)    0 # col 5
+sensor: sci_flur_timestamp(timestamp) 0 # secs since 1970
+sensor: c_bb2flsV7_on(sec)   2 # in, sets secs between measurements
+sensor: sci_bb2flsV7_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_bb2flsV7_num_fields_to_send(nodim)   10 # in, number of columns to send on each
+sensor: u_bb2flsV7_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_bb2flsV7_b532_cwo(nodim)     46      # clean water offset, nodim == counts
+sensor: u_bb2flsV7_b650_cwo(nodim)     46      # clean water offset, nodim == counts
+sensor: u_bb2flsV7_chl_cwo(nodim)      40      # clean water offset, nodim == counts
+sensor: u_bb2flsV7_b532_sf(Mnodim)      7.683  # scale factor (0.000007683)
+sensor: u_bb2flsV7_b650_sf(Mnodim)      3.893  # scale factor (0.000003893)
+sensor: u_bb2flsV7_chl_sf(ug/l/nodim)   0.0121 # scale factor to get units
+sensor: sci_bb2flsV7_b532_scaled(nodim)   0 # derived from col 4
+sensor: sci_bb2flsV7_b650_scaled(nodim)   0 # derived from col 6
+sensor: sci_bb2flsV7_chl_scaled(ug/l)     0 # derived from col 8
+sensor: sci_bb2flsV7_b532_sig(nodim)      0 # col 4
+sensor: sci_bb2flsV7_b650_sig(nodim)      0 # col 6
+sensor: sci_bb2flsV7_chl_sig(nodim)       0 # col 8
+sensor: sci_bb2flsV7_b532_ref(nodim)      0 # col 3
+sensor: sci_bb2flsV7_b650_ref(nodim)      0 # col 5
+sensor: sci_bb2flsV7_chl_ref(nodim)       0 # col 7
+sensor: sci_bb2flsV7_therm(nodim)         0 # col 9
+sensor: sci_bb2flsV7_timestamp(timestamp) 0 # secs since 1970
+sensor: c_flbbcd_on(sec)       0 # in, sets secs between measurements
+sensor: sci_flbbcd_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_flbbcd_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_flbbcd_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_flbbcd_chlor_cwo(nodim)     35 # clean water offset, nodim == counts
+sensor: u_flbbcd_bb_cwo(nodim)        49 # clean water offset, nodim == counts
+sensor: u_flbbcd_cdom_cwo(nodim)      47 # clean water offset, nodim == counts
+sensor: u_flbbcd_chlor_sf(ug/l/nodim)  0.0119 # scale factor to get units
+sensor: u_flbbcd_bb_sf(Mnodim)         3.522 # (0.000003522) scale factor to get units
+sensor: u_flbbcd_cdom_sf(ppb/nodim)    0.0919 # scale factor to get units
+sensor: sci_flbbcd_chlor_units(ug/l)    0 # derived from col 4
+sensor: sci_flbbcd_bb_units(nodim)      0 # derived from col 6
+sensor: sci_flbbcd_cdom_units(ppb)      0 # derived from col 8
+sensor: sci_flbbcd_chlor_sig(nodim)     0 # col 4
+sensor: sci_flbbcd_bb_sig(nodim)        0 # col 6
+sensor: sci_flbbcd_cdom_sig(nodim)      0 # col 8
+sensor: sci_flbbcd_chlor_ref(nodim)     0 # col 3
+sensor: sci_flbbcd_bb_ref(nodim)        0 # col 5
+sensor: sci_flbbcd_cdom_ref(nodim)      0 # col 7
+sensor: sci_flbbcd_therm(nodim)         0 # col 9
+sensor: sci_flbbcd_timestamp(timestamp) 0 # secs since 1970
+sensor: sci_dmon_is_installed(bool) 0 # t--> installed on science
+sensor: c_dmon_on(sec)   0           # >= 0 enables the device
+sensor: u_dmon_ctd_msg_period(sec) 0 # How often to send ctd data to the DMON, this
+sensor: sci_dmon_msg_byte_count(nodim) 0 # message byte count for open disk file
+sensor: sci_suna_is_installed(bool) 0 # t--> installed on science
+sensor: c_suna_on(sec)    0                         # >= 0 enables the device 
+sensor: u_suna_num_errors_before_restart(nodim)  5  # number of errors before cycling
+sensor: u_suna_bootup_time(sec)                  10 # bootup time of the SUNA sensor
+sensor: f_suna_firmware_cfg(enum)                 0 # SUNA Firmware configuration.
+sensor: sci_suna_record_offset(bytes)             0 # message byte count for open disk file
+sensor: sci_suna_nitrate_um(uMol/L)               0 # Nitrate concentration in uMol/L
+sensor: sci_suna_nitrate_mg(mg/L)                 0 # Nitrate concentration in mg/L
+sensor: sci_suna_timestamp(sec)                   0 # Timestamp of sample
+sensor: c_c3sfl_on(sec)  0             # in, sets secs between measurements
+sensor: c_c3sfl_num_fields_to_send(nodim)  4
+sensor: sci_c3sfl_is_installed(bool) 0 # in, t--> installed on science
+  sensor: sci_c3sfl_chlorophyll(rfu)     0 # col 3 Relative Fluorescence Units
+  sensor: sci_c3sfl_phycoerythrin(rfu)   0 # col 4
+  sensor: sci_c3sfl_turbidity(rfu)       0 # col 5
+  sensor: sci_c3sfl_cdom(rfu)            0 # col 6
+  sensor: sci_c3sfl_depth(m)             0 # col 7
+  sensor: sci_c3sfl_temp(degC)           0 # col 8
+  sensor: sci_c3sfl_timestamp(timestamp) 0 # secs since 1970
+sensor: sci_satpar_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_satpar_on(sec)  0            # in, sets secs between measurements
+sensor: c_satpar_num_fields_to_send(nodim)  3
+sensor: u_satpar_is_calibrated(bool)    0 # needs to be set in autoexec.mi  
+sensor: u_satpar_immersion_coeff(nodim) 1.3589     # calibration coeffients
+sensor: u_satpar_dark_offset(nodim)     2156930000 #     "           "
+sensor: u_satpar_slope(Mnodim)          2.44356    # (0.00000244356)
+sensor: sci_satpar_par(umol-photons/m^2/s) 0 # derived from col 3
+sensor: sci_satpar_raw_counts(nodim)       0 # col 3
+sensor: sci_satpar_timer(sec)              0 # col 2
+sensor: sci_satpar_timestamp(timestamp)    0 # secs since 1970  
+sensor: c_vsf_on(sec)       0 # in, sets secs between measurements
+sensor: sci_vsf_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_vsf_num_fields_to_send(nodim) 7 # in, number of columns to send on each
+sensor: u_vsf_is_calibrated(bool) 0 # false, assume not calibrated
+sensor: u_vsf_100_dc(nodim)  49    # dark counts, nodim == counts
+sensor: u_vsf_125_dc(nodim)  50    # dark counts, nodim == counts
+sensor: u_vsf_150_dc(nodim)  40    # dark counts, nodim == counts
+sensor: u_vsf_100_sf(Mnodim) 4.820 # (0.000004820) scale factor to get units
+sensor: u_vsf_125_sf(Mnodim) 3.527 # (0.000003527) scale factor to get units
+sensor: u_vsf_150_sf(Mnodim) 3.006 # (0.000003006) scale factor to get units
+sensor: sci_vsf_100_scaled(nodim)    0 # derived from col 4
+sensor: sci_vsf_125_scaled(nodim)    0 # derived from col 5
+sensor: sci_vsf_150_scaled(nodim)    0 # derived from col 6
+sensor: sci_vsf_100_sig(nodim)       0 # col 4
+sensor: sci_vsf_125_sig(nodim)       0 # col 5
+sensor: sci_vsf_150_sig(nodim)       0 # col 6
+sensor: sci_vsf_therm(nodim)         0 # col 7
+sensor: sci_vsf_timestamp(timestamp) 0 # secs since 1970
+sensor: c_oxy4_on(sec)              0 # in, sets secs between measurements
+sensor: sci_oxy4_is_installed(bool) 0 # in, t--> installed on science
+sensor: c_oxy4_num_fields_to_send(nodim) 10 # in, number of columns to send on each
+sensor: u_oxy4_slow_surface_mode(bool) 1 # default for 4330f, make false for 4831 model.
+sensor: sci_oxy4_oxygen(uM)           0 # col 3, O2 Concentration
+sensor: sci_oxy4_saturation(%)        0 # col 4, air saturation
+sensor: sci_oxy4_temp(degC)           0 # col 5, temperature
+sensor: sci_oxy4_calphase(deg)        0 # col 6, CalPhase
+sensor: sci_oxy4_tcphase(deg)         0 # col 7, TCPhase
+sensor: sci_oxy4_c1rph(deg)           0 # col 8, C1RPh
+sensor: sci_oxy4_c2rph(deg)           0 # col 9, C2RPh
+sensor: sci_oxy4_c1amp(mV)            0 # col 10, C1Amp
+sensor: sci_oxy4_c2amp(mV)            0 # col 11, C2Amp
+sensor: sci_oxy4_rawtemp(mV)          0 # col 12, RawTemp
+sensor: sci_oxy4_timestamp(timestamp) 0 # secs since 1970
+sensor: c_gamma_rad5_on(sec)                        0 # >= 0 enables the device
+sensor: u_gamma_rad5_status_period(sec)            60 # how often to request status packets
+sensor: u_gamma_rad5_files_before_surfacing(nodim)  5 # number of files to collect before
+sensor: sci_gamma_rad5_is_installed(bool)  0  # in, t--> installed on science
+sensor: sci_gamma_rad5_file_count(nodim)      # number of spectrum packets acquired
+sensor: sci_gamma_rad5_error(enum)            # unique number to indicate error type
+sensor: c_bsipar_on(sec)  0          # in, sets secs between measurements
+sensor: c_bsipar_num_fields_to_send(nodim)  4
+sensor: u_bsipar_is_calibrated(bool) 0 # needs to be set in autoexec.mi
+sensor: u_bsipar_dark_offset(volts)   0.0101 # 10.1 mV
+sensor: u_bsipar_scale_factor(Mnodim) 589.7  # (0.0005897 volts/uE/m^2sec) 
+sensor: sci_bsipar_is_installed(bool)  0   # in, t--> installed on science
+sensor: sci_bsipar_par(uE/m^2sec)          # derived from col 1
+sensor: sci_bsipar_sensor_volts(volts)     # col 1
+sensor: sci_bsipar_temp(degC)              # col 2
+sensor: sci_bsipar_supply_volts(volts)     # col 3
+sensor: sci_bsipar_timestamp(timestamp)    # secs since 1970
+sensor: c_flbb_on(sec)                    0 # in, sets secs between measurements
+sensor: sci_flbb_is_installed(bool)       0 # in, t--> installed on science
+sensor: c_flbb_num_fields_to_send(nodim)  4 # in, number of columns to send on each
+sensor: u_flbb_is_calibrated(bool)        0 # false, assume not calibrated
+sensor: u_flbb_chlor_do(nodim)      51     # dark water offset, nodim == counts
+sensor: u_flbb_bb_do(nodim)         52     # dark water offset, nodim == counts
+sensor: u_flbb_chlor_sf(ug/l/nodim) 0.0072 # scale factor to get units
+sensor: u_flbb_bb_sf(Mnodim)        1.921  # really 0.000001921 (see Mnodim doco above)
+sensor: sci_flbb_chlor_units(ug/l)    0 # derived from col 4
+sensor: sci_flbb_bb_units(nodim)      0 # derived from col 6
+sensor: sci_flbb_chlor_sig(nodim)     0 # col 4
+sensor: sci_flbb_bb_sig(nodim)        0 # col 6
+sensor: sci_flbb_chlor_ref(nodim)     0 # col 3
+sensor: sci_flbb_bb_ref(nodim)        0 # col 5
+sensor: sci_flbb_therm(nodim)         0 # col 7
+sensor: sci_flbb_timestamp(timestamp) 0 # secs since 1970
+sensor: c_vr2c_on(sec)                    -1 # in, sets secs between measurements
+sensor: sci_vr2c_is_installed(bool)        0 # in, 1-->installed on science
+sensor: c_vr2c_num_fields_to_send(nodim)   2 # number of fields to send to science.
+sensor: sci_vr2c_state(nodim)            -1 # current state of the VR2C proglet
+sensor: c_echosndr853_on(sec)               -1
+sensor: sci_echosndr853_is_installed(bool)   0
+sensor: sci_echosndr853_ping_count(nodim)    0
+sensor: c_ctd41cp2_on(sec)  0          # in, sets secs between measurements
+sensor: sci_ctd41cp2_is_installed(bool) 0 # in, t--> ctd installed on science
+sensor: c_ctd41cp2_num_fields_to_send(nodim)   3 # in, number of columns to send on each
+sensor: sci_water_cond2(S/m) 3              # out, conductivity    f#=1
+sensor: sci_water_temp2(degC) 10            # out                  f#=2
+sensor: sci_water_pressure2(bar) 0          # out                  f#=3
+sensor: sci_ctd41cp2_timestamp(timestamp) 0 # out, secs since 1970 f#=4
+sensor: c_console_on(bool)              2.0  # in  0 power it off
+sensor: u_console_reqd_cd_off_time(sec)   15.0 # in, how long without CD before powering off
+sensor: m_console_on(bool)              1.0  # out, power state of RF modem
+sensor: m_console_cd(bool)              1.0  # out, state of RF modem carrier detect
+sensor: u_console_off_if_mission_iridium(bool) 1.0 #! visible = True
+sensor: f_ignore_console_cd_time(sec)   5.0  # in, how long to "filter", i.e. ignore
+sensor: m_chars_tossed_with_power_off(nodim) 0 # out, chars eaten with power off
+sensor: m_chars_tossed_with_cd_off(nodim)    0 # out, chars eaten with CD off
+sensor: m_chars_tossed_by_abend(nodim)       0 # out, chars eaten by abend
+sensor: u_console_announce_time(sec)  60    # controls how often glidername
+sensor: x_console_announcement_made(nodim) 0 # incremented whenever an announcement is made
+sensor: u_gliderbus_debug(nodim)   0.0
+sensor: c_coulomb_on(sec)        0    # required by gb_devdrvr paradigm
+sensor: u_coulomb_debug(nodim)   0
+sensor: f_coulomb_calibration_factor(%) .05 # calibration factor for the
+sensor: m_coulomb_amphr(amp-hrs)       0.0   # integrated current, i.e. energy
+sensor: m_coulomb_current(amp)         0.0   # instantaneous current
+sensor: m_coulomb_amphr_raw(nodim)     0.0
+sensor: m_coulomb_current_raw(nodim)   0.0
+sensor: m_coulomb_amphr_total(amp-hrs) 0.0   # persistant amp-hours total
+sensor: f_coulomb_battery_capacity(amp-hrs) 720.0 # nominal battery capacity
+sensor: s_coulomb_relative_charge(%)  50.0        # Simulated relative charge (wall_power provided in simul.sim)   
+sensor: f_fin_safety_max(rad) 0.47  # in, damage to glider
+sensor: c_fin(rad) 0      # in, >0 vehicle turns right
+sensor: x_last_commanded_fin_pos(rad)  0 # stores the last commanded fin position.
+sensor: m_fin(rad)        # out
+sensor: f_clock_source(enum)   1    # in, defines the real time clock source.
+sensor: x_are_simulating(enum)   0   # out
+sensor: s_hardware_ver(nodim)   128  # what no_electronics reports for X_HARDWARE_VER
+sensor: s_hardware_cop_jumper(bool) 0 # simulated jumper setting for no_electronics only
+sensor: xs_water_depth(m) 30.0  # How deep the water is (COMPUTED! do not set directly)
+sensor: s_water_depth_avg(m)         30.0
+sensor: s_water_depth_delta(m)        0.0
+sensor: s_water_depth_wavelength(m) 100.0
+sensor: s_water_cond(S/m)   4.0  # conductivity, How salty it is
+sensor: xs_water_temp(degC) 00  # How warm water is, (COMPUTED! do not set directly)
+  sensor: s_water_temp_surface(degc)   20.0   # temp above
+  sensor: s_water_temp_depth_inft(m)    5.0   #      this depth (inflection top)
+  sensor: s_water_temp_bottom(degc)     4.0   # temp below
+  sensor: s_water_temp_depth_infb(m)  500.0   #      this depth (inflection bottom)
+sensor: xs_vehicle_temp(degC)  25.0   # How warm vehicle is
+sensor: s_vehicle_temp_tc(1/sec) 0.01 #    tc ==> time constant
+sensor: s_wind_speed(m/s)      9.0  # how fast the wind is blowing, 3.0 ==> 5.4 knots
+sensor: s_wind_direction(rad) 0.0  # Direction wind is blowing FROM
+sensor: s_water_speed(m/s)      0.05     # Current speed,   0.5 ==> 1knot
+sensor: s_water_direction(rad)  4.712    # direction current is going TO,
+sensor: s_mag_var(rad) 0.2810     # mag_heading = true_heading + mag_var
+sensor: xs_wax_temp(degC)         20    # temperature of working fluid
+sensor: xs_wax_frac_frozen(nodim)  0    # what fraction of the fluid is frozen
+sensor:  s_wax_freeze_temp(degC)  10    # where it freezes
+sensor: xs_thermal_aft_oil_vol(cc)   # simulated oil volume in the aft bladder
+sensor: xs_thermal_int_oil_vol(cc)   # simulated oil volume in the interior reservoir
+sensor: xs_thermal_tube_oil_vol(cc)  # simulated oil volume in the external tube
+sensor: xs_thermal_acc_oil_vol(cc)   # simulated oil volume in the accumulator
+sensor: xs_lat(deg)     4138.051  # Ashumet
+sensor: xs_lon(deg)    -7032.124
+sensor: s_ini_lat(deg)     69696969      # these are purposely set to
+sensor: s_ini_lon(deg)     69696969      # unreasonable values
+sensor: x_simulated_position_moved(bool) 0 # non-zero means user moved simulated position
+sensor: s_de_oil_pot_volt_flux(volts/sec) 0.0031
+sensor: x_simdrvr_ran(out)    0    # out, set to 1 on every simdrvr_ctrl() call
+sensor: xs_battpos(in)        0    # simdrvr.c, do_glider_internals()
+sensor: xs_battroll(rad)      0
+sensor: xs_ballast_pumped(cc) 0
+sensor: xs_fluid_pumped(cc)   0
+sensor: xs_fin(rad)           0
+sensor: xs_roll(rad)          0   # simdrvr.c, do_glider_attitude()
+sensor: xs_pitch(rad)         0
+sensor: xs_depth(m)            0    # simdrvr.c, do_glider_depth()
+sensor: xs_altitude(m)         0    #            how far above bottm
+sensor: xs_vert_speed(m/s)     0    #            veh vert speed thru water
+sensor: s_ocean_pressure_min(volts) 0.20 # used to generate voltage for 0 pressure
+sensor: xs_pressure_drift(volts) 0  #            integrated pressure drift
+sensor: xs_pressure_noise(bar)   0  # simulated random noise to be added to simulated pressure reading
+sensor: xs_hdg_rate(rad/sec)    0
+sensor: xs_heading(rad)       0
+sensor: xs_speed(m/s)         0    # veh horz speed thru water
+sensor: xs_vx_lmc(m/s) 0  # vehicle horizontal velocity OVER GROUND
+sensor: xs_vy_lmc(m/s) 0
+sensor: xs_x_lmc(m)  0     # vehicle position in Local Mission Coordinates
+sensor: xs_y_lmc(m)  0     # (0,0) at mission start Y axis is magnetic north
+sensor: s_corrupted_altitude(bool)          0  # altimeter
+sensor: s_corrupted_gps(bool)               0  # The gps, valid or invalid
+sensor: s_corrupted_gps_error(bool)         0  # The gps, error added to fix
+sensor: s_corrupted_watchdog_oddity(bool)   0  # watchdog generated oddity
+sensor: s_corrupted_bpump_stalled(bool)     0  # buoyancy pump "jammed"
+sensor: s_corrupted_bpump_overheated(bool)  0  # buoyancy pump overheat bit went high
+sensor: s_corrupted_pitch_stalled(bool)     0  # pitch motor "jammed"
+sensor: s_corrupted_memory_leak(bool)       0  # We leaked some heap memory
+sensor: s_corrupted_pressure_drift(bool)    0  # we generated a pressure drift
+sensor: s_corrupted_pressure_spike(bool)    0  # we generated an ocean pressure spike
+sensor: s_corrupted_pressure_noise(bool)    0  # we generated ocean pressure noise
+sensor: xs_x_lmc_error(m)   0 # m_x/y_lmc - s_x/y_lmc
+sensor: xs_y_lmc_error(m)   0
+sensor: xs_speed_error(m/s) 0 #xs_speed_error = m_speed - xs_speed
+sensor: u_test_driver_errors_per_min(nodim)   0.0 # Only for testing error handling
+sensor: u_test_driver_warnings_per_min(nodim) 0.0 # Only for testing error handling
+sensor: u_test_driver_oddities_per_min(nodim) 0.0 # Only for testing error handling
+sensor: u_dbd_sensor_list_xmit_control(enum)  1 # -1 = always transmit header, compatibility mode
+sensor: u_sci_dbd_sensor_list_xmit_control(enum)  0 # -1 = always transmit header, compatibility mode
+sensor: x_science_logging_state(enum)  99 # 0  = pending turn on
+sensor: u_reqd_disk_space(Mbytes)    10.0 # How much disk space do we want to keep free
+sensor: m_disk_usage(Mbytes)         0.0  # How much disk space is currently used on glider
+sensor: sci_m_disk_usage(Mbytes)     0.0  # How much disk space is currently used on science
+sensor: m_disk_free(Mbytes)          0.0  # How much disk space is currently free on glider
+sensor: sci_m_disk_free(Mbytes)      0.0  # How much disk space is currently free on science
+sensor: x_disk_files_removed(nodim)  0    # Count of how many files pruned last time on glider
+sensor: sci_x_disk_files_removed(nodim) 0 # Count of how many files pruned last time on science
+sensor: u_freewave_data_rate(KBps)   3.0  # Nominal data throughput on Freewave kilobytes per second
+sensor: u_iridium_data_rate(KBps)    0.1  # Nominal data throughput on Iridium kilobytes per second
+behavior: abend
+    b_arg: overdepth(m)                10000.0 # <0 disables,
+    b_arg: overdepth_sample_time(sec)     15.0     #! simple=False
+    b_arg: overtime(sec)                  -1.0 # < 0 disables
+    b_arg: undervolts(volts)              10.0 # < 0 disables
+    b_arg: undervolts_sample_time(sec)    60.0     #! simple=False
+    b_arg: samedepth_for(sec)             1800.0   #! simple=False
+    b_arg: samedepth_for_sample_time(sec)   30.0   #! simple=False
+    b_arg: stalled_for(sec)             1800.0     #! simple=False
+    b_arg: stalled_for_sample_time(sec) 1800.0     #! simple=False
+    b_arg: no_cop_tickle_for(sec)      48600.0     #! simple=False
+    b_arg: no_cop_tickle_percent(%)       -1.0     #! simple=False
+    b_arg: eng_pressure_mul(nodim)      0.90       #! simple=False
+    b_arg: eng_pressure_sample_time(sec)  15.0     #! simple=False
+    b_arg: max_wpt_distance(m)          -1.0 # MS_ABORT_WPT_TOOFAR
+    b_arg: chk_sensor_reasonableness(bool) 1       #! simple=False
+    b_arg: reqd_spare_heap(bytes)      50000       #! simple=False
+    b_arg: leakdetect_sample_time(sec)  60.0       #! simple=False
+    b_arg: vacuum_min(inHg)              4.0  # MS_ABORT_VACUUM, M_VACUUM out of limits
+    b_arg: vacuum_max(inHg)             12.0
+    b_arg: vacuum_sample_time(sec)     120.0  # <0 disables check
+    b_arg: oil_volume_sample_time(sec) 180.0       #! simple=False
+    b_arg: max_allowable_busy_cpu_cycles(cycles) 75 #! simple=False
+    b_arg: remaining_charge_min(%)             10.0  # MS_ABORT_CHARGE_MIN out of limits
+    b_arg: remaining_charge_sample_time(sec) 60.0  #! simple=False
+    b_arg: use_thruster_for_ascent(bool) 0.0               #! simple=False
+behavior: surface
+    b_arg: args_from_file(enum) -1                 #! ignore=True
+    b_arg: start_when(enum)     12                 #! choices=start_when([0, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13])
+    b_arg: when_secs(sec)     1200                 #! min = 120.0
+    b_arg: when_wpt_dist(m)  10                    #! min = 5.0
+    b_arg: end_action(enum) 1                      #! choices=end_action([0, 1, 2, 3, 4, 5]) 
+    b_arg: report_all(bool) 0                      #! simple=False
+    b_arg: gps_wait_time(sec) 300                  #! min = 120.0
+    b_arg: keystroke_wait_time(sec) 300            #! min = 0.0; max = 900.0
+    b_arg: end_wpt_dist(m) 0                       #! min = 0.0
+    b_arg: c_use_bpump(enum)      2                #! choices=use_bpump
+    b_arg: c_bpump_value(X)  1000.0                #! min = 0.0; max = 1000.0
+    b_arg: c_use_pitch(enum)      3                #! choices=use_pitch
+    b_arg: c_pitch_value(X)  0.4363                #! min = minPitch; max = maxPitch
+    b_arg: c_stop_when_air_pump(bool)  0           # Terminate climb once air pump has been inflated. For use with thruster only.
+    b_arg: c_use_thruster(enum)   0               # 0  Not in use
+    b_arg: c_thruster_value(X)   0.0              # use_thruster == 0  None
+    b_arg: printout_cycle_time(sec) 60.0           #! simple=False
+    b_arg: gps_postfix_wait_time(sec) 60.0         #! simple=False
+    b_arg: force_iridium_use(nodim)  0.0           #! simple=False
+    b_arg: min_time_between_gps_fixes(sec)  300.0  #! simple=False
+    b_arg: sensor_input_wait_time(sec)  10.0       #! simple=False
+    b_arg: when_utc_min(min)        -1             #! simple=False; min = -1; max = 59
+    b_arg: when_utc_hour(hour)      -1             #! simple=False; min = -1; max = 23
+    b_arg: when_utc_day(day)        -1             #! simple=False; min = -1; max = 31
+    b_arg: when_utc_month(month)    -1             #! simple=False; min = -1; max = 12
+    b_arg: when_utc_on_surface(bool) 0             #! simple=False
+    b_arg: strobe_on(bool)         0               # Behavior argument to control the strobe light
+    b_arg: thruster_burst(bool)         1          # Behavior argument to turn thruster on
+behavior: goto_wpt                                 #! visible = False
+    b_arg: start_when(enum) 0                      #! choices=start_when([0, 1, 2, 4])
+    b_arg: stop_when(enum)  2                      #! choices=stop_when([1, 2, 5, 7])
+    b_arg: when_wpt_dist(m) 0                      #! min = 5.0
+    b_arg: wpt_units(enum)  0                      #! choices=wpt_units
+    b_arg: wpt_x(X)         0     # The waypoint (east or lon)
+    b_arg: wpt_y(X)         0     #              (north or lat)
+    b_arg: utm_zd(byte)   19.0   #     UTM Zone as digit (see coord_sys.h)
+    b_arg: utm_zc(byte)   19.0   # (T) UTM Zone as char (see coord_sys.h)
+    b_arg: end_action(enum) 0                      #! choices=end_action([0, 1, 2, 3, 4, 5])
+behavior: goto_list
+    b_arg: args_from_file(enum) -1                 #! ignore=True
+    b_arg: start_when(enum)      0   # See doco above
+    b_arg: num_waypoints(nodim)  0                 #! min = 1; max = 8
+    b_arg: num_legs_to_run(nodim) -1               #! min = -2
+    b_arg: initial_wpt(enum)      -2               #! min = -2; max = 7
+    b_arg: list_stop_when(enum)  7                 #! choices = stop_when([1, 2, 5, 7])
+    b_arg: list_when_wpt_dist(m) 10.               #! min = 10.0
+    b_arg: end_action(enum)  0                     #! choices = end_action([0, 6])
+    b_arg: wpt_units_0(enum) 0                     #! ignore=True
+    b_arg: wpt_x_0(X)        0        # The waypoint (east or lon)
+    b_arg: wpt_y_0(X)        0        #              (north or lat)
+    b_arg: wpt_units_1(enum) 0                     #! ignore=True
+    b_arg: wpt_x_1(X)        0
+    b_arg: wpt_y_1(X)        0
+    b_arg: wpt_units_2(enum) 0                     #! ignore=True
+    b_arg: wpt_x_2(X)        0
+    b_arg: wpt_y_2(X)        0
+    b_arg: wpt_units_3(enum) 0                     #! ignore=True
+    b_arg: wpt_x_3(X)        0
+    b_arg: wpt_y_3(X)        0
+    b_arg: wpt_units_4(enum) 0                     #! ignore=True
+    b_arg: wpt_x_4(X)        0
+    b_arg: wpt_y_4(X)        0
+    b_arg: wpt_units_5(enum) 0                     #! ignore=True
+    b_arg: wpt_x_5(X)        0
+    b_arg: wpt_y_5(X)        0
+    b_arg: wpt_units_6(enum) 0                     #! ignore=True
+    b_arg: wpt_x_6(X)        0
+    b_arg: wpt_y_6(X)        0
+    b_arg: wpt_units_7(enum) 0                     #! ignore=True
+    b_arg: wpt_x_7(X)        0
+    b_arg: wpt_y_7(X)        0
+behavior: yo
+    b_arg: args_from_file(enum) -1                 #! ignore=True
+    b_arg: start_when(enum)      2                 #! choices=start_when([0, 1, 2, 4])
+    b_arg: start_diving(bool)    1   # T-> dive first, F->climb first
+    b_arg: num_half_cycles_to_do(nodim) -1         #! min = -1
+    b_arg: d_target_depth(m)     12                #! min = 3.0; max = 1000.0
+    b_arg: d_target_altitude(m)   5                #! min = -1; max = 100.0
+    b_arg: d_use_bpump(enum)      2                #! choices=use_bpump
+    b_arg: d_bpump_value(X) -1000.0                #! min = -1000; max = 1000
+    b_arg: d_use_pitch(enum)      3                #! choices=use_pitch 
+    b_arg: d_pitch_value(X) -0.4538                #! min = -maxPitch; max = -minPitch
+    b_arg: d_stop_when_hover_for(sec) 180.0        #! simple=False
+    b_arg: d_stop_when_stalled_for(sec) 240.0      #! simple=False
+    b_arg: d_speed_min(m/s)	-100.0	               #! simple = False; min = -100.0; max = 0.3
+    b_arg: d_speed_max(m/s)	100.0                  #! simple = False; min = 0.05; max = 100.0
+    b_arg: d_use_thruster(enum)   0                #! choices = use_thruster	
+    b_arg: d_thruster_value(X)   0.0               #! min = minThruster; max = maxThruster
+    b_arg: d_depth_rate_method(enum) 3             #! simple = False; choices = depth_rate_method
+    b_arg: d_wait_for_pitch(bool) 1                #! simple = False
+    b_arg: d_wait_for_ballast(sec) 100.0           #! simple = False
+    b_arg: d_delta_bpump_speed(X) 50.0             #! simple = False; min = 10.0; max = 100.0
+    b_arg: d_delta_bpump_ballast(X) 25.0           #! simple = False; min = 10.0; max = 100.0
+    b_arg: d_time_ratio(X) 1.1		               #! simple = False; min = 0.0; max = 2.0
+    b_arg: d_use_sc_model(bool)	0                  #! simple = False
+    b_arg: d_max_thermal_charge_time(sec) 1200.0   #! simple = False
+    b_arg: d_max_pumping_charge_time(sec) 300.0    #! simple = False
+    b_arg: d_thr_reqd_pres_mul(nodim) 1.50         #! simple = False
+    b_arg: c_target_depth(m)      3                #! min = 3.0; max = 1000.0
+    b_arg: c_target_altitude(m)  -1                #! simple = False
+    b_arg: c_use_bpump(enum)      2                #! choices = use_bpump
+    b_arg: c_bpump_value(X)  1000.0                #! min = -1000.0; max = 1000.0
+    b_arg: c_use_pitch(enum)      3                #! choices = use_pitch
+    b_arg: c_pitch_value(X)  0.4538                #! min = minPitch; max = maxPitch
+    b_arg: c_stop_when_hover_for(sec) 180.0        #! simple=False
+    b_arg: c_stop_when_stalled_for(sec) 240.0      #! simple=False
+    b_arg: c_speed_min(m/s)	100.0              #! min = -0.3; max = 100.0
+    b_arg: c_speed_max(m/s)	-100.0             #! min = -100.0; max = 0.05
+    b_arg: c_use_thruster(enum)   0                #! choices = use_thruster	
+    b_arg: c_thruster_value(X)   0.0             #! min = minPitch; max = maxPitch			
+    b_arg: end_action(enum)       2                #! choices = end_action([0, 2])
+behavior: prepare_to_dive
+    b_arg: args_from_file(enum) -1                 #! ignore = True
+    b_arg: start_when(enum) 0                      #! choices = start_when([0, 1, 2])
+    b_arg: wait_time(sec) 720     # 12minutes, how long to wait for gps
+    b_arg: max_thermal_charge_time(sec) 120        #! simple = False
+    b_arg: max_pumping_charge_time(sec) 1000       #! simple = False
+behavior: sensors_in                               #! visible = False
+    b_arg: c_att_time(sec)          -1.0
+    b_arg: c_pressure_time(sec)     -1.0
+    b_arg: c_alt_time(sec)          -1.0
+    b_arg: u_battery_time(sec)      -1.0
+    b_arg: u_vacuum_time(sec)       -1.0
+    b_arg: c_leakdetect_time(sec)   -1.0
+    b_arg: c_gps_on(bool)            0.0  # Special, 1 is on, 0 is off
+    b_arg: c_science_all_on(sec)    -1.0
+    b_arg: c_profile_on(sec)        -1.0
+    b_arg: c_bb2f_on(sec)           -1.0
+    b_arg: c_bb2c_on(sec)           -1.0
+    b_arg: c_bb2lss_on(sec)         -1.0
+    b_arg: c_sam_on(sec)            -1.0
+    b_arg: c_moteopd_on(sec)        -1.0
+    b_arg: c_bbfl2s_on(sec)         -1.0
+    b_arg: c_fl3slo_on(sec)         -1.0
+    b_arg: c_bb3slo_on(sec)         -1.0
+    b_arg: c_oxy3835_on(sec)        -1.0
+    b_arg: c_whfctd_on(sec)         -1.0
+    b_arg: c_bam_on(sec)            -1.0
+    b_arg: c_ocr504R_on(sec)        -1.0
+    b_arg: c_ocr504I_on(sec)        -1.0
+    b_arg: c_flntu_on(sec)          -1.0
+    b_arg: c_fl3slov2_on(sec)       -1.0
+    b_arg: c_bb3slov2_on(sec)       -1.0
+    b_arg: c_ocr507R_on(sec)        -1.0
+    b_arg: c_ocr507I_on(sec)        -1.0
+    b_arg: c_bb3slov3_on(sec)       -1.0
+    b_arg: c_bb2fls_on(sec)         -1.0
+    b_arg: c_bb2flsV2_on(sec)       -1.0
+    b_arg: c_oxy3835_wphase_on(sec) -1.0
+    b_arg: c_auvb_on(sec)           -1.0
+    b_arg: c_bb2fV2_on(sec)         -1.0
+    b_arg: c_tarr_on(sec)           -1.0
+    b_arg: c_bbfl2sV2_on(sec)       -1.0
+    b_arg: c_glbps_on(sec)          -1.0
+    b_arg: c_sscsd_on(sec)          -1.0
+    b_arg: c_bb2flsV3_on(sec)       -1.0
+    b_arg: c_fire_on(sec)           -1.0
+    b_arg: c_bb2flsV4_on(sec)       -1.0
+    b_arg: c_bb2flsV5_on(sec)       -1.0
+    b_arg: c_logger_on(sec)         -1.0
+    b_arg: c_bbam_on(sec)           -1.0
+    b_arg: c_uModem_on(sec)         -1.0
+    b_arg: c_rinkoII_on(sec)        -1.0
+    b_arg: c_dvl_on(sec)            -1.0
+    b_arg: c_bb2flsV6_on(sec)       -1.0
+    b_arg: c_flbbrh_on(sec)         -1.0
+    b_arg: c_flur_on(sec)           -1.0
+    b_arg: c_bb2flsV7_on(sec)       -1.0
+    b_arg: c_flbbcd_on(sec)         -1.0
+    b_arg: c_dmon_on(sec)           -1.0
+    b_arg: c_c3sfl_on(sec)          -1.0
+    b_arg: c_suna_on(sec)           -1.0
+    b_arg: c_satpar_on(sec)         -1.0
+    b_arg: c_vsf_on(sec)            -1.0
+    b_arg: c_oxy4_on(sec)           -1.0
+    b_arg: c_gamma_rad5_on(sec)     -1.0
+    b_arg: c_bsipar_on(sec)         -1.0
+    b_arg: c_flbb_on(sec)           -1.0
+    b_arg: c_vr2c_on(sec)           -1.0
+    b_arg: c_ctd41cp2_on(sec)       -1.0
+    b_arg: c_echosndr853_on(sec)    -1.0
+behavior: set_heading
+    b_arg: use_heading(bool) 2                     #! choices=set_heading
+    b_arg: heading_value(X) 1000.0
+    b_arg: start_when(enum) 0     # See doco above
+    b_arg: stop_when(enum)  2     # See doco above
+    b_arg: when_secs(sec)  1200   # only if start_when==6,9, or 12 
+behavior: dive_to                               #! visible = False
+    b_arg: target_depth(m) 10    # how deep to dive
+    b_arg: target_altitude(m) -1 # stop this far from bottom, <0 disables
+    b_arg: use_bpump(enum) 2     # 0  Autoballast/Speed control.  See doco/how-it-works/autoballast.txt
+    b_arg: bpump_value(X) -1000.0 # use_bpump == 0   Total amt of ballast.  Stored as C_AUTOBALLAST_VOLUME
+    b_arg: use_pitch(enum) 1     # 4  Fluid Pumped absolute
+    b_arg: pitch_value(X)  0.0   # use_pitch == 4    cc, clips to max legal, >0 to nose down
+    b_arg: start_when(enum) 0     # See doco above
+    b_arg: stop_when_hover_for(sec) 180.0 # terminate dive when depth does not change for
+    b_arg: stop_when_stalled_for(sec) 240.0 # terminate dive when glider not moving thru water
+    b_arg: stop_when_air_pump(bool) 0 # Ignored for dives, here as a placeholder
+    b_arg: initial_inflection(bool) 1.0  # T->Want to start with an inflection
+    b_arg: speed_min(m/s) -100.0 	#vertical minimum dive speed for speed control SM_SPEED
+    b_arg: speed_max(m/s) 100.0  	#vertical maximum dive speed for speed control SM_SPEED
+    b_arg: use_thruster(enum)   0               # 0  Not in use
+    b_arg: thruster_value(X)   0.0              # use_thruster == 0  None
+    b_arg: depth_rate_method(enum) 3 #method of filtered depth rate to use for speed control
+    b_arg: wait_for_pitch(bool) 1 #if true, wait for pitch/batt pos dynamics to settle before enabling speed control.
+    b_arg: wait_for_ballast(sec) 100.0 # wait this many seconds after ballast pump has stopped moving (inflection only) before 
+    b_arg: delta_bpump_speed(X)		50.0 #amount of ballast to add to bpump in order to reach desired speed.  Should always be positive.  
+    b_arg: delta_bpump_ballast(X)	25.0  #amount of ballast to add to bpump in order to converge on ballast.  
+    b_arg: time_ratio(X)	 1.1		#ratio of climb/dive times that must be maintained for speed control.
+    b_arg: use_sc_model(bool) 0 	#if using model of veh for SM_SPEED.  Always set to 0 for now until the model is designed
+    b_arg: max_thermal_charge_time(sec) 1200.0 # How long to wait for thermal
+    b_arg: max_pumping_charge_time(sec)  300.0 # how long to wait after starting charge pump
+    b_arg: thr_reqd_pres_mul(nodim) 1.50   # engine pressure must be this many
+behavior: climb_to                               #! visible = False
+    b_arg: target_depth(m) 10    # how deep to dive
+    b_arg: target_altitude(m) -1 # stop this far from bottom, <0 disables
+    b_arg: use_bpump(enum) 2     # 0  Autoballast/Speed control.  See doco/how-it-works/autoballast.txt
+    b_arg: bpump_value(X) 1000.0 # use_bpump == 0: c_bpump_value is ignored.  Dive value d_bpump_value stored
+    b_arg: use_pitch(enum) 1     # 4  Fluid Pumped absolute
+    b_arg: pitch_value(X)  0.0   # use_pitch == 4    cc, clips to max legal, >0 to nose down
+    b_arg: start_when(enum) 0     # See doco above
+    b_arg: stop_when_hover_for(sec) -1.0 # terminate dive when depth does not change for
+    b_arg: stop_when_stalled_for(sec) 240.0 # terminate climb when glider not moving thru water
+    b_arg: stop_when_air_pump(bool) 0 # terminate climb once air pump has been inflated. See M_VACUUM_CHANGE_SINCE_AIR_PUMP_ON
+    b_arg: initial_inflection(bool) 1.0  # T->Want to start with an inflection
+    b_arg: speed_min(m/s) 100.0		#vertical minimum dive speed for speed control SM_SPEED.  
+    b_arg: speed_max(m/s) -100.0  	#vertical maximum dive speed for speed control SM_SPEED
+    b_arg: use_thruster(enum)   0               # 0  Not in use
+    b_arg: thruster_value(X)   0.0              # use_thruster == 0  None
+behavior: drift_at_depth
+    b_arg: args_from_file(enum) -1                 #! ignore = True
+    b_arg: start_when(enum) 4                      #! choices=start_when([0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 13])
+    b_arg: when_secs(sec)   180    # For start_when = 6, 9, or 10 
+    b_arg: when_wpt_dist(m) 10                     # ! min = 5.0
+    b_arg: when_utc_min(min)      -1  # 0-59, -1 any minute
+    b_arg: when_utc_hour(hour)    -1  # 0-23, -1 any hour
+    b_arg: when_utc_day(day)      -1  # 1-31, -1 any day
+    b_arg: when_utc_month(month)  -1  # 1-12, -1 any month
+    b_arg: end_action(enum) 0      # 0-quit, 2-resume
+    b_arg: stop_when_hover_for(sec) 3600.0 # terminate hover when depth does not change for
+    b_arg: est_time_to_settle(s) 360.0 # Used to force invalid cc_time_til_inflect for this
+    b_arg: target_depth(m)       100.0 # depth to drift at
+    b_arg: target_altitude(m)     20.0 # altitude to drift at, <=0 disables
+    b_arg: alt_time(s)           120.0 # time spacing for altimeter pings 
+    b_arg: target_deadband(m)      5.0 # +/- around target depth or altitude
+    b_arg: start_dist_from_target(m) -1.0 # start the drift this distance from the target depth/altitude.  -1 means use the target_deadband
+    b_arg: depth_ctrl(enum)          0 # 0: Default mode for buoyancy drive only drift_at_depth. increment by bpump_delta_value
+    b_arg: bpump_delta_value(cc)   1.0 # Increments to adjust x_hover_ballast(cc) to obtain
+    b_arg: bpump_delay(s)          0.0 # Minimum time between making buoyancy adjustments
+    b_arg: bpump_deadz_width(cc)  30.0 # For temporarily adjusting the buoyancy pump 
+    b_arg: bpump_db_frac_dz(nodim) 0.1 # deadband during the drift_at_depth behavior
+    b_arg: use_pitch(enum) 1       # 4  Fluid Pumped absolute
+    b_arg: pitch_value(X)  0.0     # use_pitch == 4    cc, clips to max legal, >0 to nose down
+    b_arg: wait_for_pitch(bool) 0  # if true, we only adjust x_hover_ballast if pitch is within deadband (for use_pitch = 2 or 3)
+    b_arg: use_thruster(enum)   0               # 0  Not in use
+    b_arg: thruster_value(X)   0.0              # use_thruster == 0  None
+    b_arg: enable_steering(bool) 0	 # Enable or disable steering while hovering. If True, heading is
+    b_arg: d_use_bpump(enum)       2
+    b_arg: d_bpump_value(X)  -1000.0
+    b_arg: d_use_pitch(enum)       3  # servo on pitch
+    b_arg: d_pitch_value(X)  -0.4538  # ~-26 degrees
+    b_arg: d_use_thruster(enum)   0               # 0  Not in use
+    b_arg: d_thruster_value(X)   0.0              # use_thruster == 0  None
+    b_arg: c_use_bpump(enum)       2
+    b_arg: c_bpump_value(X)   1000.0
+    b_arg: c_use_pitch(enum)       3  # servo on pitch
+    b_arg: c_pitch_value(X)   0.4538  # ~26 degrees
+    b_arg: c_use_thruster(enum)   0               # 0  Not in use
+    b_arg: c_thruster_value(X)   0.0              # use_thruster == 0  None
+    b_arg: depth_pitch_limit(rad) 0.174	  #limit pitch response to 25 deg
+    b_arg: depth_gain_scale(bool) 1 # whether or not to use X_HOVER_DEPTH_P_GAIN = m * speed + b								
+    b_arg: depth_p_gain(X) -0.15	  	#proportional gain: should always be < 0.  See X_HOVER_DEPTH_P_GAIN
+    b_arg: depth_i_gain(X) -0.0001	  			#integral gain: should be < 0
+    b_arg: depth_d_gain(X) 0.1	  			#derivative gain: should be > 0
+    b_arg: depth_pitch_deadband(m/s) 0.0349	#don't adjust bouyancy until depth rate is less than this
+    b_arg: depth_pitch_max_time(s) 60 # Max time at maximum u_hover_depth_pitch_limit before we start to adjust ballast
+behavior: bconsci                               #! visible = False
+    b_arg: terminate_mission_when_done(bool) 1 # end mission when this behavior is done
+behavior: hydrosmp                               #! visible = False
+    b_arg: args_from_file(enum) -1       # >= 0 enables reading from mafiles/hydros<N>.ma
+    b_arg: num_samples(nodim)         1  # How many collections, -1 runs forever
+    b_arg: time_between_samples(min) 10  # wait time between samples
+    b_arg: duration(sec)             30  # How long each sample is
+    b_arg: gain(dB)                   0  # 0, 5, 10, .., 35
+    b_arg: channel(nodim)             0  # 0-3, which channel
+    b_arg: xmit_files(bool)           0  # t-> have science xmit files
+    b_arg: silence_lvl(nodim)         0  # 0-1, higher the number, the quieter the glider
+    b_arg: idle_stack_when_done(bool) 1  # T-> idle the stack to terminate
+behavior: bhydrophone                               #! visible = False
+    b_arg: args_from_file(enum) -1     # >= 0 enables reading from mafiles/bhydro<N>.ma
+    b_arg: start_when(enum) 0          # See doco above: 0, 9
+    b_arg: when_secs(sec)   0          #
+    b_arg: max_collection_time(sec) -1 # Collect for this long maximum, <0 ==> forever
+    b_arg: num_collections(nodim)   -1 # Number of collections to make, <0 ==> infinite
+    b_arg: c_hydrophone_duration(sec)   60.0 # How long to collect
+    b_arg: c_hydrophone_pre_delay(sec)  15.0 # Delay between proglet start and collection
+    b_arg: no_sample_time(sec)          15.0 # Time between collection
+    b_arg: c_hydrophone_post_delay(sec) 30.0 # How long before proglet recycles
+    b_arg: c_hydrophone_pre_pings(nodim)   1  # number of pings before sample
+    b_arg: c_hydrophone_post_pings(nodim)  2  # number of pings after sample
+    b_arg: c_hydrophone_gain(nodim)         3.0 # 0-7
+    b_arg: c_hydrophone_num_channels(nodim) 1.0 # 1-4
+    b_arg: c_hydrophone_sample_rate(Hz)  5000.0 # 1000-5000, how fast to AD
+    b_arg: c_hydrophone_drive_num(nodim)  3.0   # 2->C:, 3:->D: etc
+behavior: bviper                               #! visible = False
+    b_arg: args_from_file(enum) -1     # >= 0 enables reading from mafiles/bhydro<N>.ma
+    b_arg: start_when(enum) 0          # See doco above: 0, 9, 13
+    b_arg: when_secs(sec)   0          #
+    b_arg: when_utc_min(min)    -1         # 0-59, -1 any minute
+    b_arg: when_utc_hour(hr)    -1         # 0-23, -1 any hour
+    b_arg: when_utc_day(day)    -1         # 1-31, -1 any day
+    b_arg: when_utc_month(mon)  -1         # 1-12, -1 any month
+    b_arg: max_collection_time(sec) -1 # Collect for this long maximum, <0 ==> forever
+    b_arg: num_collections(nodim)   -1 # Number of collections to make, <0 ==> infinite
+    b_arg: no_sample_time(sec)   300.0 # Time between collection
+    b_arg: c_viper_turn_on_timeout(sec)        120.0 # max wait time for viper to power on
+    b_arg: c_viper_collect_timeout(sec)        200.0 # max wait time for viper to collect/analyse acoustic data
+    b_arg: c_viper_reset_timeout(sec)           60.0 # max wait time for viper to respond to reset gain command
+    b_arg: c_viper_start_sampling_timeout(sec)  60.0 # max wait time for viper to respond to start sampling command
+    b_arg: c_viper_detection_done_timeout(sec)  60.0 # max wait time for viper to respond to detection done command
+    b_arg: c_viper_turn_off_timeout(sec)       120.0 # max wait time for viper to power off
+    b_arg: c_viper_gain(nodim)                   3.0 # 0-7 gain sent to viper
+    b_arg: c_viper_max_sample_starts(nodim)      3.0 # max allowable attempts to obtain a definitive detection
+    b_arg: c_viper_max_errors(nodim)             3.0 # max number of viper errors before mission abort
+    b_arg: min_sample_depth(m)    20       # min depth to start, <0 disables
+    b_arg: max_sample_depth(m)    60       # max depth to start, <0 disables
+    b_arg: min_reqd_quiet_time(s) 480      # must be < cc_final_time_to_inflect before start.  Set <0 to disable
+    b_arg: post_inflection_holdoff(s) 60   # must be this long since inflection, < 0 disables
+    b_arg: allow_sample_at_surface(bool) 0 # non-zero allows sample at surface
+behavior: sample
+  b_arg: args_from_file(enum)             -1       #! ignore=True
+  b_arg: sensor_type(enum)                 0       #! choices = sensor_type()
+    b_arg: state_to_sample(enum)             1     #! choices = state_to_sample
+    b_arg: sample_time_after_state_change(s) 15    #! simple = False; min = 0.0
+    b_arg: intersample_time(s)                0  # if < 0 then off, if = 0 then                                                 # as fast as possible, and if
+    b_arg: nth_yo_to_sample(nodim)            1    #! min = 1.0
+    b_arg: intersample_depth(m)              -1    #! min = -1.0
+    b_arg: min_depth(m)                      -5    #! min = -5; max = 1000.0
+    b_arg: max_depth(m)                    2000    #! min = -5.0; max = 2000
+behavior: badd_b                                   #! visible = False
+    b_arg: args_from_file(enum)            -1      #! ignore = True
+    b_arg: start_when(enum)                 1 # See doco above: 0, 1, 2
+    b_arg: when_wpt_dist(m)                 0 #! min = 5.0
+    b_arg: stop_when(enum)                  0 # Valid [0, 5] 0 stop when complete, 5 never stop
+    b_arg: max_collection_time(sec)      1800 # timeout for data collect mode
+    b_arg: max_search_time(sec)          1800 # timeout for search mode
+    b_arg: min_download_range(m)         2000 # minimum range to start collecting data
+    b_arg: max_tries_to_connect(nodim)     15 # max number of connection attempts
+    b_arg: max_badd_errors(nodim)          30 # abort after this many errors
+    b_arg: run_on_surface(bool)             0 # 1 -> allow running on surface
+    b_arg: collect_data_after_range(bool)   1 # 1 -> collect data after range mode
+    b_arg: c_badd_mode(enum)               -1 # -1: Off, 0: search, 1: collect data
+    b_arg: c_badd_target_id(enum)           0 # address of remote host modem being called
+    b_arg: c_badd_range_secs(sec)          60 # how often to request range to remote modem
+    b_arg: c_badd_input_parse_secs(sec)    30 # How long to check command response input buffer
+    b_arg: c_badd_datacol_status_secs(sec) 30 # How long to check command response input buffer
+    b_arg: c_badd_clear_remote_data(bool)   0 # 0: do NOT clear remote data after successful
+    b_arg: c_badd_autobaud(bool)            0 # 0: No Autobaud, 1: Autobaud when in range
+    b_arg: c_baud_attempt_min(enum)         3 # 1: 80 bps MFSK
+    b_arg: c_baud_attempt_max(enum)         8 # 2: 140 bps MFSK
+    b_arg: c_autobaud_max_BER(nodim)        0 # Maximum Bit Error Rate to allow during autobaud
+    b_arg: c_badd_transaction_num(nodim)    0 # Transaction ID to execute for the glider. (8 digit max)
+    b_arg: c_badd_channel_probe_test(bool)  0 # Execute Channel Probe Test: 0-No 1-Yes
+behavior: mission_ender                       #! visible = False
+    b_arg: start_when(enum) 1          # See doco above: 1,2,3, or 4
+behavior: comatose                                    #! visible = False
+    b_arg: start_sci_hydrophone_collecting(bool)  1.0 # in, t-> start when this sensor true
+    b_arg: start_sci_viper_collecting(bool)       1.0 # in, t-> start when this sensor true
+    b_arg: start_sci_wants_quiet(bool)            1.0 # in, t-> start when this sensor true
+    b_arg: post_inflection_holdoff(s)            30.0 # in, how many secs post inflection to
+behavior: nop_cmds                                    #! visible = False
+    b_arg: nop_pitch(bool)   0   # t-> cmd pitch   to _IGNORE to keep stack busy
+    b_arg: nop_bpump(bool)   0   # t-> cmd bpump   to _IGNORE to keep stack busy
+    b_arg: nop_heading(bool) 0   # t-> cmd heading to _IGNORE to keep stack busy
+    b_arg: nop_threng(bool)  0   # t-> cmd threng  to _IGNORE to keep stack busy
+    b_arg: secs_to_run(sec)   -1   # how long this behavior runs, <0 to run forever
+behavior: oob_abort                       #! visible = False
+    b_arg: start_when(enum) 6     # see doco above
+    b_arg: when_secs(sec)   120.0 # How long to wait for issuing out of band abort
+behavior: iridium_ascii_test                       #! visible = False
+    b_arg: time_between_xmit(secs)   900.0  # 15 minutes
+    b_arg: tries_per_xmit(nodim)       5    # How many attempts to send file
+    b_arg: link_ok_timeout(secs)      30.0  # How long to wait for link ok
+    b_arg: modem_drain_time(secs)     30.0  # How long to delay phone power off
+behavior: pinger_on                       #! visible = False
+    b_arg: c_pinger_on(bool)           1
+    b_arg: u_ping_n_enabled(bool)      1
+    b_arg: u_pinger_rep_rate(sec)      8
+    b_arg: u_pinger_max_depth(m)    1000

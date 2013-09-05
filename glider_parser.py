@@ -14,6 +14,12 @@ import pdb
 
 from mi.core.exceptions import InstrumentException
 
+from master import CtdgvParticleKey
+from master import DostaParticleKey
+from master import FlortParticleKey
+from master import ParadParticleKey
+from master import GliderEngineeringDataParticleKey
+
 from mi.core.common import BaseEnum
 from mi.core.instrument.data_particle import DataParticle
 from mi.core.instrument.data_particle import DataParticleKey
@@ -116,18 +122,9 @@ class GliderParsedData(object):
 # GliderParsedData instance
 ########################################################################
 
-class CtdDataParticleKey(BaseEnum):
-    IS_INSTALLED = 'sci_ctd41cp_is_installed'
-    CTD_TIMESTAMP = 'sci_ctd41cp_timestamp'
-    COND = 'sci_water_cond'
-    PRESS = 'sci_water_pressure'
-    TEMP = 'sci_water_temp'
-    SECS_INTO_MISSION = 'sci_m_present_secs_into_mission'
-    PRESENT_TIME = 'sci_m_present_time'
 
-
-class CtdDataParticle(DataParticle):
-    _data_particle_type = 'GLIDER_CTD_DATA_PARTICLE'
+class CtdgvDataParticle(DataParticle):
+    _data_particle_type = 'GLIDER_CTDGV_DATA_PARTICLE'
 
     def build_parsed_values(self, gpd):
         """
@@ -142,11 +139,80 @@ class CtdDataParticle(DataParticle):
                 "Object Instance is not a GliderParsedData object")
 
         result = []
-        for key in CtdDataParticleKey.list():
-            result.append({
-                DataParticleKey.VALUE_ID: key,
-                DataParticleKey.VALUE: gpd.data_dict[key]['Data']})
+        for key in CtdgvParticleKey.KEY_LIST:
+            if key in gpd.data_keys:
+                result.append({
+                    DataParticleKey.VALUE_ID: key,
+                    DataParticleKey.VALUE: gpd.data_dict[key]['Data']})
 
+
+class ParadDataParticle(DataParticle):
+    _data_particle_type = 'GLIDER_PARAD_DATA_PARTICLE'
+
+    def build_parsed_values(self, gpd):
+        """
+        Takes a GliderParsedData object and extracts CTD data from the
+        data dictionary and puts the data into a CTD Data Particle.
+
+        @param gpd A GliderParsedData class instance.
+        @param result A returned list with sub dictionaries of the data
+        """
+        if not isinstance(gpd, GliderParsedData):
+            raise GliderObjectException(
+                "Object Instance is not a GliderParsedData object")
+
+        result = []
+        for key in ParadParticleKey.KEY_LIST:
+            if key in gpd.data_keys:
+                result.append({
+                    DataParticleKey.VALUE_ID: key,
+                    DataParticleKey.VALUE: gpd.data_dict[key]['Data']})
+
+
+class DostaDataParticle(DataParticle):
+    _data_particle_type = 'GLIDER_DOSTA_DATA_PARTICLE'
+
+    def build_parsed_values(self, gpd):
+        """
+        Takes a GliderParsedData object and extracts CTD data from the
+        data dictionary and puts the data into a CTD Data Particle.
+
+        @param gpd A GliderParsedData class instance.
+        @param result A returned list with sub dictionaries of the data
+        """
+        if not isinstance(gpd, GliderParsedData):
+            raise GliderObjectException(
+                "Object Instance is not a GliderParsedData object")
+
+        result = []
+        for key in DostaParticleKey.KEY_LIST:
+            if key in gpd.data_keys:
+                result.append({
+                    DataParticleKey.VALUE_ID: key,
+                    DataParticleKey.VALUE: gpd.data_dict[key]['Data']})
+
+
+class FlortDataParticle(DataParticle):
+    _data_particle_type = 'GLIDER_FLORT_DATA_PARTICLE'
+
+    def build_parsed_values(self, gpd):
+        """
+        Takes a GliderParsedData object and extracts CTD data from the
+        data dictionary and puts the data into a CTD Data Particle.
+
+        @param gpd A GliderParsedData class instance.
+        @param result A returned list with sub dictionaries of the data
+        """
+        if not isinstance(gpd, GliderParsedData):
+            raise GliderObjectException(
+                "Object Instance is not a GliderParsedData object")
+
+        result = []
+        for key in FlortParticleKey.KEY_LIST:
+            if key in gpd.data_keys:
+                result.append({
+                    DataParticleKey.VALUE_ID: key,
+                    DataParticleKey.VALUE: gpd.data_dict[key]['Data']})
 
 # this needs to change to the Data set base exception when there is one.
 class GliderObjectException(InstrumentException):
